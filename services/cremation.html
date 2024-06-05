@@ -27,11 +27,24 @@
               <h1 class="heading-12">NEBESA</h1>
             </div>
           </a>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Проверяем, есть ли в URL якорь #services-sec
+                if (window.location.hash === '#services-sec') {
+                    // Находим блок с идентификатором "services-sec"
+                    var servicesSection = document.getElementById('services-sec');
+                    if (servicesSection) {
+                        // Прокручиваем страницу до верхней позиции блока "services-sec"
+                        servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+            </script>          
           <nav role="navigation" class="navbar_menu is-page-height-tablet w-nav-menu">
-            <a href="../index.html" class="navbar_link w-nav-link">Главная</a>
-            <a href="#" class="navbar_link w-nav-link">Услуги</a>
-            <a href="../services/ritual-products.html" class="navbar_link w-nav-link">Продукция</a>
-            <a href="../faq-page.html" class="navbar_link w-nav-link">FAQ</a>
+            <a href="index.html" aria-current="page" class="navbar_link w-nav-link w--current">Главная</a>
+            <a href="../index.html#services-sec" class="navbar_link w-nav-link">Услуги</a>
+            <a href="services/ritual-products.html" class="navbar_link w-nav-link">Продукция</a>
+            <a href="faq-page.html" class="navbar_link w-nav-link">FAQ</a>
             <a href="tel:+37255582200" class="button-4 is-navbar-button menu_button w-inline-block">
               <div class="button_circle menu_button-circle"></div>
               <div class="button_text-regular is-menu-button-text">Позвонить</div>
