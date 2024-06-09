@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  Last Published: Wed Jun 05 2024 11:26:40 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  Last Published: Sun Jun 09 2024 12:38:34 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="665db48a20470522173a4be3" data-wf-site="665da5e81ec3acf84b3c37d0">
 <head>
   <meta charset="utf-8">
@@ -16,6 +16,40 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="../images/favicon.svg" rel="shortcut icon" type="image/x-icon">
   <link href="../images/webclip.svg" rel="apple-touch-icon">
+  <script>
+window.addEventListener('load', function () {
+    // Ждем некоторое время перед запуском скрипта (6 секунд)
+    setTimeout(function() {
+      	const currentURL = window.location.href;
+        // Находим блок с идентификатором "services-section"
+        var servicesSection = document.getElementById('services-section');
+        if (servicesSection && currentURL.endsWith('/index.html#services-section')) {
+            // Получаем высоту блока "services-section"
+            var sectionHeight = servicesSection.clientHeight;
+            // Получаем высоту видимой области окна
+            var windowHeight = window.innerHeight;
+            // Вычисляем отступ, чтобы блок был по центру экрана
+            var offset = Math.max(0, (windowHeight - sectionHeight) / 2);
+            // Прокручиваем страницу до блока "services-section" с учетом отступа
+            window.scrollTo({ top: servicesSection.offsetTop - offset, behavior: 'smooth' });
+        }
+    }, 1000); // Укажите время ожидания в миллисекундах
+    // Находим кнопку "Услуги" по ее идентификатору
+    var servicesBtn = document.getElementById('services-btn-menu');
+    // Проверяем, найдена ли кнопка
+    if (servicesBtn) {
+        // Добавляем обработчик события клика
+        servicesBtn.addEventListener('click', function (event) {
+            // Отменяем стандартное действие ссылки
+            event.preventDefault();
+            // Получаем текущий путь URL
+            var currentPath = window.location.pathname;
+            // Переходим на главную страницу с учетом пути
+            window.location.href = '/index.html#services-section';
+        });
+    }
+});
+</script>
 </head>
 <body>
   <div>
@@ -26,23 +60,10 @@
             <h1 class="heading-12">NEBESA</h1>
           </div>
         </a>
-        <script>
-          document.addEventListener('DOMContentLoaded', function () {
-              // Проверяем, есть ли в URL якорь #services-sec
-              if (window.location.hash === '#services-sec') {
-                  // Находим блок с идентификатором "services-sec"
-                  var servicesSection = document.getElementById('services-sec');
-                  if (servicesSection) {
-                      // Прокручиваем страницу до верхней позиции блока "services-sec"
-                      servicesSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-              }
-          });
-          </script>          
         <nav role="navigation" class="navbar_menu is-page-height-tablet w-nav-menu">
-          <a href="../index.html" aria-current="page" class="navbar_link w-nav-link w--current">Главная</a>
-          <a href="../index.html#services-sec" class="navbar_link w-nav-link">Услуги</a>
-          <a href="../services/ritual-products.html" class="navbar_link w-nav-link">Продукция</a>
+          <a href="../index.html" class="navbar_link w-nav-link">Главная</a>
+          <a href="#" id="services-btn-menu" class="navbar_link w-nav-link">Услуги</a>
+          <a href="../services/ritual-products.html" aria-current="page" class="navbar_link w-nav-link w--current">Продукция</a>
           <a href="../faq-page.html" class="navbar_link w-nav-link">FAQ</a>
           <a href="tel:+37255582200" class="button-4 is-navbar-button menu_button w-inline-block">
             <div class="button_circle menu_button-circle"></div>
@@ -74,7 +95,7 @@
               <div data-w-id="b2d59487-5234-b128-e3ce-1be485022ba0" style="opacity:0" class="rl_header_content">
                 <h1 class="heading-style-ritual-h1">Каталог ритуальной продукции</h1>
                 <div class="rl_heading_spacing-block"></div>
-                <p class="text-style-ritual-medium">На этой странице вы можете ознакомиться с нашим ассортиментом ритуальной продукции, включая венки и гробы.</p>
+                <p class="text-style-ritual-medium">Всегда имеются в продаже искусственные венки и корзины разных размеров, при желании можно выбрать цветы и тон оформления венка</p>
                 <div class="ritual_heading_spacing-block"></div>
                 <div class="rl-button-group">
                   <a href="tel:+37255582200" class="cta_button w-inline-block">
@@ -82,7 +103,7 @@
                   </a>
                 </div>
               </div>
-              <div data-w-id="b2d59487-5234-b128-e3ce-1be485022bac" style="opacity:0" class="rl_header_image-wrapper"><img src="../images/Catalog-of-ritual-products_1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 42vw" srcset="../images/Catalog-of-ritual-products_1.webp 500w, ../images/Catalog-of-ritual-products_1.webp 800w, ../images/Catalog-of-ritual-products_1.webp 1080w, ../images/Catalog-of-ritual-products_1.webp 1456w" alt="" class="header_image"></div>
+              <div data-w-id="b2d59487-5234-b128-e3ce-1be485022bac" style="opacity:0" class="rl_header_image-wrapper"><img src="../images/Catalog-of-ritual-products_1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 42vw" srcset="../images/Catalog-of-ritual-products_1Catalog-of-ritual-products.webp 500w, ../images/Catalog-of-ritual-products_1Catalog-of-ritual-products.webp 800w, ../images/Catalog-of-ritual-products_1Catalog-of-ritual-products.webp 1080w, ../images/Catalog-of-ritual-products_1.webp 1456w" alt="" class="header_image"></div>
             </div>
           </div>
         </div>
@@ -92,7 +113,7 @@
       <div class="spark-container w-container">
         <div data-w-id="74f2945b-4146-fecb-aafd-d888f0bacb58" style="opacity:0" class="spark-centered-900">
           <h2>Галерея ритуальных товаров</h2>
-          <p class="spark-secondary-paragraph">Широкий выбор ритуальных товаров для достойного прощания. В нашей галерее вы найдете все необходимое для организации похорон: гробы, венки и многое другое.</p>
+          <p class="spark-secondary-paragraph">Широкий выбор ритуальных товаров для достойного прощания. В нашей галерее вы найдете все необходимое для организации похорон: гробы, венки и корзины, одежда для усопших, урны для праха, кресты.</p>
         </div>
         <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="spark-tabs-parent w-tabs">
           <div class="spark-tabs-menu spark-left-aligned w-tab-menu">
@@ -106,393 +127,1206 @@
           <div class="spark-tabs-content w-tab-content">
             <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
               <div class="spark-three-column-grid">
-                <div id="w-node-b3de9cee-40d5-8934-ca71-a7eb1cdd7704-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/1_2.webp" loading="eager" srcset="../images/1_21.webp 500w, ../images/1_21.webp 800w, ../images/1_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Памяти</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это нежная нота вечной памяти, которая остается в сердцах тех, кого мы любим.</p>
-                  </div>
+                <div id="w-node-b3de9cee-40d5-8934-ca71-a7eb1cdd7704-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/1_21.webp 500w, ../images/1_21.webp 800w, ../images/1_2.webp 963w" alt="" src="../images/1_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_5ba05c7d-3cac-f9d2-cb5a-8d9199997d4b-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/2_2.webp" loading="eager" srcset="../images/2_22.webp 500w, ../images/2_22.webp 800w, ../images/2_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Надежды и Утешения</p>
-                    <p class="spark-small-sub-paragraph">Вдохните аромат свежего лесЭтот венок приносит утешение и надежду в трудные моменты, напоминая нам о светлом будущем после темных времен.ного воздуха с этим венком, усыпанным зеленью и дарующим ощущение умиротворенности и спокойствия.</p>
-                  </div>
+                <div id="w-node-_05f67f71-bdf3-543c-3672-733d3dbe5fe5-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/2_22.webp 500w, ../images/2_22.webp 800w, ../images/2_2.webp 963w" alt="" src="../images/2_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d0b2b00155be0dafc",
+      "origFileName": "2.webp",
+      "fileName": "2.webp",
+      "fileSize": 92302,
+      "height": 1280,
+      "url": "../images/2_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-e0dfb472-2103-6672-bb71-b31c836beb0d-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/3_2.webp" loading="eager" srcset="../images/3_23.webp 500w, ../images/3_23.webp 800w, ../images/3_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Светлого Воспоминания</p>
-                    <p class="spark-small-sub-paragraph">Пусть этот венок станет символом светлых воспоминаний, наполняя наши сердца радостью и умиротворением.</p>
-                  </div>
+                <div id="w-node-f701f426-4f44-d890-455d-a56588df1b15-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/3_23.webp 500w, ../images/3_23.webp 800w, ../images/3_2.webp 963w" alt="" src="../images/3_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_0293022e-bec8-6943-054f-70d94e760929-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/4_2.webp" loading="eager" srcset="../images/4_24.webp 500w, ../images/4_24.webp 800w, ../images/4_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Любви и Уважения</p>
-                    <p class="spark-small-sub-paragraph">Добавьте яркость и радость в ваш дом с этим венком, напоминающим о летних праздниках и бесконечном веселье под открытым небом.</p>
-                  </div>
+                <div id="w-node-_0b91afe5-866d-032d-37e7-5a15aa419b82-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/4_24.webp 500w, ../images/4_24.webp 800w, ../images/4_2.webp 963w" alt="" src="../images/4_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-a6003968-9b92-8b0f-56ee-e41d380f32fa-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/5_2.webp" loading="eager" srcset="../images/5_25.webp 500w, ../images/5_25.webp 800w, ../images/5_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Жизни</p>
-                    <p class="spark-small-sub-paragraph">Пусть этот венок напоминает нам о цикле жизни и о том, что даже после смерти наши близкие остаются с нами в вечной памяти.</p>
-                  </div>
+                <div id="w-node-_878a605f-cf15-a76a-a186-b7ea42a9b3cf-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/5_25.webp 500w, ../images/5_25.webp 800w, ../images/5_2.webp 963w" alt="" src="../images/5_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d8b455abe444c9315",
+      "origFileName": "5.webp",
+      "fileName": "5.webp",
+      "fileSize": 94206,
+      "height": 1280,
+      "url": "../images/5_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_134571f0-9cfd-989b-f2ad-8b89e1918a57-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/6_2.webp" loading="eager" srcset="../images/6_26.webp 500w, ../images/6_26.webp 800w, ../images/6_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Мирного Покоя</p>
-                    <p class="spark-small-sub-paragraph">Этот венок приносит мир и спокойствие тем, кто остался на этом свете, утешая их и напоминая о том, что души ушедших всегда с нами.</p>
-                  </div>
+                <div id="w-node-_5b0ac92d-5cb6-1efd-7382-c8c305ae510f-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/6_26.webp 500w, ../images/6_26.webp 800w, ../images/6_2.webp 963w" alt="" src="../images/6_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_18bca889-65de-0570-2795-51405c357f81-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/7.jpg" loading="eager" srcset="../images/7-p-500.jpg 500w, ../images/7-p-800.jpg 800w, ../images/7.jpg 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Теплого Прощания</p>
-                    <p class="spark-small-sub-paragraph">аждый цветок на этом венке - это теплое прощание, словно последний ласковый взгляд от ушедших душ.</p>
-                  </div>
+                <div id="w-node-e0e850a1-0680-76f2-9625-10c072ef0760-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/7-p-500.jpg 500w, ../images/7-p-800.jpg 800w, ../images/7.jpg 963w" alt="" src="../images/7.jpg" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666038355e4aef88026ff046",
+      "origFileName": "7.jpg",
+      "fileName": "7.jpg",
+      "fileSize": 266616,
+      "height": 1280,
+      "url": "../images/7.jpg",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_48bb8949-df57-eee4-ae3a-fcfb3fdb8f92-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/8_2.webp" loading="eager" srcset="../images/8_28.webp 500w, ../images/8_28.webp 800w, ../images/8_2.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Дружбы</p>
-                    <p class="spark-small-sub-paragraph">Этот венок символизирует вечную дружбу и связь между нами и теми, кого мы любим, даже после их ухода.</p>
-                  </div>
+                <div id="w-node-f5477386-f8a8-8627-c083-30fe8655092d-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/8_28.webp 500w, ../images/8_28.webp 800w, ../images/8_2.webp 960w" alt="" src="../images/8_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-d54bc443-2b00-3322-ee4a-5739e7f3d632-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/9_2.webp" loading="eager" srcset="../images/9_29.webp 500w, ../images/9_29.webp 800w, ../images/9_2.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Светлой Надежды</p>
-                    <p class="spark-small-sub-paragraph">Пусть этот венок принесет светлую надежду и веру в будущее, напоминая нам, что даже в темные времена всегда есть свет.</p>
-                  </div>
+                <div id="w-node-_1c3d791a-1c2a-849f-8821-b6b635b30e9e-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/9_29.webp 500w, ../images/9_29.webp 800w, ../images/9_2.webp 960w" alt="" src="../images/9_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372db81a720f1d4e9073",
+      "origFileName": "9.webp",
+      "fileName": "9.webp",
+      "fileSize": 104888,
+      "height": 1280,
+      "url": "../images/9_2.webp",
+      "width": 960,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-e9f73d74-5c1e-fae4-659e-4c677c032c2f-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/10_2.webp" loading="eager" srcset="../images/10_210.webp 500w, ../images/10_210.webp 800w, ../images/10_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Благословенного Пути</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это благословение и поддержка в пути к новой жизни, наполняя наши сердца силой и уверенностью.</p>
-                  </div>
+                <div id="w-node-dfd8fd1c-4b0e-c0d3-ecb6-e070fb33d3a9-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/10_210.webp 500w, ../images/10_210.webp 800w, ../images/10_2.webp 963w" alt="" src="../images/10_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d1c53b3483e91c4f6",
+      "origFileName": "10.webp",
+      "fileName": "10.webp",
+      "fileSize": 170028,
+      "height": 1280,
+      "url": "../images/10_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-abe2b0b8-0c27-3281-3a7d-58b94b1eb87d-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/11_2.webp" loading="eager" srcset="../images/11_211.webp 500w, ../images/11_211.webp 800w, ../images/11_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Золотой Осенней Сказки</p>
-                    <p class="spark-small-sub-paragraph">Окунитесь в атмосферу золотой осени с этим венком, усыпанным теплыми оттенками и яркими красками, словно страницами сказки.</p>
-                  </div>
+                <div id="w-node-c1fb92ae-b231-f644-fd54-8d367b4372ed-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/11_211.webp 500w, ../images/11_211.webp 800w, ../images/11_2.webp 963w" alt="" src="../images/11_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-c7a32fdf-8b06-c52e-d91e-7b744da58b52-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/12_2.webp" loading="eager" srcset="../images/12_212.webp 500w, ../images/12_212.webp 800w, ../images/12_2.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Тихой Гармонии</p>
-                    <p class="spark-small-sub-paragraph">Этот венок приносит тишину и гармонию, утешая и успокаивая сердца тех, кто остался в скорби.</p>
-                  </div>
+                <div id="w-node-d0671c98-737b-9ed7-e2b2-c734e6e56b58-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/12_212.webp 500w, ../images/12_212.webp 800w, ../images/12_2.webp 963w" alt="" src="../images/12_2.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_3f309bd1-9c42-50a2-a2c8-b73e8aa5730b-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/13_1.webp" loading="eager" srcset="../images/13_113.webp 500w, ../images/13_113.webp 800w, ../images/13_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Нежной Любви</p>
-                    <p class="spark-small-sub-paragraph">Каждый лепесток этого венка наполнен нежностью и заботой, символизируя бесконечную любовь, которая переживает все.</p>
-                  </div>
+                <div id="w-node-_6ecd61f7-faab-dce5-c9c9-8b3bb3e49253-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/13_113.webp 500w, ../images/13_113.webp 800w, ../images/13_1.webp 963w" alt="" src="../images/13_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d5f27e90bc7b67d64",
+      "origFileName": "13.webp",
+      "fileName": "13.webp",
+      "fileSize": 192274,
+      "height": 1280,
+      "url": "../images/13_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-b0aa750f-28b0-5778-3c57-3d92d0ff4e73-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/14_1.webp" loading="eager" srcset="../images/14_114.webp 500w, ../images/14_114.webp 800w, ../images/14_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Света и Надежды</p>
-                    <p class="spark-small-sub-paragraph">Пусть этот венок будет светом и надеждой во тьме, напоминая о том, что всегда есть шанс на новый начало.</p>
-                  </div>
+                <div id="w-node-e6f10872-6ad9-23fc-672e-cbb4c29e7bec-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/14_114.webp 500w, ../images/14_114.webp 800w, ../images/14_1.webp 963w" alt="" src="../images/14_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372ef23792090334698a",
+      "origFileName": "14.webp",
+      "fileName": "14.webp",
+      "fileSize": 163754,
+      "height": 1280,
+      "url": "../images/14_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_9f48b50e-92e6-cf8f-ed34-24508dde3a5a-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/15_1.webp" loading="eager" srcset="../images/15_115.webp 500w, ../images/15_115.webp 800w, ../images/15_1.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Верности</p>
-                    <p class="spark-small-sub-paragraph">Этот венок символизирует вечную верность и преданность, наполняя сердца теплом и любовью.</p>
-                  </div>
+                <div id="w-node-a563be2a-c1e7-2c29-f004-7f01c16ea302-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/15_115.webp 500w, ../images/15_115.webp 800w, ../images/15_1.webp 960w" alt="" src="../images/15_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372ef23792090334697f",
+      "origFileName": "15.webp",
+      "fileName": "15.webp",
+      "fileSize": 137266,
+      "height": 1280,
+      "url": "../images/15_1.webp",
+      "width": 960,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_29b4f49f-24e1-488c-0ae9-98fbcd0b41dd-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/16_1.webp" loading="eager" srcset="../images/16_116.webp 500w, ../images/16_116.webp 800w, ../images/16_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Лучшего Последнего Прощания</p>
-                    <p class="spark-small-sub-paragraph">Каждый элемент этого венка создан для того, чтобы последнее прощание было самым нежным и незабываемым.</p>
-                  </div>
+                <div id="w-node-a3ac216e-297e-efb2-5a00-8ddb7fff7b21-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/16_116.webp 500w, ../images/16_116.webp 800w, ../images/16_1.webp 963w" alt="" src="../images/16_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372ed87ee9db451962cb",
+      "origFileName": "16.webp",
+      "fileName": "16.webp",
+      "fileSize": 222554,
+      "height": 1280,
+      "url": "../images/16_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-f2f2d9eb-f162-52f4-5834-1a544675b5e6-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/17_1.webp" loading="eager" srcset="../images/17_117.webp 500w, ../images/17_117.webp 800w, ../images/17_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Спокойного Покоя</p>
-                    <p class="spark-small-sub-paragraph">Этот венок приносит покой и умиротворение, создавая атмосферу спокойствия и гармонии.</p>
-                  </div>
+                <div id="w-node-_35c8ba82-7327-8b3c-bcab-2a277e285860-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/17_117.webp 500w, ../images/17_117.webp 800w, ../images/17_1.webp 963w" alt="" src="../images/17_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372f76c43bd2171896e0",
+      "origFileName": "17.webp",
+      "fileName": "17.webp",
+      "fileSize": 130834,
+      "height": 1280,
+      "url": "../images/17_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-a6238a95-07b3-cdea-5980-70475e4cf37a-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/18_1.webp" loading="eager" srcset="../images/18_118.webp 500w, ../images/18_118.webp 800w, ../images/18_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Лучшего Памятного Момента</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это памятный момент, который навсегда останется в наших сердцах.</p>
-                  </div>
+                <div id="w-node-_28dd506d-4948-1039-9e99-256a3d3aa260-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/18_118.webp 500w, ../images/18_118.webp 800w, ../images/18_1.webp 963w" alt="" src="../images/18_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372e759b43790c788c70",
+      "origFileName": "18.webp",
+      "fileName": "18.webp",
+      "fileSize": 173254,
+      "height": 1280,
+      "url": "../images/18_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_58270a81-05ad-1a9a-6c01-d4332a5261fa-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/19_1.webp" loading="eager" srcset="../images/19_119.webp 500w, ../images/19_119.webp 800w, ../images/19_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Благодарности</p>
-                    <p class="spark-small-sub-paragraph">Этот венок символизирует нашу вечную благодарность и признательность за все, что они сделали для нас.</p>
-                  </div>
+                <div id="w-node-f5a357ec-c90e-aa5f-b887-eea036eccaab-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/19_119.webp 500w, ../images/19_119.webp 800w, ../images/19_1.webp 963w" alt="" src="../images/19_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660373131434c0b7234b469",
+      "origFileName": "19.webp",
+      "fileName": "19.webp",
+      "fileSize": 144950,
+      "height": 1280,
+      "url": "../images/19_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_16ee08b4-4d86-1f7d-3f25-408b6b5d1945-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/20_1.webp" loading="eager" srcset="../images/20_120.webp 500w, ../images/20_120.webp 800w, ../images/20_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Светлого Воспоминания</p>
-                    <p class="spark-small-sub-paragraph">Каждый лепесток этого венка - это светлое воспоминание о тех, кто оставил свой след в наших сердцах.</p>
-                  </div>
+                <div id="w-node-_262cc997-1a11-66ea-e477-a20eac049103-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/20_120.webp 500w, ../images/20_120.webp 800w, ../images/20_1.webp 963w" alt="" src="../images/20_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372f67b998fee779048f",
+      "origFileName": "20.webp",
+      "fileName": "20.webp",
+      "fileSize": 195102,
+      "height": 1280,
+      "url": "../images/20_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_5bc419a6-27c2-5a8b-e69c-2e5121055988-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/21_1.webp" loading="eager" srcset="../images/21_121.webp 500w, ../images/21_121.webp 800w, ../images/21_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Последнего Прощания и Уважения</p>
-                    <p class="spark-small-sub-paragraph">Этот венок создан с уважением и любовью, чтобы сопровождать наших близких в последний путь с достоинством и уважением.</p>
-                  </div>
+                <div id="w-node-ee132a3c-c662-8565-36ce-615992a24451-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/21_121.webp 500w, ../images/21_121.webp 800w, ../images/21_1.webp 963w" alt="" src="../images/21_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603730bbcab51bd2ee67c7",
+      "origFileName": "21.webp",
+      "fileName": "21.webp",
+      "fileSize": 268020,
+      "height": 1280,
+      "url": "../images/21_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_00f44b56-3a0f-900c-96b9-ef7e5b9f1dd3-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/22_1.webp" loading="eager" srcset="../images/22_122.webp 500w, ../images/22_122.webp 800w, ../images/22_122.webp 1080w, ../images/22_1.webp 1280w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечного Света</p>
-                    <p class="spark-small-sub-paragraph">Этот венок наполнен светом вечности, который будет сиять навсегда в наших сердцах, напоминая о непреходящей любви и памяти.</p>
-                  </div>
+                <div id="w-node-a428ca62-89a9-8e82-6359-e49a8971e4e3-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/23_123.webp 500w, ../images/23_123.webp 800w, ../images/23_1.webp 963w" alt="" src="../images/23_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603730b0cd9215432502de",
+      "origFileName": "23.webp",
+      "fileName": "23.webp",
+      "fileSize": 229664,
+      "height": 1280,
+      "url": "../images/23_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_33c4a8bd-bd2f-5249-6db2-ef8ea3011d53-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/23_1.webp" loading="eager" srcset="../images/23_123.webp 500w, ../images/23_123.webp 800w, ../images/23_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Ласкового Прощания</p>
-                    <p class="spark-small-sub-paragraph">Каждый лепесток этого венка нежно обнимает наши сердца, унося с собой частицу нашей любви и нежности.</p>
-                  </div>
+                <div id="w-node-cf07dcf8-976f-6ca4-88c0-f5b8e6d35011-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/24_124.webp 500w, ../images/24_124.webp 800w, ../images/24_1.webp 963w" alt="" src="../images/24_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603730d4bb8aba85c4b9a6",
+      "origFileName": "24.webp",
+      "fileName": "24.webp",
+      "fileSize": 183112,
+      "height": 1280,
+      "url": "../images/24_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_2623f52a-070d-3554-3f2e-9adfb56165ba-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/24_1.webp" loading="eager" srcset="../images/24_124.webp 500w, ../images/24_124.webp 800w, ../images/24_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Нежной Печали</p>
-                    <p class="spark-small-sub-paragraph">Этот венок является проявлением нашей нежной печали и грусти, но также и памяти о ярких моментах, которые мы разделили вместе.</p>
-                  </div>
+                <div id="w-node-_518ee7ed-2aa8-4ca1-2475-a8484ae063d0-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/25_125.webp 500w, ../images/25_125.webp 800w, ../images/25_1.webp 963w" alt="" src="../images/25_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666037305f27e90bc7b67f4d",
+      "origFileName": "25.webp",
+      "fileName": "25.webp",
+      "fileSize": 208282,
+      "height": 1280,
+      "url": "../images/25_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-df8b7c40-c2f9-70f2-19a1-6566f9e6d40b-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/25_1.webp" loading="eager" srcset="../images/25_125.webp 500w, ../images/25_125.webp 800w, ../images/25_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Благодарности и Уважения</p>
-                    <p class="spark-small-sub-paragraph">Этот венок - выражение нашей глубокой благодарности и уважения к тем, кто был с нами и оставил свой след в наших сердцах.</p>
-                  </div>
+                <div id="w-node-_8bb772ab-779e-ff40-5bd6-d52180fbe65a-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/26_126.webp 500w, ../images/26_126.webp 800w, ../images/26_1.webp 963w" alt="" src="../images/26_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603730cef0ecae15ed5720",
+      "origFileName": "26.webp",
+      "fileName": "26.webp",
+      "fileSize": 181954,
+      "height": 1280,
+      "url": "../images/26_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_1cdd9038-195c-3741-85b5-42007acc908f-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/26_1.webp" loading="eager" srcset="../images/26_126.webp 500w, ../images/26_126.webp 800w, ../images/26_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Теплого Прощания</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это нежное прощание, наполненное теплом и заботой, которые мы испытывали друг к другу.</p>
-                  </div>
+                <div id="w-node-ddba19ba-2bb0-1879-dc90-833b5078d025-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/27_127.webp 500w, ../images/27_1.webp 576w" alt="" src="../images/27_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603730561f47a24c24313d",
+      "origFileName": "27.webp",
+      "fileName": "27.webp",
+      "fileSize": 138922,
+      "height": 1280,
+      "url": "../images/27_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_95cb2c8f-3ff9-fe97-7daa-7937be2bb702-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/27_1.webp" loading="eager" srcset="../images/27_127.webp 500w, ../images/27_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Сияющей Любви</p>
-                    <p class="spark-small-sub-paragraph">Этот венок сияет яркой любовью и светом, напоминая о том, что наши близкие всегда останутся с нами в наших сердцах.</p>
-                  </div>
+                <div id="w-node-_62862076-02a8-ed94-47c5-9d56248e6cfc-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/28_128.webp 500w, ../images/28_1.webp 576w" alt="" src="../images/28_1.webp" loading="lazy" class="spark-square-image-card crivo">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603730631fc6e9760db2e2",
+      "origFileName": "28.webp",
+      "fileName": "28.webp",
+      "fileSize": 76942,
+      "height": 1280,
+      "url": "../images/28_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_544a7741-e26e-6b4b-ed38-e4674a4d81fe-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/28_1.webp" loading="eager" srcset="../images/28_128.webp 500w, ../images/28_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Нежности и Благополучия</p>
-                    <p class="spark-small-sub-paragraph">Каждый элемент этого венка пропитан нежностью и заботой, принося радость и благополучие в наши жизни.</p>
-                  </div>
+                <div id="w-node-dcc42adb-78af-59a7-584f-b05fdb3eb91a-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/29_129.webp 500w, ../images/29_1.webp 576w" alt="" src="../images/29_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603731994d0373650f9bc9",
+      "origFileName": "29.webp",
+      "fileName": "29.webp",
+      "fileSize": 86618,
+      "height": 1280,
+      "url": "../images/29_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_937e47cf-fbe1-b75f-9fbf-ef27378e722a-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/29_1.webp" loading="eager" srcset="../images/29_129.webp 500w, ../images/29_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Теплого Воспоминания</p>
-                    <p class="spark-small-sub-paragraph">Этот венок напоминает о теплых моментах и воспоминаниях, которые мы разделяли вместе, оставаясь в наших сердцах навсегда.</p>
-                  </div>
+                <div id="w-node-d6444699-688b-99e2-3fb3-363103aae8f0-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/30_130.webp 500w, ../images/30_1.webp 576w" alt="" src="../images/30_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660373158d88fcc56c58b90",
+      "origFileName": "30.webp",
+      "fileName": "30.webp",
+      "fileSize": 115752,
+      "height": 1280,
+      "url": "../images/30_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_99e29f02-d7cf-09fa-9007-9cee995cad28-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/30_1.webp" loading="eager" srcset="../images/30_130.webp 500w, ../images/30_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Светлого Пути</p>
-                    <p class="spark-small-sub-paragraph">Этот венок освещает наш путь светом и теплом, направляя нас к новым горизонтам и надеждам.</p>
-                  </div>
+                <div id="w-node-_79af51af-ddb0-567a-8cfa-3e52d8c7b302-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/31_131.webp 500w, ../images/31_1.webp 576w" alt="" src="../images/31_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603731cba0f0fe92534808",
+      "origFileName": "31.webp",
+      "fileName": "31.webp",
+      "fileSize": 110370,
+      "height": 1280,
+      "url": "../images/31_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_68b3104a-530b-f857-917b-0221475ef0e6-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/31_1.webp" loading="eager" srcset="../images/31_131.webp 500w, ../images/31_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Безграничной Любви</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это выражение нашей безграничной любви и преданности, которая преодолевает все границы и препятствия.</p>
-                  </div>
+                <div id="w-node-d278b985-3b29-c336-32df-241a5c4f514b-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/33_133.webp 500w, ../images/33_1.webp 576w" alt="" src="../images/33_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666037436277018e032b2567",
+      "origFileName": "33.webp",
+      "fileName": "33.webp",
+      "fileSize": 109126,
+      "height": 1280,
+      "url": "../images/33_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_8bfb4bc2-9109-ada8-5322-b90367bbbc26-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/32_1.webp" loading="eager" srcset="../images/32_132.webp 500w, ../images/32_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Незабвенного Вдохновения</p>
-                    <p class="spark-small-sub-paragraph">Этот венок напоминает о вдохновении и мудрости тех, кто оставил свой след в нашей жизни, просвещая нас своими уроками и опытом.</p>
-                  </div>
+                <div id="w-node-_7dba67ee-9f6b-9957-74a9-939fd1e40300-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/34_134.webp 500w, ../images/34_1.webp 576w" alt="" src="../images/34_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603732cef0ecae15ed582d",
+      "origFileName": "34.webp",
+      "fileName": "34.webp",
+      "fileSize": 136516,
+      "height": 1280,
+      "url": "../images/34_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-bea6a410-6ecc-ba00-0017-33fec78c3cd8-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/33_1.webp" loading="eager" srcset="../images/33_133.webp 500w, ../images/33_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Светлой Души<br></p>
-                    <p class="spark-small-sub-paragraph">Каждый лепесток этого венка отражает свет и тепло души, которая будет сиять вечно, оставаясь в наших сердцах навсегда.</p>
-                  </div>
+                <div id="w-node-_9b62057e-daed-55d2-52c2-3117d76afe18-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/35_135.webp 500w, ../images/35_1.webp 576w" alt="" src="../images/35_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660372d6c3070e3d85d1202",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 90892,
+      "height": 1280,
+      "url": "../images/1_2.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-b2a9c76f-086d-83e6-4179-15846d1ef5c1-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/34_1.webp" loading="eager" srcset="../images/34_134.webp 500w, ../images/34_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Нежных Слов</p>
-                    <p class="spark-small-sub-paragraph">Этот венок наполнен нежными словами и добрыми мыслями, принося тепло и утешение в наши скорбные дни.</p>
-                  </div>
+                <div id="w-node-_3fb92dc7-37dd-33da-89a7-f7393137934d-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/36_136.webp 500w, ../images/36_1.webp 576w" alt="" src="../images/36_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666037321c9625c9bcb9b7e7",
+      "origFileName": "36.webp",
+      "fileName": "36.webp",
+      "fileSize": 120348,
+      "height": 1280,
+      "url": "../images/36_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_7b6d5f2b-6acb-d096-8015-fed5b32d2677-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/35_1.webp" loading="eager" srcset="../images/35_135.webp 500w, ../images/35_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Благословенного Вечера</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это благословение и благодать, которые сопровождают нас в наших путешествиях сквозь жизнь.</p>
-                  </div>
+                <div id="w-node-_601ad81d-9f51-fa4d-3cea-8cfbdebddcd3-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/37_137.webp 500w, ../images/37_1.webp 576w" alt="" src="../images/37_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666037336aceb4f579408ab5",
+      "origFileName": "37.webp",
+      "fileName": "37.webp",
+      "fileSize": 131700,
+      "height": 1280,
+      "url": "../images/37_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_82d82f44-1285-2589-3507-5fb53d3db869-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/36_1.webp" loading="eager" srcset="../images/36_136.webp 500w, ../images/36_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Сияющей Радости</p>
-                    <p class="spark-small-sub-paragraph">Этот венок излучает радость и свет, принося улыбки и счастье тем, кто его видит, напоминая о ярких моментах, которые мы разделяли вместе.</p>
-                  </div>
+                <div id="w-node-_50a2c03c-0131-4750-3415-2cd331b2e1be-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/38_138.webp 500w, ../images/38_1.webp 576w" alt="" src="../images/38_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660373350fefd3fc7c99c37",
+      "origFileName": "38.webp",
+      "fileName": "38.webp",
+      "fileSize": 116058,
+      "height": 1280,
+      "url": "../images/38_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-f63e9818-bf38-1ca4-9def-5a3d834a91a3-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/38_1.webp" loading="eager" srcset="../images/38_138.webp 500w, ../images/38_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Благородного Прощания</p>
-                    <p class="spark-small-sub-paragraph">Каждый элемент этого венка - это проявление нашего благородного прощания, наполненного теплом и уважением к ушедшим.</p>
-                  </div>
+                <div id="w-node-c48ff192-9a7a-1042-1539-59c90169699a-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/39_139.webp 500w, ../images/39_1.webp 576w" alt="" src="../images/39_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603733b4c14edc61b5d543",
+      "origFileName": "39.webp",
+      "fileName": "39.webp",
+      "fileSize": 153952,
+      "height": 1280,
+      "url": "../images/39_1.webp",
+      "width": 576,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_20412d06-567e-0d80-1a9f-89ab3a642497-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/39_1.webp" loading="eager" srcset="../images/39_139.webp 500w, ../images/39_1.webp 576w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Скорби</p>
-                    <p class="spark-small-sub-paragraph">Этот венок приносит утешение и поддержку в трудные времена, напоминая, что мы не одни в наших скорбных переживаниях.</p>
-                  </div>
+                <div id="w-node-_45f75b8c-ef1f-cc89-f509-64851e5e22d5-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/40_140.webp 500w, ../images/40_140.webp 800w, ../images/40_1.webp 960w" alt="" src="../images/40_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666037335622a37c41c3c524",
+      "origFileName": "40.webp",
+      "fileName": "40.webp",
+      "fileSize": 171670,
+      "height": 1280,
+      "url": "../images/40_1.webp",
+      "width": 960,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-ef1a747b-2bee-f63a-7fec-58582cfd7482-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/40_1.webp" loading="eager" srcset="../images/40_140.webp 500w, ../images/40_140.webp 800w, ../images/40_1.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Изысканных Цветов</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это проявление изысканной красоты и элегантности, которая украшает наш мир и наполняет его радостью.</p>
-                  </div>
+                <div id="w-node-_17da4660-fc70-3f16-bd6e-2e058e248ba9-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/41_141.webp 500w, ../images/41_1.webp 720w" alt="" src="../images/41_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603734b0cd92154325057f",
+      "origFileName": "41.webp",
+      "fileName": "41.webp",
+      "fileSize": 145346,
+      "height": 1280,
+      "url": "../images/41_1.webp",
+      "width": 720,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-e1bb5ff7-297f-c0eb-51c0-601c749c4f7d-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/41_1.webp" loading="eager" srcset="../images/41_141.webp 500w, ../images/41_1.webp 720w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Поддержки</p>
-                    <p class="spark-small-sub-paragraph">Этот венок станет символом нашей вечной поддержки и сопереживания тем, кто остался в горе и тоске.</p>
-                  </div>
+                <div id="w-node-af1d720f-ab0d-863d-9e52-c722e6ee64a4-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/42_142.webp 500w, ../images/42_142.webp 800w, ../images/42_1.webp 960w" alt="" src="../images/42_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603733c171ce8f6268040f",
+      "origFileName": "42.webp",
+      "fileName": "42.webp",
+      "fileSize": 126814,
+      "height": 1280,
+      "url": "../images/42_1.webp",
+      "width": 960,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_2387bd17-e0f7-2758-d011-1d4cdba7c5bf-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/42_1.webp" loading="eager" srcset="../images/42_142.webp 500w, ../images/42_142.webp 800w, ../images/42_1.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Сияющей Надежды</p>
-                    <p class="spark-small-sub-paragraph">Пусть этот венок принесет светлую надежду и веру в лучшее будущее, наполняя сердца теплом и утешением.</p>
-                  </div>
+                <div id="w-node-_608ca2d1-aaac-d2e5-aa3b-c8dd747b7e4e-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/43_143.webp 500w, ../images/43_143.webp 800w, ../images/43_1.webp 963w" alt="" src="../images/43_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603734dbbd24d2351a59be",
+      "origFileName": "43.webp",
+      "fileName": "43.webp",
+      "fileSize": 196106,
+      "height": 1280,
+      "url": "../images/43_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-c50d22a3-95b1-a934-69d0-0d99dd27950a-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/43_1.webp" loading="eager" srcset="../images/43_143.webp 500w, ../images/43_143.webp 800w, ../images/43_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Ласкового Прощания</p>
-                    <p class="spark-small-sub-paragraph">Этот венок нежно прощается с теми, кого мы так любили, оставляя в сердцах лишь теплые воспоминания и благодарность.</p>
-                  </div>
+                <div id="w-node-_3c2c71d9-dca8-5053-aa74-cd2390a2f64b-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/44_144.webp 500w, ../images/44_1.webp 720w" alt="" src="../images/44_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666037351c53b3483e91cb85",
+      "origFileName": "44.webp",
+      "fileName": "44.webp",
+      "fileSize": 143170,
+      "height": 1280,
+      "url": "../images/44_1.webp",
+      "width": 720,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_383f8698-4570-99db-ec0a-9414b02feeb2-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/44_1.webp" loading="eager" srcset="../images/44_144.webp 500w, ../images/44_1.webp 720w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Лучей Надежды</p>
-                    <p class="spark-small-sub-paragraph">Каждый лепесток этого венка - это луч надежды, который освещает путь тем, кто идет сквозь темные времена.</p>
-                  </div>
+                <div id="w-node-d6ae40ca-e23f-2398-ca97-e1f8ae8a3b94-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/45_145.webp 500w, ../images/45_1.webp 720w" alt="" src="../images/45_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603734f370b2ff264a64f8",
+      "origFileName": "45.webp",
+      "fileName": "45.webp",
+      "fileSize": 155866,
+      "height": 1280,
+      "url": "../images/45_1.webp",
+      "width": 720,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_1b73d6f1-2f53-b2e3-2970-d741a70be166-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/45_1.webp" loading="eager" srcset="../images/45_145.webp 500w, ../images/45_1.webp 720w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Вечной Любви и Памяти</p>
-                    <p class="spark-small-sub-paragraph">Этот венок символизирует вечную любовь и память, которые останутся с нами навсегда, наполняя сердца теплом и умиротворением.</p>
-                  </div>
+                <div id="w-node-_77e291ff-04df-c0a5-bb7e-7451cc9e10d7-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/46_146.webp 500w, ../images/46_1.webp 720w" alt="" src="../images/46_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666037352f003c400874bf2b",
+      "origFileName": "46.webp",
+      "fileName": "46.webp",
+      "fileSize": 146142,
+      "height": 1280,
+      "url": "../images/46_1.webp",
+      "width": 720,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-bafc9c2b-16ac-5870-1aee-74c836944e69-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/46_1.webp" loading="eager" srcset="../images/46_146.webp 500w, ../images/46_1.webp 720w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Светлого Воспоминания</p>
-                    <p class="spark-small-sub-paragraph">Этот венок напоминает о светлых моментах и воспоминаниях, которые мы разделили вместе, оставаясь в наших сердцах навсегда.</p>
-                  </div>
+                <div id="w-node-_53a2195f-97f2-b44a-1723-2889d27f042c-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/47_147.webp 500w, ../images/47_147.webp 800w, ../images/47_1.webp 963w" alt="" src="../images/47_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660373527e1c4a88bc889b9",
+      "origFileName": "47.webp",
+      "fileName": "47.webp",
+      "fileSize": 138828,
+      "height": 1280,
+      "url": "../images/47_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-e0564401-0146-1aac-3470-3e4f57a4e36a-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/47_1.webp" loading="eager" srcset="../images/47_147.webp 500w, ../images/47_147.webp 800w, ../images/47_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Теплого Прощания</p>
-                    <p class="spark-small-sub-paragraph">Каждый цветок на этом венке - это нежное прощание, наполненное теплом и заботой, которые мы испытывали друг к другу.</p>
-                  </div>
+                <div id="w-node-a6a546d6-2690-f5cd-22fc-2502f7b2a417-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/48_148.webp 500w, ../images/48_148.webp 800w, ../images/48_1.webp 963w" alt="" src="../images/48_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603735a1417c123835d16d",
+      "origFileName": "48.webp",
+      "fileName": "48.webp",
+      "fileSize": 270274,
+      "height": 1280,
+      "url": "../images/48_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_82975a59-c594-a6bb-3f73-a88a236b2532-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/48_1.webp" loading="eager" srcset="../images/48_148.webp 500w, ../images/48_148.webp 800w, ../images/48_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Сияющей Любви</p>
-                    <p class="spark-small-sub-paragraph">Этот венок сияет яркой любовью и светом, напоминая о том, что наши близкие всегда останутся с нами в наших сердцах.</p>
-                  </div>
+                <div id="w-node-d529cd69-4f2c-5d1a-5330-45146f02f761-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/49_149.webp 500w, ../images/49_149.webp 800w, ../images/49_1.webp 960w" alt="" src="../images/49_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603737ebd8f27263bdae17",
+      "origFileName": "49.webp",
+      "fileName": "49.webp",
+      "fileSize": 105718,
+      "height": 1280,
+      "url": "../images/49_1.webp",
+      "width": 960,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-ea60d28e-5933-a36d-189d-0ec292724996-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/49_1.webp" loading="eager" srcset="../images/49_149.webp 500w, ../images/49_149.webp 800w, ../images/49_1.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Нежности и Благополучия</p>
-                    <p class="spark-small-sub-paragraph">Каждый элемент этого венка пропитан нежностью и заботой, принося радость и благополучие в наши жизни.</p>
-                  </div>
+                <div id="w-node-_83e832d5-5520-ed7b-6237-edb911f0ba4a-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/50_150.webp 500w, ../images/50_150.webp 800w, ../images/50_1.webp 960w" alt="" src="../images/50_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603735a1417c123835d16d",
+      "origFileName": "48.webp",
+      "fileName": "48.webp",
+      "fileSize": 270274,
+      "height": 1280,
+      "url": "../images/48_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_06b9face-9ef3-881d-c1e5-a7a2e4807ff5-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/50_1.webp" loading="eager" srcset="../images/50_150.webp 500w, ../images/50_150.webp 800w, ../images/50_1.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Теплого Воспоминания</p>
-                    <p class="spark-small-sub-paragraph"> Этот венок напоминает о теплых моментах и воспоминаниях, которые мы разделяли вместе, оставаясь в наших сердцах навсегда.</p>
-                  </div>
+                <div id="w-node-_6d34a224-2337-ffc8-5a44-4cdfa747bc34-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/51_151.webp 500w, ../images/51_151.webp 800w, ../images/51_1.webp 960w" alt="" src="../images/51_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "6660373703a61afd47a07360",
+      "origFileName": "51.webp",
+      "fileName": "51.webp",
+      "fileSize": 87992,
+      "height": 1280,
+      "url": "../images/51_1.webp",
+      "width": 960,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_583be387-ad92-f657-1c88-55e2ee97f0a6-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/51_1.webp" loading="eager" srcset="../images/51_151.webp 500w, ../images/51_151.webp 800w, ../images/51_1.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Последнего Прощания и Уважения</p>
-                    <p class="spark-small-sub-paragraph">Этот венок создан с уважением и любовью, чтобы сопровождать наших близких в последний путь с достоинством и уважением.</p>
-                  </div>
+                <div id="w-node-a7f4b42e-e9b4-d469-6aae-30ca04087836-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/52_152.webp 500w, ../images/52_152.webp 800w, ../images/52_1.webp 963w" alt="" src="../images/52_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603737fe67ac2f637e4786",
+      "origFileName": "52.webp",
+      "fileName": "52.webp",
+      "fileSize": 155166,
+      "height": 1280,
+      "url": "../images/52_1.webp",
+      "width": 963,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_1a98639d-3087-a7bb-9071-c15a3c364d6b-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/52_1.webp" loading="eager" srcset="../images/52_152.webp 500w, ../images/52_152.webp 800w, ../images/52_1.webp 963w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Нежного Прощания</p>
-                    <p class="spark-small-sub-paragraph">Каждый лепесток этого венка нежно провожает ушедших, оставляя после себя лишь теплые воспоминания и благодарность за время, проведенное вместе.</p>
-                  </div>
-                </div>
-                <div id="w-node-_914c5c7a-cbfe-3453-3c9d-f09961cb411b-173a4be3" class="spark-wrapped-card spark-stacked venki"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/53_1.webp" loading="eager" srcset="../images/53_153.webp 500w, ../images/53_153.webp 800w, ../images/53_1.webp 960w" class="spark-square-image-card">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Венок Светлого Воспоминания</p>
-                    <p class="spark-small-sub-paragraph">Этот венок наполнен светлыми воспоминаниями о тех, кого мы так сильно любили, и оставляет в наших сердцах лишь теплые и яркие воспоминания.</p>
-                  </div>
+                <div id="w-node-cbcd6d7a-335f-f957-b246-17eb522912b9-173a4be3" class="spark-wrapped-card spark-stacked venki">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 44vw, (max-width: 991px) 45vw, 29vw" srcset="../images/53_153.webp 500w, ../images/53_153.webp 800w, ../images/53_1.webp 960w" alt="" src="../images/53_1.webp" loading="lazy" class="spark-square-image-card">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "66603737247412e951f3c8d3",
+      "origFileName": "53.webp",
+      "fileName": "53.webp",
+      "fileSize": 95166,
+      "height": 1280,
+      "url": "../images/53_1.webp",
+      "width": 960,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
               </div>
             </div>
             <div data-w-tab="Tab 2" class="w-tab-pane">
               <div class="spark-three-column-grid">
-                <div id="w-node-c25ab6cd-d0ef-70b2-9cf4-0963f05c08e5-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/1_1.webp" loading="eager" srcset="../images/1_11.webp 500w, ../images/1_11.webp 800w, ../images/1_11.webp 1080w, ../images/1_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Элегантный деревянный гроб с роскошным отделением</p>
-                    <p class="spark-small-sub-paragraph">Этот элегантный гроб изготовлен из высококачественного дерева с темным блестящим оттенком и покрыт белоснежной шелковистой тканью внутри. Его крышка украшена изысканным рисунком, возможно, цветочным орнаментом, выгравированным на поверхности.</p>
-                  </div>
+                <div id="w-node-c25ab6cd-d0ef-70b2-9cf4-0963f05c08e5-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/1_11.webp 500w, ../images/1_11.webp 800w, ../images/1_11.webp 1080w, ../images/1_1.webp 1280w" alt="" src="../images/1_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c76c3070e3d85af62d",
+      "origFileName": "1.webp",
+      "fileName": "1.webp",
+      "fileSize": 110226,
+      "height": 734,
+      "url": "../images/1_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-cebf6e4a-5dbc-c84e-ccd4-17d4676a15de-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/2_1.webp" loading="eager" srcset="../images/2_12.webp 500w, ../images/2_12.webp 800w, ../images/2_12.webp 1080w, ../images/2_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Утонченный гроб с классическим дизайном и золотистыми ручками</p>
-                    <p class="spark-small-sub-paragraph">Утонченный гроб привлекает внимание своим изысканным изогнутым дизайном и золотистыми металлическими ручками, установленными вдоль боковых сторон. Его покрытие высокого блеска отражает окружающее пространство, создавая впечатление роскоши.</p>
-                  </div>
+                <div id="w-node-_9ade0e3c-868b-c376-4dea-ca05f1fcdc4d-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/2_12.webp 500w, ../images/2_12.webp 800w, ../images/2_12.webp 1080w, ../images/2_1.webp 1280w" alt="" src="../images/2_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c776204de3237aa9e4",
+      "origFileName": "2.webp",
+      "fileName": "2.webp",
+      "fileSize": 83890,
+      "height": 659,
+      "url": "../images/2_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_9306a838-73bf-1934-a588-7e120914768b-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/3_1.webp" loading="eager" srcset="../images/3_13.webp 500w, ../images/3_13.webp 800w, ../images/3_13.webp 1080w, ../images/3_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Роскошный гроб с изысканной резьбой и изогнутой крышкой</p>
-                    <p class="spark-small-sub-paragraph">Роскошный гроб впечатляет своей изысканной резьбой на крышке, возможно, изображающей розы или цветочные узоры. Его изогнутая форма придает ему уникальный вид, а золотистые детали добавляют к его элегантности.</p>
-                  </div>
+                <div id="w-node-_6c2d508d-378a-73f5-50dd-22fb0a8bf449-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/3_13.webp 500w, ../images/3_13.webp 800w, ../images/3_13.webp 1080w, ../images/3_1.webp 1280w" alt="" src="../images/3_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c7af88a6244b1549f2",
+      "origFileName": "3.webp",
+      "fileName": "3.webp",
+      "fileSize": 94686,
+      "height": 712,
+      "url": "../images/3_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-acce8800-e156-8970-fe08-8da0704d335c-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/4_1.webp" loading="eager" srcset="../images/4_14.webp 500w, ../images/4_14.webp 800w, ../images/4_14.webp 1080w, ../images/4_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Элегантный деревянный гроб с высоким блеском и металлическими фурнитурными элементами</p>
-                    <p class="spark-small-sub-paragraph">Этот элегантный деревянный гроб выделяется своим высоким блеском и металлическими фурнитурными элементами, видимыми на одном из его концов. Его утонченный дизайн и роскошное внутреннее отделение делают его идеальным выбором для торжественных похоронных церемоний.</p>
-                  </div>
+                <div id="w-node-f0d8b0e7-08b4-1814-2a5f-d84620f64375-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/4_14.webp 500w, ../images/4_14.webp 800w, ../images/4_14.webp 1080w, ../images/4_1.webp 1280w" alt="" src="../images/4_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034caae66c984d8cb04b5",
+      "origFileName": "4.webp",
+      "fileName": "4.webp",
+      "fileSize": 129000,
+      "height": 799,
+      "url": "../images/4_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_4e815d82-78ac-1c63-ce15-5bc293ba1601-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/5_1.webp" loading="eager" srcset="../images/5_15.webp 500w, ../images/5_15.webp 800w, ../images/5_15.webp 1080w, ../images/5_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Престижный гроб с изысканными деталями и металлическими ручками</p>
-                    <p class="spark-small-sub-paragraph">Престижный гроб привлекает внимание своими изысканными деталями, включая изогнутую форму, роскошное внутреннее отделение и металлические ручки с золотистым оттенком. Его роскошный внешний вид делает его идеальным выбором для торжественных похоронных церемоний и прощальных встреч.</p>
-                  </div>
+                <div id="w-node-_01c08cde-76c5-5f53-96a8-2b60ab66aa89-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/5_15.webp 500w, ../images/5_15.webp 800w, ../images/5_15.webp 1080w, ../images/5_1.webp 1280w" alt="" src="../images/5_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c71a1071d65d6efb7b",
+      "origFileName": "5.webp",
+      "fileName": "5.webp",
+      "fileSize": 102416,
+      "height": 763,
+      "url": "../images/5_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-a18a29b5-3112-ef3c-0fff-ee0908bf5204-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/6_1.webp" loading="eager" srcset="../images/6_16.webp 500w, ../images/6_16.webp 800w, ../images/6_16.webp 1080w, ../images/6_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Декоративный деревянный гроб с изысканными резными узорами</p>
-                    <p class="spark-small-sub-paragraph">Декоративный деревянный гроб впечатляет своими изысканными резными узорами, расположенными на боковинах и крышке. Дерево покрыто богатым красно-коричневым оттенком.</p>
-                  </div>
+                <div id="w-node-_01143edf-2d85-c602-fbf3-f23ab7b652ce-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/6_16.webp 500w, ../images/6_16.webp 800w, ../images/6_16.webp 1080w, ../images/6_1.webp 1280w" alt="" src="../images/6_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c7aa4868c9c65b9574",
+      "origFileName": "6.webp",
+      "fileName": "6.webp",
+      "fileSize": 99358,
+      "height": 639,
+      "url": "../images/6_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_2448de8b-75e2-0336-4680-a8b173413064-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/7_1.webp" loading="eager" srcset="../images/7_17.webp 500w, ../images/7_17.webp 800w, ../images/7_17.webp 1080w, ../images/7_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Элегантный гроб с флористическими резьбами и металлическими акцентами</p>
-                    <p class="spark-small-sub-paragraph">Элегантный гроб впечатляет своими флористическими резьбами, включающими розы и завитки, размещенные на сторонах крышки. Металлические акценты украшают углы гроба, добавляя к его изысканности.</p>
-                  </div>
+                <div id="w-node-db5c0cd1-cd09-ec8f-6356-ae9d521c368b-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/7_17.webp 500w, ../images/7_17.webp 800w, ../images/7_17.webp 1080w, ../images/7_1.webp 1280w" alt="" src="../images/7_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c77f30ba7b2ed72e59",
+      "origFileName": "7.webp",
+      "fileName": "7.webp",
+      "fileSize": 89054,
+      "height": 637,
+      "url": "../images/7_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_64994ed9-3085-0504-43bd-53113574c656-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/8_1.webp" loading="eager" srcset="../images/8_18.webp 500w, ../images/8_18.webp 800w, ../images/8_18.webp 1080w, ../images/8_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Роскошный гроб с изысканными деталями и шелковой обивкой</p>
-                    <p class="spark-small-sub-paragraph">Роскошный гроб привлекает внимание своими изысканными деталями, включая декоративные резные узоры и металлическую отделку. Внутренняя обивка, вероятно, выполнена из светлой ткани, такой как атлас или шелк, а на крышке гроба можно увидеть декоративный цветочный розетку или бант.</p>
-                  </div>
+                <div id="w-node-_049378f0-917e-8e40-a747-8653d8950b7c-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/8_18.webp 500w, ../images/8_18.webp 800w, ../images/8_18.webp 1080w, ../images/8_1.webp 1280w" alt="" src="../images/8_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c7a1417c1238346d71",
+      "origFileName": "8.webp",
+      "fileName": "8.webp",
+      "fileSize": 70610,
+      "height": 547,
+      "url": "../images/8_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-e2132442-cb1d-3994-42ab-b9a1ce1ed154-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/9_1.webp" loading="eager" srcset="../images/9_1-p-500.webp 500w, ../images/9_1-p-800.webp 800w, ../images/9_1-p-1080.webp 1080w, ../images/9_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Элегантный деревянный гроб с росписью внутри крышки</p>
-                    <p class="spark-small-sub-paragraph">Элегантный деревянный гроб украшен изысканной росписью внутри крышки, где изображены стилизованные розы и листья на ярком красном лакированном фоне. Внешние края крышки украшены металлическим фестоном с изящным перомоподобным узором.</p>
-                  </div>
+                <div id="w-node-_16b0713f-3e25-a20a-2ee8-fe0a15c8ee0d-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/9_1-p-500.webp 500w, ../images/9_1-p-800.webp 800w, ../images/9_1-p-1080.webp 1080w, ../images/9_1.webp 1280w" alt="" src="../images/9_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c851d861aca11f9e45",
+      "origFileName": "9.webp",
+      "fileName": "9.webp",
+      "fileSize": 168658,
+      "height": 963,
+      "url": "../images/9_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_99b74785-e3cd-ab2f-5aa7-9dcfdfd271f4-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/10_1.webp" loading="eager" srcset="../images/10_110.webp 500w, ../images/10_110.webp 800w, ../images/10_110.webp 1080w, ../images/10_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Роскошный гроб с металлической отделкой и деталями</p>
-                    <p class="spark-small-sub-paragraph">Роскошный гроб впечатляет своими деталями, включая изысканные металлические акценты и фестон по краям крышки. Его высокая степень отделки и резные элементы делают его прекрасным выбором для торжественных похоронных церемоний.</p>
-                  </div>
+                <div id="w-node-c7d3e1c7-8be0-c2c7-ed20-790f15f4fee9-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/10_110.webp 500w, ../images/10_110.webp 800w, ../images/10_110.webp 1080w, ../images/10_1.webp 1280w" alt="" src="../images/10_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c8247412e951f1f87b",
+      "origFileName": "10.webp",
+      "fileName": "10.webp",
+      "fileSize": 95796,
+      "height": 685,
+      "url": "../images/10_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_73bfeca8-cb8c-1403-212d-216cb552e873-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/11_1.webp" loading="eager" srcset="../images/11_111.webp 500w, ../images/11_111.webp 800w, ../images/11_111.webp 1080w, ../images/11_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Элегантный фиолетовый гроб с изысканными деталями</p>
-                    <p class="spark-small-sub-paragraph">Элегантный гроб излучает торжественность и изысканность своим фиолетовым оттенком, который придает ему особую индивидуальность. Украшенный изысканными деталями, включая резные элементы и металлические акценты, он представляет собой уникальное и прекрасное решение для достойного прощания с ушедшими.</p>
-                  </div>
+                <div id="w-node-c26c6952-9449-5e8f-7150-c132c857f38e-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/11_111.webp 500w, ../images/11_111.webp 800w, ../images/11_111.webp 1080w, ../images/11_1.webp 1280w" alt="" src="../images/11_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c8fcc1181332a6d770",
+      "origFileName": "11.webp",
+      "fileName": "11.webp",
+      "fileSize": 87078,
+      "height": 538,
+      "url": "../images/11_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
-                <div id="w-node-_3efe1c22-1e23-6ff0-f814-21c52af8120b-173a4be3" class="spark-wrapped-card spark-stacked"><img width="80" sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" alt="" src="../images/12_1.webp" loading="eager" srcset="../images/12_112.webp 500w, ../images/12_112.webp 800w, ../images/12_112.webp 1080w, ../images/12_1.webp 1280w" class="spark-square-image-card grob">
-                  <div class="spark-card-details">
-                    <p class="spark-bold-heading spark-card-title">Престижный гроб с изысканными деталями и металлическими ручками</p>
-                    <p class="spark-small-sub-paragraph">Гроб искусно выполнен в привлекательном фиолетовом оттенке, который придает ему особый шарм и элегантность. Изысканные детали, включая резные узоры и изогнутые металлические ручки, подчеркивают его роскошь и стиль. Этот гроб станет достойным финальным аккордом в прощании с ушедшими, олицетворяя престиж и уважение к их памяти.</p>
-                  </div>
+                <div id="w-node-_7fcaaa98-02fa-aa92-e15e-f181870fff01-173a4be3" class="spark-wrapped-card spark-stacked">
+                  <a href="#" class="w-inline-block w-lightbox"><img sizes="(max-width: 767px) 41vw, (max-width: 991px) 42vw, 29vw" srcset="../images/12_112.webp 500w, ../images/12_112.webp 800w, ../images/12_112.webp 1080w, ../images/12_1.webp 1280w" alt="" src="../images/12_1.webp" loading="lazy" class="spark-square-image-card grob">
+                    <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "_id": "666034c85e4aef88026d66c7",
+      "origFileName": "12.webp",
+      "fileName": "12.webp",
+      "fileSize": 154558,
+      "height": 960,
+      "url": "../images/12_1.webp",
+      "width": 1280,
+      "type": "image"
+    }
+  ],
+  "group": ""
+}</script>
+                  </a>
                 </div>
               </div>
             </div>
@@ -853,7 +1687,7 @@ height: 0.625rem;
                     <div class="contact_item-text-wrapper">
                       <h3 class="heading-xxsmall">Офис</h3>
                       <div class="space-xxsmall"></div>
-                      <a href="https://www.google.com/maps/dir//nebesa+narva+maps/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x46946a07e3cb0259:0x8e7dd8d1779f46d1?sa=X&amp;ved=1t:3061&amp;ictx=111" target="_blank" class="text-style-link-02">IV Roheline 8, 21008 Narva</a>
+                      <a href="https://www.google.com/maps/dir//nebesa+narva+maps/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x46946a07e3cb0259:0x8e7dd8d1779f46d1?sa=X&amp;ved=1t:3061&amp;ictx=111" target="_blank" class="text-style-link-02">IV Roheline 8, 21008 Narva<br><br>Haigla 9, 20104 Narva</a>
                     </div>
                   </div>
                 </div>
@@ -899,7 +1733,7 @@ height: 0.625rem;
               </div>
             </div>
             <div class="footer_bottom-wrapper">
-              <div class="text-size-small text-color-gray500">© 2024 NEBESA OU</div>
+              <div class="text-size-small text-color-gray500">© 2024 Eurotech Eesti OÜ</div>
               <div class="w-layout-grid footer_legal-list">
                 <a href="#" class="footer_legal-link">Terms</a>
                 <a href="#" class="footer_legal-link">Privacy</a>
