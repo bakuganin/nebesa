@@ -1,0 +1,17 @@
+{
+  "name": "nebesa",
+  "version": "1.0.0",
+  "description": "NEBESA - Ritual services website with Vercel Web Analytics",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "keywords": [
+    "static-site",
+    "vercel-analytics"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
