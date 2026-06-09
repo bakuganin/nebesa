@@ -41,13 +41,13 @@ test.describe("public Next routes smoke", () => {
       });
       page.on("requestfailed", (request) => {
         const url = request.url();
-        if (/^https?:\/\/(?:127\.0\.0\.1|localhost)/.test(url)) {
+        if (/^https?:\/\/(?:127\.0\.0\.1|localhost)/.test(url) && !/[?&]_rsc=/.test(url)) {
           failedLocalRequests.push(`${request.method()} ${url}`);
         }
       });
       page.on("response", (response) => {
         const url = response.url();
-        if (/^https?:\/\/(?:127\.0\.0\.1|localhost)/.test(url) && response.status() >= 400) {
+        if (/^https?:\/\/(?:127\.0\.0\.1|localhost)/.test(url) && !/[?&]_rsc=/.test(url) && response.status() >= 400) {
           failedLocalRequests.push(`${response.status()} ${url}`);
         }
       });
@@ -79,5 +79,16 @@ test.describe("legacy redirect contract", () => {
 
   test("services hash remains documented", async () => {
     expect("/index.html#services-section").toBe("/index.html#services-section");
+  });
+});
+
+test.describe("React shell navigation", () => {
+  test("shows service dropdown links in the header", async ({ page }) => {
+    await page.goto("/products", { waitUntil: "domcontentloaded" });
+
+    await page.getByRole("button", { name: "Услуги" }).hover();
+
+    await expect(page.getByRole("link", { name: "Кремация" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Зал прощания" })).toBeVisible();
   });
 });

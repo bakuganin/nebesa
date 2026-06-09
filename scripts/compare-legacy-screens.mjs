@@ -159,7 +159,7 @@ async function capture(page, url, filePath, options = {}) {
   await page.goto(url, { timeout: 20_000, waitUntil: "domcontentloaded" });
   await waitForStablePage(page);
   await waitForRouteEffects(page, options);
-  await page.screenshot({ path: filePath, fullPage: true, animations: "disabled" });
+  await page.screenshot({ path: filePath, fullPage: true, animations: "disabled", timeout: 60_000 });
 
   return {
     url: page.url(),

@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 
-import { createCheckoutOrder } from "@/features/orders/queries";
+import {
+  createCheckoutOrder,
+  getCheckoutOrderWhatsAppSummary,
+  updateCheckoutNotificationFromWhatsAppResult,
+} from "@/features/orders/queries";
 import {
   checkCheckoutRateLimit,
   checkoutLimits,
@@ -8,6 +12,7 @@ import {
   isMissingEnvError,
   toCheckoutOrderInput,
 } from "@/lib/checkout";
+import { sendOrderWhatsAppNotification, type WhatsAppSendResult } from "@/lib/whatsapp";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +22,10 @@ function requestIp(request: Request): string {
     request.headers.get("x-real-ip") ||
     "local"
   );
+}
+
+function fallbackUrlFor(result: WhatsAppSendResult): string | null {
+  return result.status === "sent" ? null : result.fallbackUrl ?? null;
 }
 
 export async function POST(request: Request) {
@@ -58,12 +67,26 @@ export async function POST(request: Request) {
       }),
     );
 
+    let notificationResult: WhatsAppSendResult | null = null;
+
+    if (!result.reused) {
+      try {
+        const summary = await getCheckoutOrderWhatsAppSummary(result.order_id);
+        notificationResult = await sendOrderWhatsAppNotification(summary);
+        await updateCheckoutNotificationFromWhatsAppResult(result.order_id, notificationResult);
+      } catch {
+        notificationResult = { status: "failed", reason: "network_error" };
+      }
+    }
+
     return NextResponse.json({
       orderId: result.order_id,
       orderReference: result.order_reference,
       totalCents: result.total_cents,
       currency: result.currency,
       reused: result.reused,
+      notificationStatus: notificationResult?.status ?? (result.reused ? "skipped" : "pending"),
+      whatsappFallbackUrl: notificationResult ? fallbackUrlFor(notificationResult) : null,
     });
   } catch (error) {
     if (isMissingEnvError(error)) {

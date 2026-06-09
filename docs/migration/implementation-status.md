@@ -32,6 +32,34 @@ Fresh extraction counts:
 
 Public `/products` shows only active/public rows. Until an admin publishes reviewed rows in Supabase, the public catalog shows a controlled empty state.
 
+## 2026-06-09 Acceptance Audit Update
+
+Independent subagent audits and browser checks found that the branch is a strong migration/MVP scaffold, but not yet a full production acceptance candidate for every item in `ТЗ_NEBESA.md`.
+
+Fixed during the audit:
+
+- Restored the missing `Losing-a-loved-one_1Losing-a-loved-one.webp` responsive image alias and corrected the third `srcset` entry back to the existing original image.
+- Re-ran the legacy asset audit with `Missing required assets: 0`.
+- Wired checkout to attempt WhatsApp notification after order creation, persist `checkout_notifications` / `orders.notification_status`, and return a fallback URL when Cloud API delivery is skipped or fails.
+- Split client-facing public env reads into `lib/public-env.ts` so browser Supabase code no longer imports the server env module.
+- Added React-shell service dropdown navigation and regression coverage.
+- Mounted the Lenis smooth scroll provider in the site layout.
+- Tuned the homepage phone-step shim so the first, second, and fourth phone states match the visible scroll step positions.
+- Replaced English legal footer labels in the React footer. Legacy-rendered pages keep original footer text for pixel parity while linking to the new legal routes.
+- Restricted catalog RLS write/delete access to `owner` and `admin` roles while preserving operator read access for admin review screens.
+
+Remaining production gaps:
+
+- Real Supabase project verification is still required after env values are supplied.
+- Imported products remain draft/private by design; no seeded active/public/priced product currently supports a real end-to-end checkout demo.
+- Product CRUD is partial: core create/update exists, but delete, multi-image management, variants, materials, and option editing still need full admin workflows.
+- Admin routes are scaffolded and guarded by server actions/query access, but middleware redirects and real authenticated E2E role tests are still missing.
+- Audit logging exists in schema, but admin mutations still need a centralized audit-writing helper and coverage.
+- RLS/storage policies exist and include a static catalog-policy regression test, but role-matrix tests against a real Supabase/Postgres environment are still missing.
+- Document generation/download and safe WhatsApp resend workflows are not complete.
+- Gallery route is static launch content; it does not yet implement server pagination/infinite loading.
+- WhatsApp permanent token setup and real delivery verification must be completed in Meta before production.
+
 ## Verification Run
 
 Latest local verification:
@@ -42,10 +70,12 @@ node scripts/audit-legacy-assets.mjs
 npm run lint
 npm test
 npm run build
+rg "SUPABASE_SERVICE_ROLE_KEY|WA_ACCESS_TOKEN|WA_APP_SECRET|WA_PHONE_NUMBER_ID|WA_BUSINESS_ACCOUNT_ID|WA_TRUSTED_PHONE|WA_VERIFY_TOKEN|SUPABASE_DB_PASSWORD|DATABASE_URL" .next/static
 npm run typecheck
 npx playwright test tests/e2e/parity.spec.ts
 npx playwright test tests/e2e/admin.spec.ts
 npx playwright test tests/visual/public-pages.spec.ts
+node scripts/compare-legacy-screens.mjs
 ```
 
 Results:
@@ -53,13 +83,15 @@ Results:
 - Catalog extraction passed: 100 products, 138 images, 101 review warnings.
 - Legacy asset audit passed: 851 visible/CSS assets checked, 0 missing required assets.
 - ESLint passed with no warnings.
-- Vitest passed: 19 tests.
+- Vitest passed: 23 tests.
 - Next production build passed: 30 app routes generated/validated.
+- Server-only env name scan of `.next/static` returned no matches.
 - TypeScript passed after build-generated `.next/types` were stable.
-- Public route E2E passed: 23 tests.
+- Public route E2E passed: 24 tests.
 - Admin scaffold E2E passed: 28 tests across desktop and mobile.
 - Visual screenshot smoke passed: 84 tests across 14 public routes and 6 viewport sizes.
-- In-app browser QA passed on `/`, `/products`, `/checkout`, `/gallery`, `/terms`, `/admin/login`, and `/admin/products` at 1280x720 and 390x844.
+- Legacy pixel/DOM comparison passed with no current broken images, no current failed local requests, and 0 image mismatches. Residual home diff is 2.13% desktop / 0.29% mobile while the reference still has broken `payment-blocker.js` and `Losing-a-loved-one_1Losing-a-loved-one.webp` requests.
+- In-app browser QA passed for `/services/ritual-products` at 1440x900 and 390x844: 74 product cards, 62 wreaths, 12 coffins, active tab `Венки`, and 0 broken images. `/products` service dropdown opens and exposes service links. `/` has one `#sky` canvas, 0 broken images, and expected phone-step states for first, second, and fourth scroll positions.
 
 ## Known Limits Before Production
 

@@ -15,7 +15,7 @@ export type AdminProfile = {
 
 const allAdminRoles: AdminRole[] = ["owner", "admin", "operator"];
 
-function createServiceRoleClient() {
+export function createServiceRoleClient() {
   const env = getServerEnv();
 
   return createClient(

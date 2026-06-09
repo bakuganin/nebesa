@@ -134,21 +134,46 @@ export function LegacyInteractions() {
     });
 
     const phoneScreens = Array.from(document.querySelectorAll<HTMLElement>(".phone-screen_img"));
+    const stickySteps = [
+      {
+        text: document.querySelector<HTMLElement>(".sticky-text_wrapper.steps.first"),
+        detail: document.querySelector<HTMLElement>(".stick-text_detail.step1"),
+        circle: document.querySelector<HTMLElement>(".circle-number.step-1"),
+      },
+      {
+        text: document.querySelector<HTMLElement>(".sticky-text_wrapper.steps.second"),
+        detail: document.querySelector<HTMLElement>(".stick-text_detail.step2"),
+        circle: document.querySelector<HTMLElement>(".circle-number.step-2"),
+      },
+      {
+        text: document.querySelector<HTMLElement>(".sticky-text_wrapper.steps.fourth"),
+        detail: document.querySelector<HTMLElement>(".stick-text_detail.step4"),
+        circle: document.querySelector<HTMLElement>(".circle-number.step-4"),
+      },
+    ];
     const updatePhoneScreens = () => {
       if (!phoneScreens.length) return;
       const stepOne = document.querySelector<HTMLElement>("#steps1");
-      const stepTwo = document.querySelector<HTMLElement>("#steps2");
       const stepFour = document.querySelector<HTMLElement>("#steps4");
       const scrollTop = window.scrollY;
-      const positions = [stepOne, stepTwo, stepFour].map((node) =>
+      const positions = [stepOne, stepFour].map((node) =>
         node ? node.getBoundingClientRect().top + window.scrollY : Number.POSITIVE_INFINITY,
       );
       let activeIndex = -1;
-      if (scrollTop > positions[2] - window.innerHeight * 0.55) activeIndex = 2;
-      else if (scrollTop > positions[1] - window.innerHeight * 0.55) activeIndex = 1;
-      else if (scrollTop > positions[0] - window.innerHeight * 0.55) activeIndex = 0;
+      if (scrollTop >= positions[1] - window.innerHeight * 0.55) activeIndex = 2;
+      else if (scrollTop >= positions[0] - window.innerHeight * 0.1) activeIndex = 1;
+      else if (scrollTop >= positions[0] - window.innerHeight * 0.55) activeIndex = 0;
       phoneScreens.forEach((node, index) => {
         node.style.opacity = index === activeIndex ? "1" : "0";
+      });
+      stickySteps.forEach((step, index) => {
+        const active = index === activeIndex;
+        if (step.text) step.text.style.opacity = active ? "1" : "0.3";
+        if (step.detail) step.detail.style.height = active ? "auto" : "0px";
+        if (step.circle) {
+          step.circle.style.backgroundColor = active ? "rgb(255, 81, 81)" : "rgb(255, 255, 255)";
+          step.circle.style.color = active ? "rgb(255, 255, 255)" : "rgb(54, 54, 54)";
+        }
       });
     };
     updatePhoneScreens();

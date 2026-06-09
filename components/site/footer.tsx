@@ -10,10 +10,10 @@ export function Footer() {
             <div className="text-size-small text-color-gray500">© 2024 {contactDetails.company}</div>
             <div className="w-layout-grid footer_legal-list">
               <Link href="/terms" className="footer_legal-link">
-                Terms
+                Условия
               </Link>
               <Link href="/privacy" className="footer_legal-link">
-                Privacy
+                Конфиденциальность
               </Link>
               <Link href="/cookies" className="footer_legal-link">
                 Cookies
@@ -25,4 +25,3 @@ export function Footer() {
     </footer>
   );
 }
-

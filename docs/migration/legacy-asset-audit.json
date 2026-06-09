@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-06-09T15:30:49.022Z",
+  "checkedAt": "2026-06-09T18:15:56.187Z",
   "visibleAssets": [
     {
       "fromFile": "index.html",
@@ -231,19 +231,19 @@
     },
     {
       "fromFile": "index.html",
-      "rawValue": "images/Losing-a-loved-one_1.webp 500w, images/Losing-a-loved-one_1.webp 800w, images/Losing-a-loved-one_1.webp 816w",
-      "path": "public/images/Losing-a-loved-one_1.webp",
+      "rawValue": "images/Losing-a-loved-one_1Losing-a-loved-one.webp 500w, images/Losing-a-loved-one_1Losing-a-loved-one.webp 800w, images/Losing-a-loved-one_1.webp 816w",
+      "path": "public/images/Losing-a-loved-one_1Losing-a-loved-one.webp",
       "exists": true
     },
     {
       "fromFile": "index.html",
-      "rawValue": "images/Losing-a-loved-one_1.webp 500w, images/Losing-a-loved-one_1.webp 800w, images/Losing-a-loved-one_1.webp 816w",
-      "path": "public/images/Losing-a-loved-one_1.webp",
+      "rawValue": "images/Losing-a-loved-one_1Losing-a-loved-one.webp 500w, images/Losing-a-loved-one_1Losing-a-loved-one.webp 800w, images/Losing-a-loved-one_1.webp 816w",
+      "path": "public/images/Losing-a-loved-one_1Losing-a-loved-one.webp",
       "exists": true
     },
     {
       "fromFile": "index.html",
-      "rawValue": "images/Losing-a-loved-one_1.webp 500w, images/Losing-a-loved-one_1.webp 800w, images/Losing-a-loved-one_1.webp 816w",
+      "rawValue": "images/Losing-a-loved-one_1Losing-a-loved-one.webp 500w, images/Losing-a-loved-one_1Losing-a-loved-one.webp 800w, images/Losing-a-loved-one_1.webp 816w",
       "path": "public/images/Losing-a-loved-one_1.webp",
       "exists": true
     },

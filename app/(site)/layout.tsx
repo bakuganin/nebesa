@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
-export default function SiteLayout({ children }: { children: ReactNode }) {
-  return children;
-}
+import { SmoothScrollProvider } from "@/components/site/smooth-scroll-provider";
 
+export default function SiteLayout({ children }: { children: ReactNode }) {
+  return <SmoothScrollProvider>{children}</SmoothScrollProvider>;
+}

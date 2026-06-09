@@ -1,10 +1,6 @@
-type EnvMap = Record<string, string | undefined>;
+import { getPublicEnv, requirePublicEnvValue, type PublicEnv } from "./public-env";
 
-export type PublicEnv = {
-  NEXT_PUBLIC_SUPABASE_URL: string;
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: string;
-  NEXT_PUBLIC_SITE_URL: string;
-};
+type EnvMap = Record<string, string | undefined>;
 
 export type ServerEnv = PublicEnv & {
   DATABASE_URL?: string;
@@ -55,14 +51,6 @@ function requireValue(env: EnvMap, key: string): string {
   return value;
 }
 
-export function getPublicEnv(env: EnvMap = readEnv()): PublicEnv {
-  return {
-    NEXT_PUBLIC_SUPABASE_URL: requireValue(env, "NEXT_PUBLIC_SUPABASE_URL"),
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: requireValue(env, "NEXT_PUBLIC_SUPABASE_ANON_KEY"),
-    NEXT_PUBLIC_SITE_URL: requireValue(env, "NEXT_PUBLIC_SITE_URL"),
-  };
-}
-
 export function getServerEnv(env: EnvMap = readEnv()): ServerEnv {
   const publicEnv = getPublicEnv(env);
 
@@ -85,7 +73,13 @@ export function assertProductionServerEnv(env: EnvMap = readEnv()): void {
     return;
   }
 
-  for (const key of [...publicKeys, ...serverKeys]) {
+  for (const key of publicKeys) {
+    requirePublicEnvValue(env, key);
+  }
+
+  for (const key of serverKeys) {
     requireValue(env, key);
   }
 }
+
+export { getPublicEnv, type PublicEnv };

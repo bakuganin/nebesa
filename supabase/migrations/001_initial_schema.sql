@@ -540,17 +540,23 @@ alter table public.audit_logs enable row level security;
 create policy "public categories are readable" on public.product_categories
   for select to anon, authenticated
   using (is_active = true);
-create policy "admins manage categories" on public.product_categories
+create policy "admins read all categories" on public.product_categories
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage categories" on public.product_categories
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public products are readable" on public.products
   for select to anon, authenticated
   using (status = 'active' and visibility = 'public' and requires_review = false);
-create policy "admins manage products" on public.products
+create policy "admins read all products" on public.products
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage products" on public.products
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public product images are readable" on public.product_images
@@ -562,9 +568,12 @@ create policy "public product images are readable" on public.product_images
       and products.visibility = 'public'
       and products.requires_review = false
   ));
-create policy "admins manage product images" on public.product_images
+create policy "admins read all product images" on public.product_images
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage product images" on public.product_images
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public variants are readable" on public.product_variants
@@ -576,9 +585,12 @@ create policy "public variants are readable" on public.product_variants
       and products.visibility = 'public'
       and products.requires_review = false
   ));
-create policy "admins manage variants" on public.product_variants
+create policy "admins read all variants" on public.product_variants
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage variants" on public.product_variants
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public option groups are readable" on public.product_option_groups
@@ -590,9 +602,12 @@ create policy "public option groups are readable" on public.product_option_group
       and products.visibility = 'public'
       and products.requires_review = false
   ));
-create policy "admins manage option groups" on public.product_option_groups
+create policy "admins read all option groups" on public.product_option_groups
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage option groups" on public.product_option_groups
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public option values are readable" on public.product_option_values
@@ -606,9 +621,12 @@ create policy "public option values are readable" on public.product_option_value
       and p.visibility = 'public'
       and p.requires_review = false
   ));
-create policy "admins manage option values" on public.product_option_values
+create policy "admins read all option values" on public.product_option_values
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage option values" on public.product_option_values
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public variant option prices are readable" on public.product_variant_option_prices
@@ -623,17 +641,23 @@ create policy "public variant option prices are readable" on public.product_vari
       and p.visibility = 'public'
       and p.requires_review = false
   ));
-create policy "admins manage variant option prices" on public.product_variant_option_prices
+create policy "admins read all variant option prices" on public.product_variant_option_prices
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage variant option prices" on public.product_variant_option_prices
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public materials are readable" on public.materials
   for select to anon, authenticated
   using (is_active = true);
-create policy "admins manage materials" on public.materials
+create policy "admins read all materials" on public.materials
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage materials" on public.materials
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "public product materials are readable" on public.product_materials
@@ -648,9 +672,12 @@ create policy "public product materials are readable" on public.product_material
       and p.requires_review = false
       and m.is_active = true
   ));
-create policy "admins manage product materials" on public.product_materials
+create policy "admins read all product materials" on public.product_materials
+  for select to authenticated
+  using (public.is_active_admin());
+create policy "owners and admins manage product materials" on public.product_materials
   for all to authenticated
-  using (public.is_active_admin())
+  using (public.is_active_admin(array['owner', 'admin']::public.admin_role[]))
   with check (public.is_active_admin(array['owner', 'admin']::public.admin_role[]));
 
 create policy "admins read customers" on public.customers
