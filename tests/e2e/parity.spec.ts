@@ -77,8 +77,11 @@ test.describe("legacy redirect contract", () => {
     });
   }
 
-  test("services hash remains documented", async () => {
-    expect("/index.html#services-section").toBe("/index.html#services-section");
+  test("/index.html#services-section maps to the home services anchor", async ({ page }) => {
+    await page.goto("/index.html#services-section", { waitUntil: "domcontentloaded" });
+    await expect(page).toHaveURL(/\/#services-section$/);
+    await page.locator("html[data-nebesa-legacy-interactions='ready']").waitFor();
+    await expect(page.locator("#services-section")).toBeInViewport();
   });
 });
 
@@ -90,5 +93,66 @@ test.describe("React shell navigation", () => {
 
     await expect(page.getByRole("link", { name: "Кремация" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Зал прощания" })).toBeVisible();
+  });
+
+  test("shows visible phone feedback on desktop", async ({ page }) => {
+    await page.goto("/products", { waitUntil: "domcontentloaded" });
+    await page.locator("html[data-nebesa-phone-fallback='ready']").waitFor();
+
+    await page.locator(".navbar_button-wrapper a[href^='tel:']").click();
+
+    await expect(page.locator(".nebesa-phone-toast")).toContainText("+(372) 5558 2200");
+  });
+});
+
+test.describe("legacy page interaction contract", () => {
+  test("uses client navigation for FAQ header links and marks services as current", async ({ page }) => {
+    await page.goto("/faq", { waitUntil: "domcontentloaded" });
+    await page.locator("html[data-nebesa-legacy-interactions='ready']").waitFor();
+    await page.evaluate(() => {
+      (window as typeof window & { __nebesaNavigationMarker?: string }).__nebesaNavigationMarker = "kept";
+    });
+
+    await page.locator("nav .navbar_link", { hasText: "Главная" }).click();
+    await expect(page).toHaveURL(/\/$/);
+    await expect
+      .poll(() =>
+        page.evaluate(() => (window as typeof window & { __nebesaNavigationMarker?: string }).__nebesaNavigationMarker),
+      )
+      .toBe("kept");
+
+    await page.goto("/faq", { waitUntil: "domcontentloaded" });
+    await page.locator("html[data-nebesa-legacy-interactions='ready']").waitFor();
+    await page.evaluate(() => {
+      (window as typeof window & { __nebesaNavigationMarker?: string }).__nebesaNavigationMarker = "kept";
+    });
+
+    await page.locator("nav .navbar_link", { hasText: "Услуги" }).click();
+    await expect(page).toHaveURL(/\/#services-section$/);
+    await expect
+      .poll(() =>
+        page.evaluate(() => (window as typeof window & { __nebesaNavigationMarker?: string }).__nebesaNavigationMarker),
+      )
+      .toBe("kept");
+    await expect(page.locator('nav .navbar_link[aria-current="page"]', { hasText: "Услуги" })).toBeVisible();
+    await expect(page.locator("#services-section")).toBeInViewport();
+  });
+
+  test("keeps memorial page wheel scrolling and turns CTAs into visible actions", async ({ page }) => {
+    await page.goto("/services/memorials-caskets", { waitUntil: "domcontentloaded" });
+    await page.locator("html[data-nebesa-legacy-interactions='ready']").waitFor();
+    await page.mouse.wheel(0, 700);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+
+    await page.goto("/services/memorials-caskets", { waitUntil: "domcontentloaded" });
+    await page.locator("html[data-nebesa-legacy-interactions='ready']").waitFor();
+    await page.getByRole("link", { name: "Заказать" }).click();
+    await expect(page).toHaveURL(/\/services\/memorials-caskets#contact$/);
+    await expect(page.locator("#contact")).toBeInViewport();
+
+    await page.goto("/services/memorials-caskets", { waitUntil: "domcontentloaded" });
+    await page.locator("html[data-nebesa-legacy-interactions='ready']").waitFor();
+    await page.locator(".navbar_button-wrapper a[href^='tel:']").click();
+    await expect(page.locator(".nebesa-phone-toast")).toContainText("+(372) 5558 2200");
   });
 });

@@ -1,7 +1,12 @@
 import type { ReactNode } from "react";
 
-import { SmoothScrollProvider } from "@/components/site/smooth-scroll-provider";
+import { PhoneLinkFallback } from "@/components/site/phone-link-fallback";
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
-  return <SmoothScrollProvider>{children}</SmoothScrollProvider>;
+  return (
+    <>
+      <PhoneLinkFallback />
+      {children}
+    </>
+  );
 }

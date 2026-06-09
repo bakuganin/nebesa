@@ -70,7 +70,16 @@ function rewriteLegacyHtml(html: string, route: string): string {
     .replace(/\bhref="(?:\.\.\/)?services\/([^"#]+)\.html(#[^"]*)?"/gi, (_match, slug, hash = "") => {
       return `href="/services/${slug}${hash || ""}"`;
     })
+    .replace(/<a href="#"([^>]*class="[^"]*footer_logo-link[^"]*"[^>]*)>/gi, '<a href="/"$1>')
+    .replace(/<a([^>]*class="[^"]*footer_logo-link[^"]*"[^>]*) href="#"/gi, '<a$1 href="/"')
+    .replace(/<a([^>]*)href="#"([^>]*class="[^"]*footer_logo-link[^"]*"[^>]*)>/gi, '<a$1href="/"$2>')
     .replace(/\bhref="#"([^>]*id="services-btn-menu")/gi, 'href="/#services-section" $1')
+    .replace(/<a([^>]*id="services-btn-menu"[^>]*) href="#"/gi, '<a$1 href="/#services-section"')
+    .replace(
+      /<a href="tel:\+37255582200"([^>]*class="[^"]*cta_button[^"]*"[^>]*)>\s*<div>Заказать<\/div>/gi,
+      '<a href="#contact"$1><div>Заказать</div>',
+    )
+    .replace(/<a href="#"([^>]*class="[^"]*cta_btn[^"]*"[^>]*)>\s*Связаться с нами\s*<\/a>/gi, '<a href="#contact"$1>Связаться с нами</a>')
     .replace(/\bhref="#"([^>]*class="footer_legal-link"[^>]*>\s*Terms\s*<\/a>)/gi, 'href="/terms"$1')
     .replace(/\bhref="#"([^>]*class="footer_legal-link"[^>]*>\s*Privacy\s*<\/a>)/gi, 'href="/privacy"$1')
     .replace(/\bhref="#"([^>]*class="footer_legal-link"[^>]*>\s*Cookies\s*<\/a>)/gi, 'href="/cookies"$1')

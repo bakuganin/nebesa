@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 declare global {
@@ -50,6 +51,9 @@ function setOpen(element: HTMLElement, open: boolean) {
 }
 
 export function LegacyInteractions() {
+  const pathname = usePathname();
+  const router = useRouter();
+
   useEffect(() => {
     const cleanups: Array<() => void> = [];
 
@@ -211,6 +215,44 @@ export function LegacyInteractions() {
       cleanups.push(() => menu.querySelectorAll("a").forEach((link) => link.removeEventListener("click", close)));
     });
 
+    const legacyNavLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>(".navbar_link, .footer_link"),
+    );
+    const updateCurrentLinks = () => {
+      const activePath = window.location.pathname;
+      const activeHash = window.location.hash;
+      legacyNavLinks.forEach((link) => {
+        link.classList.remove("w--current");
+        link.removeAttribute("aria-current");
+      });
+
+      const activeLink = legacyNavLinks.find((link) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("tel:") || href.startsWith("mailto:")) return false;
+        const target = new URL(href, window.location.origin);
+        if (target.origin !== window.location.origin) return false;
+
+        if (activeHash === "#services-section") {
+          return target.pathname === "/" && target.hash === "#services-section";
+        }
+
+        return target.pathname === activePath && !target.hash;
+      });
+
+      activeLink?.classList.add("w--current");
+      activeLink?.setAttribute("aria-current", "page");
+    };
+    const pendingHash = window.sessionStorage.getItem("nebesa-pending-hash");
+    if (pendingHash) {
+      const pendingPath = window.sessionStorage.getItem("nebesa-pending-path") || window.location.pathname;
+      window.sessionStorage.removeItem("nebesa-pending-hash");
+      window.sessionStorage.removeItem("nebesa-pending-path");
+      window.history.replaceState(null, "", `${pendingPath}${pendingHash}`);
+    }
+    updateCurrentLinks();
+    window.addEventListener("hashchange", updateCurrentLinks);
+    cleanups.push(() => window.removeEventListener("hashchange", updateCurrentLinks));
+
     document.querySelectorAll<HTMLElement>(".w-dropdown").forEach((dropdown) => {
       const toggle = dropdown.querySelector<HTMLElement>(".w-dropdown-toggle");
       const list = dropdown.querySelector<HTMLElement>(".w-dropdown-list");
@@ -304,22 +346,76 @@ export function LegacyInteractions() {
     document.addEventListener("click", onLightboxClick);
     cleanups.push(() => document.removeEventListener("click", onLightboxClick));
 
+    const scrollToHash = (hash: string, behavior: ScrollBehavior = "smooth") => {
+      const target = document.querySelector<HTMLElement>(hash);
+      if (!target) return false;
+      target.scrollIntoView({ behavior, block: hash === "#services-section" ? "center" : "start" });
+      return true;
+    };
+
+    const onInternalLinkClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const link = (event.target as HTMLElement).closest<HTMLAnchorElement>("a[href]");
+      if (!link || link.target || link.hasAttribute("download")) return;
+
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
+
+      const target = new URL(href, window.location.origin);
+      if (target.origin !== window.location.origin) return;
+
+      event.preventDefault();
+      const destination = `${target.pathname}${target.search}${target.hash}`;
+
+      if (target.pathname === window.location.pathname && target.search === window.location.search) {
+        window.history.pushState(null, "", destination || "/");
+        if (target.hash) {
+          scrollToHash(target.hash);
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        updateCurrentLinks();
+        return;
+      }
+
+      if (target.hash) {
+        window.sessionStorage.setItem("nebesa-pending-hash", target.hash);
+        window.sessionStorage.setItem("nebesa-pending-path", `${target.pathname}${target.search}`);
+        router.push(`${target.pathname}${target.search}`);
+        return;
+      }
+
+      router.push(destination);
+    };
+    document.addEventListener("click", onInternalLinkClick, true);
+    cleanups.push(() => document.removeEventListener("click", onInternalLinkClick, true));
+
     const onAnchorClick = (event: Event) => {
       const link = (event.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
       if (!link || link.hash.length <= 1) return;
-      const target = document.querySelector<HTMLElement>(link.hash);
-      if (!target) return;
+      if (!document.querySelector(link.hash)) return;
       event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: link.hash === "#services-section" ? "center" : "start" });
+      window.history.pushState(null, "", `${window.location.pathname}${window.location.search}${link.hash}`);
+      scrollToHash(link.hash);
+      updateCurrentLinks();
     };
     document.addEventListener("click", onAnchorClick);
     cleanups.push(() => document.removeEventListener("click", onAnchorClick));
 
-    if (window.location.hash === "#services-section") {
+    if (window.location.hash.length > 1) {
       window.setTimeout(() => {
-        document.querySelector<HTMLElement>("#services-section")?.scrollIntoView({ block: "center" });
+        scrollToHash(window.location.hash, "auto");
+        updateCurrentLinks();
       }, 250);
     }
+
+    window.setTimeout(() => {
+      document.documentElement.dataset.nebesaLegacyInteractions = "ready";
+      window.dispatchEvent(new CustomEvent("nebesa:legacy-interactions-ready"));
+    }, 0);
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") document.querySelector<HTMLElement>(".nebesa-lightbox-backdrop")?.remove();
@@ -327,8 +423,11 @@ export function LegacyInteractions() {
     document.addEventListener("keydown", onKeyDown);
     cleanups.push(() => document.removeEventListener("keydown", onKeyDown));
 
-    return () => cleanups.forEach((cleanup) => cleanup());
-  }, []);
+    return () => {
+      delete document.documentElement.dataset.nebesaLegacyInteractions;
+      cleanups.forEach((cleanup) => cleanup());
+    };
+  }, [pathname, router]);
 
   return null;
 }
