@@ -168,7 +168,7 @@ export function ProductForm({
         <button
           type="submit"
           disabled={disabled}
-          className="inline-flex min-h-10 items-center justify-center rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#2f3935] disabled:cursor-not-allowed disabled:bg-[#9aa39f]"
+          className="inline-flex min-h-10 items-center justify-center rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white outline-none transition hover:bg-[#2f3935] focus-visible:ring-2 focus-visible:ring-[#59685e]/30 disabled:cursor-not-allowed disabled:bg-[#9aa39f]"
         >
           {submitLabel}
         </button>

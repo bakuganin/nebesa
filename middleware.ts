@@ -23,7 +23,7 @@ export async function middleware(request: NextRequest) {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.next();
+    return NextResponse.redirect(buildLoginRedirect(request));
   }
 
   let response = NextResponse.next({ request });

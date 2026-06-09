@@ -41,7 +41,7 @@ export function DataTable<T,>({
           {rows.map((row) => (
             <tr key={getRowKey(row)} className="align-top">
               {columns.map((column) => (
-                <td key={column.header} className={`px-4 py-3 ${column.className ?? ""}`}>
+                <td key={column.header} className={`min-w-0 max-w-[22rem] break-words px-4 py-3 ${column.className ?? ""}`}>
                   {column.cell(row)}
                 </td>
               ))}

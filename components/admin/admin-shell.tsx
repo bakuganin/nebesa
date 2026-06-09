@@ -70,7 +70,7 @@ function MobileNav() {
             <Link
               key={item.href}
               href={item.href}
-              className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-md border border-[#d8dedc] bg-[#f7f9f8] px-3 text-sm font-medium text-[#2f3935]"
+              className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-md border border-[#d8dedc] bg-[#f7f9f8] px-3 text-sm font-medium text-[#2f3935] outline-none focus-visible:ring-2 focus-visible:ring-[#59685e]/30"
             >
               <Icon aria-hidden="true" className="h-4 w-4 text-[#59685e]" />
               {item.label}
@@ -98,7 +98,7 @@ function DesktopNav() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-[#2f3935] transition hover:bg-[#eef2f0]"
+                  className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-[#2f3935] outline-none transition hover:bg-[#eef2f0] focus-visible:ring-2 focus-visible:ring-[#59685e]/30"
                 >
                   <Icon aria-hidden="true" className="h-4 w-4 text-[#59685e]" />
                   {item.label}
@@ -123,7 +123,7 @@ export function AdminShell({
     return (
       <div className="min-h-screen bg-[#f4f6f5] px-4 py-8 text-[#1f2528] sm:px-6">
         <main className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-xl flex-col justify-center">
-          <Link href="/" className="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-[#59685e]">
+          <Link href="/" className="mb-6 w-fit rounded-sm text-sm font-semibold uppercase tracking-[0.18em] text-[#59685e] outline-none focus-visible:ring-2 focus-visible:ring-[#59685e]/30">
             NEBESA
           </Link>
           {children}
@@ -138,7 +138,7 @@ export function AdminShell({
         <aside className="min-w-0 border-b border-[#d8dedc] bg-white lg:border-b-0 lg:border-r">
           <div className="flex items-center justify-between gap-4 px-5 py-5">
             <div>
-              <Link href="/admin" className="text-lg font-semibold tracking-normal">
+              <Link href="/admin" className="rounded-sm text-lg font-semibold tracking-normal outline-none focus-visible:ring-2 focus-visible:ring-[#59685e]/30">
                 NEBESA Панель
               </Link>
               <div className="mt-1 text-xs text-[#59685e]">{accessLabel(access)}</div>

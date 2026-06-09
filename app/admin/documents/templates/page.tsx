@@ -3,7 +3,7 @@ import { DataTable, type DataTableColumn } from "@/components/admin/data-table";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { TemplateForm } from "@/components/admin/template-form";
-import { isAdminReady } from "@/features/admin/access";
+import { canAdminWrite } from "@/features/admin/access";
 import { formatDateTime } from "@/features/admin/format";
 import { getAdminDocumentTemplatesPageData, type DocumentTemplateRow } from "@/features/documents/admin";
 import { saveDocumentTemplateAction } from "@/features/documents/actions";
@@ -30,7 +30,7 @@ const templateColumns: DataTableColumn<DocumentTemplateRow>[] = [
 
 export default async function AdminDocumentTemplatesPage() {
   const { access, data } = await getAdminDocumentTemplatesPageData();
-  const canWrite = isAdminReady(access);
+  const canWrite = canAdminWrite(access);
 
   return (
     <>

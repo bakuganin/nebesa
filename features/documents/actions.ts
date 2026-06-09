@@ -15,25 +15,57 @@ function optionalString(formData: FormData, key: string): string | null {
   return value.length > 0 ? value : null;
 }
 
-function jsonArray(formData: FormData, key: string): unknown[] {
+export type TemplateActionState = {
+  status: "idle" | "success" | "error";
+  message?: string;
+  fieldErrors?: {
+    variables?: string;
+  };
+};
+
+function parseJsonArray(formData: FormData, key: string): { data: unknown[] } | { error: string } {
   const value = formString(formData, key);
 
   if (!value) {
-    return [];
+    return { data: [] };
   }
 
-  const parsed = JSON.parse(value) as unknown;
-  return Array.isArray(parsed) ? parsed : [];
+  try {
+    const parsed = JSON.parse(value) as unknown;
+
+    if (!Array.isArray(parsed)) {
+      return { error: "Введите JSON-массив, например []." };
+    }
+
+    return { data: parsed };
+  } catch {
+    return { error: "Проверьте JSON: значение должно быть валидным массивом." };
+  }
 }
 
-export async function saveDocumentTemplateAction(formData: FormData): Promise<void> {
+export async function saveDocumentTemplateAction(
+  _state: TemplateActionState,
+  formData: FormData,
+): Promise<TemplateActionState> {
+  const variables = parseJsonArray(formData, "variables");
+
+  if ("error" in variables) {
+    return {
+      status: "error",
+      message: "Шаблон не сохранен.",
+      fieldErrors: {
+        variables: variables.error,
+      },
+    };
+  }
+
   const { supabase } = await createAuthorizedAdminClient(adminWriteRoles);
   const templateId = optionalString(formData, "id");
   const payload = {
     slug: formString(formData, "slug"),
     title: formString(formData, "title"),
     body: formString(formData, "body"),
-    variables: jsonArray(formData, "variables"),
+    variables: variables.data,
     is_active: formData.get("is_active") === "on",
   };
 
@@ -44,8 +76,16 @@ export async function saveDocumentTemplateAction(formData: FormData): Promise<vo
   const { error } = await request;
 
   if (error) {
-    throw error;
+    return {
+      status: "error",
+      message: "Не удалось сохранить шаблон. Проверьте поля и повторите попытку.",
+    };
   }
 
   revalidatePath("/admin/documents/templates");
+
+  return {
+    status: "success",
+    message: "Шаблон сохранен.",
+  };
 }

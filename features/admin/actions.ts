@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { adminReadRoles, adminWriteRoles } from "@/features/admin/access";
+import { adminWriteRoles } from "@/features/admin/access";
 import { createAuthorizedAdminClient } from "@/lib/supabase/admin";
 
 function formString(formData: FormData, key: string): string {
@@ -118,7 +118,7 @@ export async function upsertCategoryAction(formData: FormData): Promise<void> {
 }
 
 export async function updateOrderStatusAction(orderId: string, formData: FormData): Promise<void> {
-  const { supabase, profile } = await createAuthorizedAdminClient(adminReadRoles);
+  const { supabase, profile } = await createAuthorizedAdminClient(adminWriteRoles);
   const status = safeChoice(
     formString(formData, "status"),
     ["new", "confirmed", "in_progress", "completed", "cancelled"],

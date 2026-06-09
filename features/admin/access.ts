@@ -67,7 +67,7 @@ function classifyAccessError(error: unknown): AdminAccessState {
 
   return {
     status: "error",
-    message,
+    message: "Не удалось проверить доступ к админ-панели. Проверьте конфигурацию и повторите попытку.",
   };
 }
 
@@ -97,4 +97,15 @@ export async function getAdminAccess(
 
 export function isAdminReady(access: AdminAccessState): access is Extract<AdminAccessState, { status: "ready" }> {
   return access.status === "ready";
+}
+
+export function hasAdminRole(
+  access: AdminAccessState,
+  allowedRoles: readonly AdminRole[],
+): access is Extract<AdminAccessState, { status: "ready" }> {
+  return isAdminReady(access) && allowedRoles.includes(access.profile.role);
+}
+
+export function canAdminWrite(access: AdminAccessState): boolean {
+  return hasAdminRole(access, adminWriteRoles);
 }

@@ -5,7 +5,7 @@ import { FormField, inputClassName } from "@/components/admin/form-field";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { updateOrderStatusAction } from "@/features/admin/actions";
-import { isAdminReady } from "@/features/admin/access";
+import { canAdminWrite } from "@/features/admin/access";
 import { formatDateTime, formatMoney, notificationStatusLabels, orderStatusLabels } from "@/features/admin/format";
 import {
   getAdminOrderDetailPageData,
@@ -41,7 +41,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
   const { access, data } = await getAdminOrderDetailPageData(params.id);
   const order = data.order;
   const action = updateOrderStatusAction.bind(null, params.id);
-  const canWrite = isAdminReady(access);
+  const canWrite = canAdminWrite(access);
 
   return (
     <>
@@ -110,7 +110,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
               <button
                 type="submit"
                 disabled={!canWrite}
-                className="min-h-10 rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white disabled:bg-[#9aa39f]"
+                className="min-h-10 rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-[#59685e]/30 disabled:bg-[#9aa39f]"
               >
                 Обновить статус
               </button>

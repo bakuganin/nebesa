@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
 
 import { createBrowserSupabaseClient } from "@/lib/supabase/browser";
+import { safeAdminRedirect } from "@/lib/admin-redirect";
 
 import { FormField, inputClassName } from "./form-field";
 
@@ -37,10 +38,7 @@ export function LoginForm({ enabled }: { enabled: boolean }) {
         return;
       }
 
-      const next = searchParams.get("next");
-      const target = next?.startsWith("/admin") ? next : "/admin";
-
-      router.push(target);
+      router.push(safeAdminRedirect(searchParams.get("next")));
       router.refresh();
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Не удалось выполнить вход.");
@@ -49,7 +47,7 @@ export function LoginForm({ enabled }: { enabled: boolean }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid max-w-lg gap-4 rounded-md border border-[#d8dedc] bg-white p-5">
+    <form method="post" onSubmit={onSubmit} className="grid max-w-lg gap-4 rounded-md border border-[#d8dedc] bg-white p-5">
       <FormField label="Email" htmlFor="admin-email">
         <input
           id="admin-email"
@@ -76,7 +74,7 @@ export function LoginForm({ enabled }: { enabled: boolean }) {
       <button
         type="submit"
         disabled={!enabled || pending}
-        className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#2f3935] disabled:cursor-not-allowed disabled:bg-[#9aa39f]"
+        className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white outline-none transition hover:bg-[#2f3935] focus-visible:ring-2 focus-visible:ring-[#59685e]/30 disabled:cursor-not-allowed disabled:bg-[#9aa39f]"
       >
         {pending ? <Loader2 aria-hidden="true" className="h-4 w-4 animate-spin" /> : null}
         Войти

@@ -2,7 +2,7 @@ import { AdminAccessNotice } from "@/components/admin/access-notice";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { ProductForm } from "@/components/admin/product-form";
 import { createProductDraftAction } from "@/features/admin/actions";
-import { isAdminReady } from "@/features/admin/access";
+import { canAdminWrite } from "@/features/admin/access";
 import { getAdminProductFormData } from "@/features/admin/products";
 
 export default async function AdminNewProductPage() {
@@ -15,7 +15,7 @@ export default async function AdminNewProductPage() {
       <ProductForm
         categories={data.categories}
         action={createProductDraftAction}
-        disabled={!isAdminReady(access)}
+        disabled={!canAdminWrite(access)}
         submitLabel="Создать черновик"
       />
     </>

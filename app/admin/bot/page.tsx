@@ -5,7 +5,7 @@ import { StatusBadge } from "@/components/admin/status-badge";
 import { TemplateForm } from "@/components/admin/template-form";
 import { saveWhatsAppTemplateAction } from "@/features/admin/bot-actions";
 import { getAdminBotPageData, type WhatsAppEventRow, type WhatsAppTemplateRow } from "@/features/admin/bot";
-import { isAdminReady } from "@/features/admin/access";
+import { canAdminWrite } from "@/features/admin/access";
 import { formatDateTime } from "@/features/admin/format";
 
 const templateColumns: DataTableColumn<WhatsAppTemplateRow>[] = [
@@ -50,7 +50,7 @@ const eventColumns: DataTableColumn<WhatsAppEventRow>[] = [
 
 export default async function AdminBotPage() {
   const { access, data } = await getAdminBotPageData();
-  const canWrite = isAdminReady(access);
+  const canWrite = canAdminWrite(access);
 
   return (
     <>

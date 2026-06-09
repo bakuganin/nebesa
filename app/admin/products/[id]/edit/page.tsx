@@ -3,7 +3,7 @@ import { AdminAccessNotice } from "@/components/admin/access-notice";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { ProductForm } from "@/components/admin/product-form";
 import { updateProductDraftAction } from "@/features/admin/actions";
-import { isAdminReady } from "@/features/admin/access";
+import { canAdminWrite } from "@/features/admin/access";
 import { getAdminProductFormData } from "@/features/admin/products";
 
 export default async function AdminEditProductPage({ params }: { params: { id: string } }) {
@@ -19,7 +19,7 @@ export default async function AdminEditProductPage({ params }: { params: { id: s
           product={data.product}
           categories={data.categories}
           action={action}
-          disabled={!isAdminReady(access)}
+          disabled={!canAdminWrite(access)}
           submitLabel="Сохранить"
         />
       ) : (

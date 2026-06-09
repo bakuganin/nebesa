@@ -4,7 +4,7 @@ import { FormField, inputClassName } from "@/components/admin/form-field";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { upsertCategoryAction } from "@/features/admin/actions";
-import { isAdminReady } from "@/features/admin/access";
+import { canAdminWrite } from "@/features/admin/access";
 import { formatDateTime } from "@/features/admin/format";
 import { getAdminCategoriesPageData, type AdminCategory } from "@/features/admin/products";
 
@@ -34,7 +34,7 @@ const categoryColumns: DataTableColumn<AdminCategory>[] = [
 
 export default async function AdminCategoriesPage() {
   const { access, data } = await getAdminCategoriesPageData();
-  const canWrite = isAdminReady(access);
+  const canWrite = canAdminWrite(access);
 
   return (
     <>
@@ -70,7 +70,7 @@ export default async function AdminCategoriesPage() {
           <button
             type="submit"
             disabled={!canWrite}
-            className="inline-flex min-h-10 justify-center rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white disabled:bg-[#9aa39f]"
+            className="inline-flex min-h-10 justify-center rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-[#59685e]/30 disabled:bg-[#9aa39f]"
           >
             Добавить категорию
           </button>
