@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Open Sans", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.legacy-page {
+  min-height: 100vh;
+}
+
+.w-tab-pane {
+  display: none;
+}
+
+.w-tab-pane.w--tab-active {
+  display: block;
+}
+
+.nebesa-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  border: 0;
+  background: rgba(8, 12, 16, 0.86);
+  cursor: zoom-out;
+}
+
+.nebesa-lightbox-backdrop img {
+  max-width: min(96vw, 1280px);
+  max-height: 92vh;
+  object-fit: contain;
+}
+
+.faq_answer,
+.w-dropdown-list {
+  overflow: hidden;
+}

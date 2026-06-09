@@ -235,6 +235,7 @@ select {
  * 2. Correct inability to style clickable `input` types in iOS.
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
+ */
 
 button,
 html input[type="button"],

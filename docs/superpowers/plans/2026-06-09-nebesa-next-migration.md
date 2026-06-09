@@ -4,6 +4,8 @@
 
 **Goal:** Rebuild the current static Webflow export as a Next.js 14 App Router site with visual parity, e-commerce, Supabase-backed catalog/orders, WhatsApp notifications, legal pages, and a usable admin panel.
 
+**Execution status:** Implementation and verification notes are recorded in `docs/migration/implementation-status.md`.
+
 **Architecture:** Keep the first migration pass conservative: preserve existing assets and CSS for public-page parity, then extract repeated layout and commerce behavior into focused React modules. Server state lives in Supabase; public reads are server-rendered where possible, checkout recalculates prices on the server, and admin writes are protected by Supabase Auth plus server-side role checks. WhatsApp delivery is a notification layer, never a hard dependency for order creation.
 
 **Tech Stack:** Next.js 14 App Router, React, TypeScript, Tailwind CSS for new UI surfaces, existing Webflow CSS during parity pass, Lenis, Three.js or Vanta-compatible client-only hero wrapper, Zustand, Supabase/PostgreSQL, Supabase Auth, Vercel, Vitest, Playwright.

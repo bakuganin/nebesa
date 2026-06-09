@@ -339,7 +339,7 @@
   filter: invert();
   color: #fff;
   background-color: #0000;
-  background-image: url('../images/white-arrow-right.svg');
+  background-image: url('/images/white-arrow-right.svg');
   background-position: 90% 47%;
   background-repeat: no-repeat;
   background-size: 26px;
@@ -354,7 +354,7 @@
   filter: none;
   color: #fff;
   background-color: #000;
-  background-image: url('../images/white-arrow-right.svg');
+  background-image: url('/images/white-arrow-right.svg');
   background-position: 90% 47%;
   background-repeat: no-repeat;
   background-size: 26px;
@@ -494,7 +494,7 @@
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   background-color: #fff3;
-  background-image: url('../images/noise_1noise.webp'), linear-gradient(90deg, #006aff26, #ff880026);
+  background-image: url('/images/noise_1noise.webp'), linear-gradient(90deg, #006aff26, #ff880026);
   background-position: 0 0, 0 0;
   background-repeat: repeat, repeat;
   background-size: auto, auto;
@@ -902,7 +902,7 @@
   grid-row-gap: .5rem;
   color: #fff;
   background-color: #0000;
-  background-image: url('../images/noise_1noise.webp');
+  background-image: url('/images/noise_1noise.webp');
   background-position: 0 0;
   background-size: 800px 800px;
   border-style: solid;
@@ -947,7 +947,7 @@
   color: #fff;
   text-transform: uppercase;
   background-color: #000;
-  background-image: url('../images/white-arrow.svg');
+  background-image: url('/images/white-arrow.svg');
   background-position: 7%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -1387,7 +1387,7 @@
 .call-btn {
   text-transform: uppercase;
   background-color: #5598cf;
-  background-image: url('../images/phone-icon.svg');
+  background-image: url('/images/phone-icon.svg');
   background-position: 7%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -1561,7 +1561,7 @@
 }
 
 .service-card {
-  background-image: url('../images/grainv2.jpg');
+  background-image: url('/images/grainv2.jpg');
   background-position: 50%;
   background-size: cover;
   border-radius: 8px;
@@ -1572,40 +1572,40 @@
 }
 
 .service-card.service-card-content-5 {
-  background-image: url('../images/Cremation_1.webp');
+  background-image: url('/images/Cremation_1.webp');
   background-position: 0%;
 }
 
 .service-card.service-card-content-5:hover {
-  background-image: linear-gradient(#00000073 9%, #fff0), url('../images/Cremation_1.webp');
+  background-image: linear-gradient(#00000073 9%, #fff0), url('/images/Cremation_1.webp');
   background-position: 0 0, 0%;
   background-size: auto, cover;
 }
 
 .service-card.service-card-content-6 {
-  background-image: url('../images/viewing-hall_1.webp');
+  background-image: url('/images/viewing-hall_1.webp');
 }
 
 .service-card.service-card-content-4 {
-  background-image: url('../images/Catalog-of-ritual-products_1.webp');
+  background-image: url('/images/Catalog-of-ritual-products_1.webp');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 800px;
 }
 
 .service-card.service-card-content-1 {
-  background-image: linear-gradient(#00000073, #fff0 51%), url('../images/1-st_1.webp');
+  background-image: linear-gradient(#00000073, #fff0 51%), url('/images/1-st_1.webp');
   background-position: 0 0, 100% 100%;
   background-size: auto, cover;
 }
 
 .service-card.service-card-content-3 {
-  background-image: url('../images/4s_1.webp');
+  background-image: url('/images/4s_1.webp');
   background-position: 50%;
 }
 
 .service-card.service-card-content-2 {
-  background-image: linear-gradient(#00000073, #fff0 50%), url('../images/2nd_1.webp');
+  background-image: linear-gradient(#00000073, #fff0 50%), url('/images/2nd_1.webp');
   background-position: 0 0, 50%;
   background-size: auto, cover;
 }
@@ -1748,7 +1748,7 @@
 
 .i-have-a-question-text {
   color: #000;
-  background-image: linear-gradient(#ffffff73, #0000), url('../images/3v_1.webp');
+  background-image: linear-gradient(#ffffff73, #0000), url('/images/3v_1.webp');
   background-position: 0 0, 50%;
   background-size: auto, cover;
   border-radius: 8px;
@@ -1775,7 +1775,7 @@
   z-index: 3;
   text-transform: uppercase;
   background-color: #5598cf;
-  background-image: url('../images/phone-icon.svg');
+  background-image: url('/images/phone-icon.svg');
   background-position: 7%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -2010,7 +2010,7 @@
 }
 
 .section_header {
-  background-image: linear-gradient(#00000080, #00000080), url('../images/Funeral-arrangements_1.webp');
+  background-image: linear-gradient(#00000080, #00000080), url('/images/Funeral-arrangements_1.webp');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -2018,17 +2018,17 @@
 }
 
 .section_header.cremation {
-  background-image: linear-gradient(#0000, #0000), url('../images/Cremation-v2_1.webp');
+  background-image: linear-gradient(#0000, #0000), url('/images/Cremation-v2_1.webp');
   background-position: 0 0, 50% 47%;
 }
 
 .section_header.viewing-hall {
-  background-image: linear-gradient(#0000, #0000), url('../images/viewing-hall_1.webp');
+  background-image: linear-gradient(#0000, #0000), url('/images/viewing-hall_1.webp');
   background-position: 0 0, 50% 60%;
 }
 
 .section_header.delivery-to-morgue {
-  background-image: linear-gradient(#0000, #0000), url('../images/Delivery-of-the-deceased-to-the-morgue_1.webp');
+  background-image: linear-gradient(#0000, #0000), url('/images/Delivery-of-the-deceased-to-the-morgue_1.webp');
   background-position: 0 0, 50%;
 }
 
@@ -2364,7 +2364,7 @@
 .spark-container.spark-light-secondary {
   background-color: var(--spark-library--background--interactive);
   color: var(--spark-library--black);
-  background-image: url('../images/step-3_1.webp');
+  background-image: url('/images/step-3_1.webp');
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3487,7 +3487,7 @@
 }
 
 .cta-ritual-section.spark-with-background-image {
-  background-image: linear-gradient(to bottom, var(--spark-library--foreground-secondary), var(--spark-library--foreground-secondary)), url('../images/memorials-and-formworks_1.webp');
+  background-image: linear-gradient(to bottom, var(--spark-library--foreground-secondary), var(--spark-library--foreground-secondary)), url('/images/memorials-and-formworks_1.webp');
   background-position: 0 0, 50% 0;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -3892,7 +3892,7 @@
 .tab-link-tab-12 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Royal-White-Snow_1.webp');
+  background-image: url('/images/Royal-White-Snow_1.webp');
   background-repeat: repeat;
   background-size: cover;
   border-radius: 8px;
@@ -3911,7 +3911,7 @@
 
 .tab-link-tab-12.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Royal-White-Snow_1.webp');
+  background-image: url('/images/Royal-White-Snow_1.webp');
   background-position: 0 0;
   background-repeat: repeat;
   justify-content: center;
@@ -3992,7 +3992,7 @@
 .tab-link-tab-1 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Padang_1.webp');
+  background-image: url('/images/Padang_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4011,7 +4011,7 @@
 
 .tab-link-tab-1.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Padang_1.webp');
+  background-image: url('/images/Padang_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4045,7 +4045,7 @@
 .tab-link-tab-2 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Indian-Aurora_1.webp');
+  background-image: url('/images/Indian-Aurora_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4064,7 +4064,7 @@
 
 .tab-link-tab-2.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Indian-Aurora_1.webp');
+  background-image: url('/images/Indian-Aurora_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4082,7 +4082,7 @@
 .tab-link-tab-3 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Shanxi-Black_1.webp');
+  background-image: url('/images/Shanxi-Black_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4101,7 +4101,7 @@
 
 .tab-link-tab-3.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Shanxi-Black_1.webp');
+  background-image: url('/images/Shanxi-Black_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4119,7 +4119,7 @@
 .tab-link-tab-4 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Ukranian-Gabbro_1.webp');
+  background-image: url('/images/Ukranian-Gabbro_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4138,7 +4138,7 @@
 
 .tab-link-tab-4.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Ukranian-Gabbro_1.webp');
+  background-image: url('/images/Ukranian-Gabbro_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4156,7 +4156,7 @@
 .tab-link-tab-5 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Olive-Green_1.webp');
+  background-image: url('/images/Olive-Green_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4175,7 +4175,7 @@
 
 .tab-link-tab-5.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Olive-Green_1.webp');
+  background-image: url('/images/Olive-Green_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4193,7 +4193,7 @@
 .tab-link-tab-6 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Ukranian-Grey_1.webp');
+  background-image: url('/images/Ukranian-Grey_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4212,7 +4212,7 @@
 
 .tab-link-tab-6.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Ukranian-Grey_1.webp');
+  background-image: url('/images/Ukranian-Grey_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4230,7 +4230,7 @@
 .tab-link-tab-7 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Blue-pearl_1.webp');
+  background-image: url('/images/Blue-pearl_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4249,7 +4249,7 @@
 
 .tab-link-tab-7.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Blue-pearl_1.webp');
+  background-image: url('/images/Blue-pearl_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4267,7 +4267,7 @@
 .tab-link-tab-8 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Vizag-Blue_1.webp');
+  background-image: url('/images/Vizag-Blue_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4286,7 +4286,7 @@
 
 .tab-link-tab-8.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Vizag-Blue_1.webp');
+  background-image: url('/images/Vizag-Blue_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4304,7 +4304,7 @@
 .tab-link-tab-9 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Ukranian-Leznikovsky_1.webp');
+  background-image: url('/images/Ukranian-Leznikovsky_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4323,7 +4323,7 @@
 
 .tab-link-tab-9.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Ukranian-Leznikovsky_1.webp');
+  background-image: url('/images/Ukranian-Leznikovsky_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4341,7 +4341,7 @@
 .tab-link-tab-10 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Tan-Brown.webp');
+  background-image: url('/images/Tan-Brown.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4360,7 +4360,7 @@
 
 .tab-link-tab-10.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Tan-Brown.webp');
+  background-image: url('/images/Tan-Brown.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4378,7 +4378,7 @@
 .tab-link-tab-11 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-image: url('../images/Imperial-Red_1.webp');
+  background-image: url('/images/Imperial-Red_1.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 8px;
@@ -4397,7 +4397,7 @@
 
 .tab-link-tab-11.w--current {
   filter: brightness(150%);
-  background-image: url('../images/Imperial-Red_1.webp');
+  background-image: url('/images/Imperial-Red_1.webp');
   background-position: 0 0;
   background-size: cover;
   justify-content: center;
@@ -4507,7 +4507,7 @@
   color: #fff;
   text-transform: none;
   background-color: #0000;
-  background-image: url('../images/white-arrow-right.svg');
+  background-image: url('/images/white-arrow-right.svg');
   background-position: 92% 51%;
   background-repeat: no-repeat;
   background-size: 26px;
@@ -4524,7 +4524,7 @@
   filter: none;
   color: #fff;
   background-color: #000;
-  background-image: url('../images/white-arrow-right.svg');
+  background-image: url('/images/white-arrow-right.svg');
   background-position: 95%;
   background-repeat: no-repeat;
   background-size: 26px;
@@ -5980,7 +5980,7 @@
   }
 
   .spark-container.spark-light-secondary {
-    background-image: linear-gradient(to bottom, var(--spark-library--foreground-tertiary), var(--spark-library--foreground-tertiary)), url('../images/step-3_1.webp');
+    background-image: linear-gradient(to bottom, var(--spark-library--foreground-tertiary), var(--spark-library--foreground-tertiary)), url('/images/step-3_1.webp');
     background-position: 0 0, 0 0;
     background-repeat: repeat, no-repeat;
     background-size: auto, cover;
@@ -6880,7 +6880,7 @@
   }
 
   .section_header.cremation {
-    background-image: linear-gradient(#0000, #0000), url('../images/Cremation_1.webp');
+    background-image: linear-gradient(#0000, #0000), url('/images/Cremation_1.webp');
     background-position: 0 0, 50%;
   }
 
@@ -6949,7 +6949,7 @@
   }
 
   .spark-container.spark-light-secondary {
-    background-image: linear-gradient(to bottom, var(--spark-library--foreground-secondary), var(--spark-library--foreground-secondary)), url('../images/step-3_1.webp');
+    background-image: linear-gradient(to bottom, var(--spark-library--foreground-secondary), var(--spark-library--foreground-secondary)), url('/images/step-3_1.webp');
     background-position: 0 0, 50% 0;
     background-repeat: repeat, no-repeat;
     background-size: auto, cover;
@@ -7823,14 +7823,14 @@
 
 @font-face {
   font-family: 'Sf Compact Display 58646 Eb 43 A 785';
-  src: url('../fonts/sf-compact-display-thin-58646eb43a785.otf') format('opentype');
+  src: url('/fonts/sf-compact-display-thin-58646eb43a785.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Sf Compact Display 5864711817 C 30';
-  src: url('../fonts/sf-compact-display-medium-5864711817c30.otf') format('opentype');
+  src: url('/fonts/sf-compact-display-medium-5864711817c30.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
