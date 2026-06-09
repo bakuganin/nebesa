@@ -1,6 +1,28 @@
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+let supabaseHostname = null;
+
+if (supabaseUrl) {
+  try {
+    supabaseHostname = new URL(supabaseUrl).hostname;
+  } catch {
+    supabaseHostname = null;
+  }
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: supabaseHostname
+      ? [
+          {
+            protocol: "https",
+            hostname: supabaseHostname,
+            pathname: "/storage/v1/object/public/**",
+          },
+        ]
+      : [],
+  },
   async redirects() {
     return [
       { source: "/index.html", destination: "/", permanent: true },
@@ -32,4 +54,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-

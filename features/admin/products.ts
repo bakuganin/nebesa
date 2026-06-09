@@ -23,6 +23,11 @@ export type AdminProductListItem = {
   status: string;
   visibility: string;
   order_mode: string;
+  availability_status: string;
+  track_inventory: boolean;
+  stock_quantity: number;
+  low_stock_threshold: number;
+  allow_backorder: boolean;
   requires_review: boolean;
   base_price_cents: number | null;
   price_kind: string;
@@ -43,6 +48,11 @@ export type AdminProductFormRecord = {
   status: string;
   visibility: string;
   order_mode: string;
+  availability_status: string;
+  track_inventory: boolean;
+  stock_quantity: number;
+  low_stock_threshold: number;
+  allow_backorder: boolean;
   requires_review: boolean;
   base_price_cents: number | null;
   price_kind: string;
@@ -52,6 +62,16 @@ export type AdminProductFormRecord = {
   updated_at: string;
 };
 
+export type AdminProductImage = {
+  id: string;
+  url: string;
+  alt: string | null;
+  storage_bucket: string;
+  storage_path: string | null;
+  sort_order: number;
+  is_primary: boolean;
+};
+
 export type AdminProductsPageData = {
   products: AdminProductListItem[];
   count: number;
@@ -59,6 +79,7 @@ export type AdminProductsPageData = {
 
 export type AdminProductFormData = {
   product: AdminProductFormRecord | null;
+  images: AdminProductImage[];
   categories: AdminCategory[];
 };
 
@@ -86,6 +107,7 @@ const emptyProductsPageData: AdminProductsPageData = {
 
 const emptyProductFormData: AdminProductFormData = {
   product: null,
+  images: [],
   categories: [],
 };
 
@@ -121,6 +143,11 @@ function mapProductRow(row: ProductRow): AdminProductListItem {
     status: row.status,
     visibility: row.visibility,
     order_mode: row.order_mode,
+    availability_status: row.availability_status,
+    track_inventory: row.track_inventory,
+    stock_quantity: row.stock_quantity,
+    low_stock_threshold: row.low_stock_threshold,
+    allow_backorder: row.allow_backorder,
     requires_review: row.requires_review,
     base_price_cents: row.base_price_cents,
     price_kind: row.price_kind,
@@ -144,6 +171,11 @@ export async function getAdminProductsPageData(): Promise<AdminQueryResult<Admin
           status,
           visibility,
           order_mode,
+          availability_status,
+          track_inventory,
+          stock_quantity,
+          low_stock_threshold,
+          allow_backorder,
           requires_review,
           base_price_cents,
           price_kind,
@@ -201,13 +233,21 @@ export async function getAdminProductFormData(
       ? supabase
           .from("products")
           .select(
-            "id, category_id, slug, title, short_description, description, status, visibility, order_mode, requires_review, base_price_cents, price_kind, price_note, currency, sort_order, updated_at",
+            "id, category_id, slug, title, short_description, description, status, visibility, order_mode, availability_status, track_inventory, stock_quantity, low_stock_threshold, allow_backorder, requires_review, base_price_cents, price_kind, price_note, currency, sort_order, updated_at",
           )
           .eq("id", productId)
           .maybeSingle()
       : Promise.resolve({ data: null, error: null });
 
-    const [categoriesResult, productResult] = await Promise.all([categoriesPromise, productPromise]);
+    const imagesPromise = productId
+      ? supabase
+          .from("product_images")
+          .select("id, url, alt, storage_bucket, storage_path, sort_order, is_primary")
+          .eq("product_id", productId)
+          .order("sort_order", { ascending: true })
+      : Promise.resolve({ data: [], error: null });
+
+    const [categoriesResult, productResult, imagesResult] = await Promise.all([categoriesPromise, productPromise, imagesPromise]);
 
     if (categoriesResult.error) {
       throw categoriesResult.error;
@@ -217,9 +257,14 @@ export async function getAdminProductFormData(
       throw productResult.error;
     }
 
+    if (imagesResult.error) {
+      throw imagesResult.error;
+    }
+
     return {
       categories: (categoriesResult.data ?? []) as AdminCategory[],
       product: (productResult.data ?? null) as AdminProductFormRecord | null,
+      images: (imagesResult.data ?? []) as AdminProductImage[],
     };
   }, adminReadRoles);
 }

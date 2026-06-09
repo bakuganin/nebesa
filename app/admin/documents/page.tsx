@@ -11,7 +11,12 @@ const documentColumns: DataTableColumn<GeneratedDocumentRow>[] = [
     header: "Файл",
     cell: (document) => (
       <div>
-        <div className="font-medium">{document.storage_path}</div>
+        <Link
+          href={`/admin/documents/${document.id}/download`}
+          className="break-all font-medium text-[#1f2528] underline-offset-4 hover:underline"
+        >
+          {document.storage_path}
+        </Link>
         <div className="mt-1 text-xs text-[#6b7671]">{document.storage_bucket}</div>
       </div>
     ),

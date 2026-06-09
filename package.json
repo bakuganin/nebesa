@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "extract:catalog": "node scripts/extract-catalog.mjs"
+    "extract:catalog": "node scripts/extract-catalog.mjs",
+    "publish:catalog": "node scripts/publish-catalog.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.0",

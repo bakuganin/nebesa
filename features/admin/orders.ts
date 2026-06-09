@@ -73,6 +73,20 @@ export type AdminOrderDetail = {
   }>;
 };
 
+export type AdminOrderDocumentTemplate = {
+  id: string;
+  title: string;
+  slug: string;
+};
+
+export type AdminOrderGeneratedDocument = {
+  id: string;
+  template_id: string | null;
+  storage_bucket: string;
+  storage_path: string;
+  created_at: string;
+};
+
 export type AdminOrdersPageData = {
   orders: AdminOrderListItem[];
   count: number;
@@ -80,6 +94,8 @@ export type AdminOrdersPageData = {
 
 export type AdminOrderDetailPageData = {
   order: AdminOrderDetail | null;
+  documentTemplates: AdminOrderDocumentTemplate[];
+  generatedDocuments: AdminOrderGeneratedDocument[];
 };
 
 const emptyOrdersPageData: AdminOrdersPageData = {
@@ -89,6 +105,8 @@ const emptyOrdersPageData: AdminOrdersPageData = {
 
 const emptyOrderDetailPageData: AdminOrderDetailPageData = {
   order: null,
+  documentTemplates: [],
+  generatedDocuments: [],
 };
 
 export async function getAdminOrdersPageData(
@@ -107,11 +125,33 @@ export async function getAdminOrdersPageData(
 export async function getAdminOrderDetailPageData(
   orderId: string,
 ): Promise<AdminQueryResult<AdminOrderDetailPageData>> {
-  return runAdminQuery(emptyOrderDetailPageData, async () => {
-    const order = await getAdminOrderById(orderId);
+  return runAdminQuery(emptyOrderDetailPageData, async ({ supabase }) => {
+    const [order, templatesResult, documentsResult] = await Promise.all([
+      getAdminOrderById(orderId),
+      supabase
+        .from("document_templates")
+        .select("id, title, slug")
+        .eq("is_active", true)
+        .order("title", { ascending: true }),
+      supabase
+        .from("generated_documents")
+        .select("id, template_id, storage_bucket, storage_path, created_at")
+        .eq("order_id", orderId)
+        .order("created_at", { ascending: false }),
+    ]);
+
+    if (templatesResult.error) {
+      throw templatesResult.error;
+    }
+
+    if (documentsResult.error) {
+      throw documentsResult.error;
+    }
 
     return {
       order: (order ?? null) as unknown as AdminOrderDetail | null,
+      documentTemplates: (templatesResult.data ?? []) as AdminOrderDocumentTemplate[],
+      generatedDocuments: (documentsResult.data ?? []) as AdminOrderGeneratedDocument[],
     };
   }, adminReadRoles);
 }

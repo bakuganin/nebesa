@@ -5154,14 +5154,30 @@
       "sortOrder": 1,
       "slug": "memorial-204",
       "title": "Памятник 204",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 16200,
       "priceNote": "from",
       "priceText": "От 162.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x350x50",
+            "weight": "29kg"
+          },
+          {
+            "dimensions": "700x500x70",
+            "weight": "74kg"
+          },
+          {
+            "dimensions": "600x450x50",
+            "weight": "41kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x350x50",
@@ -5281,8 +5297,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5290,14 +5306,30 @@
       "sortOrder": 2,
       "slug": "memorial-209",
       "title": "Памятник 209",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 16200,
       "priceNote": "from",
       "priceText": "От 162.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "600x450x50",
+            "weight": "29kg"
+          },
+          {
+            "dimensions": "800x600x70",
+            "weight": "29kg"
+          },
+          {
+            "dimensions": "700x500x70",
+            "weight": "29kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "600x450x50",
@@ -5404,8 +5436,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5413,14 +5445,34 @@
       "sortOrder": 3,
       "slug": "memorial-201",
       "title": "Памятник 201",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 16200,
       "priceNote": "from",
       "priceText": "От 162.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x350x50",
+            "weight": "29kg"
+          },
+          {
+            "dimensions": "700x500x70",
+            "weight": "74kg"
+          },
+          {
+            "dimensions": "600x450x60",
+            "weight": "45kg"
+          },
+          {
+            "dimensions": "800x600x70",
+            "weight": "84kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x350x50",
@@ -5560,8 +5612,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5569,14 +5621,17 @@
       "sortOrder": 4,
       "slug": "memorial-262225",
       "title": "Памятник 262225",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 16200,
       "priceNote": "from",
       "priceText": "От 162.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": []
+      },
       "technicalSpecs": [],
       "images": [
         {
@@ -5595,8 +5650,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5604,14 +5659,26 @@
       "sortOrder": 5,
       "slug": "memorial-202",
       "title": "Памятник 202",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 22200,
       "priceNote": "from",
       "priceText": "От 222.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "450x600x50",
+            "weight": "41kg"
+          },
+          {
+            "dimensions": "500x700x70",
+            "weight": "74kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "450x600x50",
@@ -5648,8 +5715,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5657,14 +5724,30 @@
       "sortOrder": 6,
       "slug": "memorial-210",
       "title": "Памятник 210",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 22200,
       "priceNote": "from",
       "priceText": "От 222.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x350x50",
+            "weight": "41kg"
+          },
+          {
+            "dimensions": "800x600x70",
+            "weight": "100kg"
+          },
+          {
+            "dimensions": "700x500x70",
+            "weight": "74kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x350x50",
@@ -5784,8 +5867,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5793,14 +5876,26 @@
       "sortOrder": 7,
       "slug": "memorial-213",
       "title": "Памятник 213",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 23400,
       "priceNote": "from",
       "priceText": "От 234.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "450x600x50",
+            "weight": "41kg"
+          },
+          {
+            "dimensions": "500x700x70",
+            "weight": "74kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "450x600x50",
@@ -5837,8 +5932,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5846,14 +5941,26 @@
       "sortOrder": 8,
       "slug": "memorial-212",
       "title": "Памятник 212",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 28200,
       "priceNote": "from",
       "priceText": "От 282.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x600x50",
+            "weight": "45kg"
+          },
+          {
+            "dimensions": "600x720x70",
+            "weight": "91kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x600x50",
@@ -5890,8 +5997,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5899,14 +6006,26 @@
       "sortOrder": 9,
       "slug": "memorial-211",
       "title": "Памятник 211",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 31800,
       "priceNote": "from",
       "priceText": "От 318.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x600x50",
+            "weight": "45kg"
+          },
+          {
+            "dimensions": "600x720x70",
+            "weight": "91kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x600x50",
@@ -5943,8 +6062,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5952,14 +6071,22 @@
       "sortOrder": 10,
       "slug": "memorial-232",
       "title": "Памятник 232",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 35700,
       "priceNote": "from",
       "priceText": "От 357.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "450x800x50",
+            "weight": "95kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "450x800x50",
@@ -5988,8 +6115,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -5997,14 +6124,22 @@
       "sortOrder": 11,
       "slug": "memorial-233",
       "title": "Памятник 233",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 35700,
       "priceNote": "from",
       "priceText": "От 357.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "450x800x50",
+            "weight": "54kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "450x800x50",
@@ -6050,8 +6185,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6059,14 +6194,26 @@
       "sortOrder": 12,
       "slug": "memorial-208",
       "title": "Памятник 208",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 45000,
       "priceNote": "from",
       "priceText": "От 450.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x700x70",
+            "weight": "74kg"
+          },
+          {
+            "dimensions": "600x800x70",
+            "weight": "100kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x700x70",
@@ -6166,8 +6313,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6175,14 +6322,26 @@
       "sortOrder": 13,
       "slug": "memorial-2082",
       "title": "Памятник 2082",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 45000,
       "priceNote": "from",
       "priceText": "От 450.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "700x500x70",
+            "weight": "74kg"
+          },
+          {
+            "dimensions": "800x600x70",
+            "weight": "110kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "700x500x70",
@@ -6261,8 +6420,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6270,14 +6429,22 @@
       "sortOrder": 14,
       "slug": "memorial-236",
       "title": "Памятник 236",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 59700,
       "priceNote": "from",
       "priceText": "От 597.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x900x70",
+            "weight": "95kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x900x70",
@@ -6306,8 +6473,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6315,14 +6482,22 @@
       "sortOrder": 15,
       "slug": "memorial-234",
       "title": "Памятник 234",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 59700,
       "priceNote": "fixed",
       "priceText": "597.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "500x900x70",
+            "weight": "95kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "500x900x70",
@@ -6360,8 +6535,8 @@
           "selectedPriceText": "597.00€"
         }
       ],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6369,14 +6544,22 @@
       "sortOrder": 16,
       "slug": "memorial-221",
       "title": "Памятник 221",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 63000,
       "priceNote": "from",
       "priceText": "От 630.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "800x600x70",
+            "weight": "101kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "800x600x70",
@@ -6405,8 +6588,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6414,14 +6597,22 @@
       "sortOrder": 17,
       "slug": "memorial-222",
       "title": "Памятник 222",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 66000,
       "priceNote": "from",
       "priceText": "От 660.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "600x800x70",
+            "weight": "101kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "600x800x70",
@@ -6501,8 +6692,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6510,14 +6701,22 @@
       "sortOrder": 18,
       "slug": "memorial-291",
       "title": "Памятник 291",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 90000,
       "priceNote": "from",
       "priceText": "От 900.00€",
       "notes": [],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "800x900x70",
+            "weight": "133kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "800x900x70",
@@ -6597,8 +6796,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6606,9 +6805,9 @@
       "sortOrder": 19,
       "slug": "memorial-292",
       "title": "Памятник 292",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 180000,
       "priceNote": "from",
@@ -6616,6 +6815,14 @@
       "notes": [
         "без вазы"
       ],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "1100x1200x70",
+            "weight": "274kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "1100x1200x70",
@@ -6695,8 +6902,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6704,9 +6911,9 @@
       "sortOrder": 20,
       "slug": "memorial-293",
       "title": "Памятник 293",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 210000,
       "priceNote": "from",
@@ -6714,6 +6921,14 @@
       "notes": [
         "без ваз"
       ],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "1100x1500x70",
+            "weight": "347kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "1100x1500x70",
@@ -6742,8 +6957,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6751,9 +6966,9 @@
       "sortOrder": 21,
       "slug": "memorial-294",
       "title": "Памятник 294",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 300000,
       "priceNote": "from",
@@ -6761,6 +6976,14 @@
       "notes": [
         "+скульптура, ручная работа"
       ],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "800x600x150",
+            "weight": "200kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "800x600x150",
@@ -6840,8 +7063,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6849,9 +7072,9 @@
       "sortOrder": 22,
       "slug": "memorial-295",
       "title": "Памятник 295",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "memorials",
       "minPriceCents": 300000,
       "priceNote": "from",
@@ -6859,6 +7082,14 @@
       "notes": [
         "+скульптура, ручная работа"
       ],
+      "specs": {
+        "technicalSpecs": [
+          {
+            "dimensions": "700х700х150",
+            "weight": "170kg"
+          }
+        ]
+      },
       "technicalSpecs": [
         {
           "dimensions": "700х700х150",
@@ -6887,8 +7118,8 @@
       "variants": [],
       "optionGroups": [],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -6896,14 +7127,32 @@
       "sortOrder": 1,
       "slug": "grave-border-01",
       "title": "Гранитная оградка со столбиками",
-      "status": "draft",
-      "visibility": "private",
+      "status": "active",
+      "visibility": "public",
       "orderMode": "inquiry_only",
       "categorySlug": "grave-borders",
       "minPriceCents": 42000,
       "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
+      "specs": {
+        "priceMatrix": [
+          {
+            "capacity": "1 местная",
+            "productPriceCents": 42000,
+            "installationPriceCents": 37000,
+            "productPriceText": "420€",
+            "installationPriceText": "370€"
+          },
+          {
+            "capacity": "2 местная",
+            "productPriceCents": 52500,
+            "installationPriceCents": 47000,
+            "productPriceText": "525€",
+            "installationPriceText": "470€"
+          }
+        ]
+      },
       "images": [
         {
           "src": "../images/Pillar3.jpg",
@@ -7074,8 +7323,8 @@
         }
       ],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -7083,14 +7332,32 @@
       "sortOrder": 2,
       "slug": "grave-border-02",
       "title": "Облицовка гранитом с полустолбиками",
-      "status": "draft",
-      "visibility": "private",
+      "status": "active",
+      "visibility": "public",
       "orderMode": "inquiry_only",
       "categorySlug": "grave-borders",
       "minPriceCents": 42000,
       "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
+      "specs": {
+        "priceMatrix": [
+          {
+            "capacity": "1 местная",
+            "productPriceCents": 42000,
+            "installationPriceCents": 37500,
+            "productPriceText": "420€",
+            "installationPriceText": "375€"
+          },
+          {
+            "capacity": "2 местная",
+            "productPriceCents": 52500,
+            "installationPriceCents": 47000,
+            "productPriceText": "525€",
+            "installationPriceText": "470€"
+          }
+        ]
+      },
       "images": [
         {
           "src": "../images/HalfPillar2.jpg",
@@ -7291,8 +7558,8 @@
           ]
         }
       ],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -7300,14 +7567,32 @@
       "sortOrder": 3,
       "slug": "grave-border-03",
       "title": "Гранитная оградка СТАНДАРТ со столбиками",
-      "status": "draft",
-      "visibility": "private",
+      "status": "active",
+      "visibility": "public",
       "orderMode": "inquiry_only",
       "categorySlug": "grave-borders",
       "minPriceCents": 65000,
       "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
+      "specs": {
+        "priceMatrix": [
+          {
+            "capacity": "1 местная",
+            "productPriceCents": 65000,
+            "installationPriceCents": 44500,
+            "productPriceText": "650€",
+            "installationPriceText": "445€"
+          },
+          {
+            "capacity": "2 местная",
+            "productPriceCents": 85000,
+            "installationPriceCents": 54500,
+            "productPriceText": "850€",
+            "installationPriceText": "545€"
+          }
+        ]
+      },
       "images": [
         {
           "src": "../images/StandartPillar1.jpg",
@@ -7502,8 +7787,8 @@
         }
       ],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",
@@ -7511,14 +7796,32 @@
       "sortOrder": 4,
       "slug": "grave-border-04",
       "title": "Гранитная оградка МАССИВ со столбиками",
-      "status": "draft",
-      "visibility": "private",
+      "status": "active",
+      "visibility": "public",
       "orderMode": "inquiry_only",
       "categorySlug": "grave-borders",
       "minPriceCents": 110000,
       "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
+      "specs": {
+        "priceMatrix": [
+          {
+            "capacity": "1 местная",
+            "productPriceCents": 110000,
+            "installationPriceCents": 55000,
+            "productPriceText": "1100€",
+            "installationPriceText": "550€"
+          },
+          {
+            "capacity": "2 местная",
+            "productPriceCents": 145000,
+            "installationPriceCents": 70000,
+            "productPriceText": "1450€",
+            "installationPriceText": "700€"
+          }
+        ]
+      },
       "images": [
         {
           "src": "../images/ArrayPillar1.jpg",
@@ -7689,8 +7992,8 @@
         }
       ],
       "importWarnings": [],
-      "importStatus": "review_required",
-      "needsReview": true
+      "importStatus": "public_catalog",
+      "needsReview": false
     }
   ],
   "summary": {

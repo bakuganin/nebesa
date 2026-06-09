@@ -2,6 +2,8 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { mainLinks } from "./navigation";
+
 export type StaticPageSlug =
   | "home"
   | "faq"
@@ -54,6 +56,56 @@ function extractMatch(source: string, pattern: RegExp): string {
   return source.match(pattern)?.[1]?.trim() ?? "";
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function activeNavClass(active: boolean): string {
+  return active ? " navbar_link w-nav-link w--current" : " navbar_link w-nav-link";
+}
+
+function isLegacyLinkActive(href: string, route: string): boolean {
+  if (href === route) return true;
+  if (route === "/" && href === "/#services-section") return false;
+  if (href.includes("?")) return false;
+
+  return route.startsWith("/services/") && href === route;
+}
+
+function renderLegacyNav(route: string): string {
+  return mainLinks
+    .map((link) => {
+      const childActive = link.children?.some((child) => isLegacyLinkActive(child.href, route)) ?? false;
+      const active = isLegacyLinkActive(link.href, route) || childActive;
+
+      if (!link.children?.length) {
+        return `<a href="${escapeHtml(link.href)}"${active ? ' aria-current="page"' : ""} class="${activeNavClass(active).trim()}">${escapeHtml(link.label)}</a>`;
+      }
+
+      return [
+        `<div class="navbar_dropdown w-dropdown">`,
+        `<button type="button" class="navbar_dropdown-toggle navbar_link w-nav-link w-dropdown-toggle${active ? " w--current" : ""}" aria-expanded="false"${active ? ' aria-current="page"' : ""}>`,
+        `<span>${escapeHtml(link.label)}</span>`,
+        `<span class="navbar_dropdown-icon" aria-hidden="true">⌄</span>`,
+        "</button>",
+        `<nav class="navbar_dropdown-list w-dropdown-list" aria-label="${escapeHtml(link.label)}">`,
+        link.children
+          .map((child) => {
+            const childActive = isLegacyLinkActive(child.href, route);
+            return `<a href="${escapeHtml(child.href)}"${childActive ? ' aria-current="page"' : ""} class="navbar_dropdown-link${childActive ? " w--current" : ""}">${escapeHtml(child.label)}</a>`;
+          })
+          .join(""),
+        "</nav>",
+        "</div>",
+      ].join("");
+    })
+    .join("");
+}
+
 function rewriteLegacyHtml(html: string, route: string): string {
   return html
     .replace(/<script\b[\s\S]*?<\/script>/gi, "")
@@ -83,6 +135,10 @@ function rewriteLegacyHtml(html: string, route: string): string {
     .replace(/\bhref="#"([^>]*class="footer_legal-link"[^>]*>\s*Terms\s*<\/a>)/gi, 'href="/terms"$1')
     .replace(/\bhref="#"([^>]*class="footer_legal-link"[^>]*>\s*Privacy\s*<\/a>)/gi, 'href="/privacy"$1')
     .replace(/\bhref="#"([^>]*class="footer_legal-link"[^>]*>\s*Cookies\s*<\/a>)/gi, 'href="/cookies"$1')
+    .replace(
+      /<nav role="navigation" class="navbar_menu is-page-height-tablet w-nav-menu">[\s\S]*?<\/nav>/i,
+      `<nav role="navigation" class="navbar_menu is-page-height-tablet w-nav-menu">${renderLegacyNav(route)}</nav>`,
+    )
     .replace(/aria-current="page"/g, "")
     .replace(new RegExp(`href="${route}"`, "g"), `href="${route}" aria-current="page"`);
 }

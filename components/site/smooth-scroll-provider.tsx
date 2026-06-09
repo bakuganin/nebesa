@@ -28,9 +28,10 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
         anchors: true,
         autoRaf: true,
         allowNestedScroll: true,
-        wheelMultiplier: 0.9,
+        smoothWheel: true,
+        wheelMultiplier: 0.7,
         touchMultiplier: 1.2,
-        duration: 0.8,
+        duration: 1.12,
         prevent: shouldUseNativeScroll,
       });
     });

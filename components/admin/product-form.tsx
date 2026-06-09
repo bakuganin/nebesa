@@ -163,6 +163,68 @@ export function ProductForm({
             Требует проверки перед публикацией
           </label>
         </div>
+        <div className="grid gap-4 rounded-md border border-[#d8dedc] bg-white p-5 lg:grid-cols-3">
+          <FormField label="Наличие" htmlFor="product-availability-status">
+            <select
+              id="product-availability-status"
+              name="availability_status"
+              defaultValue={product?.availability_status ?? "available"}
+              className={inputClassName}
+            >
+              <option value="available">В наличии</option>
+              <option value="out_of_stock">Нет в наличии</option>
+              <option value="made_to_order">Под заказ</option>
+            </select>
+          </FormField>
+          <FormField label="Остаток" htmlFor="product-stock-quantity">
+            <input
+              id="product-stock-quantity"
+              name="stock_quantity"
+              type="number"
+              min="0"
+              defaultValue={product?.stock_quantity ?? 0}
+              className={inputClassName}
+            />
+          </FormField>
+          <FormField label="Порог малого остатка" htmlFor="product-low-stock-threshold">
+            <input
+              id="product-low-stock-threshold"
+              name="low_stock_threshold"
+              type="number"
+              min="0"
+              defaultValue={product?.low_stock_threshold ?? 0}
+              className={inputClassName}
+            />
+          </FormField>
+          <label className="flex items-center gap-3 text-sm font-medium text-[#1f2528]">
+            <input
+              name="track_inventory"
+              type="checkbox"
+              defaultChecked={product?.track_inventory ?? false}
+              className="h-4 w-4 rounded border-[#cbd4d0]"
+            />
+            Учитывать остаток
+          </label>
+          <label className="flex items-center gap-3 text-sm font-medium text-[#1f2528]">
+            <input
+              name="allow_backorder"
+              type="checkbox"
+              defaultChecked={product?.allow_backorder ?? false}
+              className="h-4 w-4 rounded border-[#cbd4d0]"
+            />
+            Разрешить заказ сверх остатка
+          </label>
+          <div className="lg:col-span-3">
+            <FormField label="Комментарий к изменению остатка" htmlFor="product-stock-note">
+              <input
+                id="product-stock-note"
+                name="stock_note"
+                placeholder="Например: инвентаризация склада"
+                className={inputClassName}
+              />
+            </FormField>
+          </div>
+        </div>
       </fieldset>
       <div>
         <button

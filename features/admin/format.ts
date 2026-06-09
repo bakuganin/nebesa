@@ -46,6 +46,12 @@ export const orderModeLabels: Record<string, string> = {
   inquiry_only: "Заявка",
 };
 
+export const availabilityStatusLabels: Record<string, string> = {
+  available: "В наличии",
+  out_of_stock: "Нет в наличии",
+  made_to_order: "Под заказ",
+};
+
 export const orderStatusLabels: Record<string, string> = {
   new: "Новый",
   confirmed: "Подтвержден",

@@ -1,19 +1,74 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { contactDetails } from "@/content/contact";
 import { mainLinks } from "@/content/navigation";
+
+type NavLink = (typeof mainLinks)[number];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
+  const navRef = useRef<HTMLElement | null>(null);
 
   function closeAll() {
     setOpen(false);
     setOpenDropdown(null);
   }
+
+  function isActive(link: NavLink) {
+    if (link.children?.some((child) => child.href.split("?")[0] === pathname)) {
+      return true;
+    }
+
+    return link.href === pathname;
+  }
+
+  function toggleDropdown(link: NavLink) {
+    const isDesktop = typeof window !== "undefined" && window.innerWidth >= 992;
+
+    setOpenDropdown((current) => {
+      if (isDesktop) {
+        return link.href;
+      }
+
+      return current === link.href ? null : link.href;
+    });
+  }
+
+  function handleDesktopDropdownHover(link: NavLink | null) {
+    if (typeof window === "undefined" || window.innerWidth < 992) {
+      return;
+    }
+
+    setOpenDropdown(link?.href ?? null);
+  }
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpenDropdown(null);
+      }
+    }
+
+    function onPointerDown(event: PointerEvent) {
+      if (!navRef.current?.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, []);
 
   return (
     <div className="navbar_component w-nav" role="banner" data-collapse="medium" style={{ opacity: 1 }}>
@@ -23,34 +78,36 @@ export function Header() {
             <div className="heading-12">NEBESA</div>
           </div>
         </Link>
-        <nav role="navigation" className="navbar_menu is-page-height-tablet w-nav-menu" data-nav-menu-open={open ? "" : undefined}>
+        <nav
+          ref={navRef}
+          role="navigation"
+          className={`navbar_menu is-page-height-tablet w-nav-menu ${open ? "is-open" : ""}`}
+          data-nav-menu-open={open ? "" : undefined}
+        >
           {mainLinks.map((link) =>
             link.children?.length ? (
               <div
                 key={link.href}
-                className={`relative inline-block ${openDropdown === link.href ? "w--open" : ""}`}
-                onMouseEnter={() => setOpenDropdown(link.href)}
-                onMouseLeave={() => setOpenDropdown(null)}
+                className={`navbar_dropdown ${openDropdown === link.href ? "w--open" : ""}`}
+                onMouseEnter={() => handleDesktopDropdownHover(link)}
+                onMouseLeave={() => handleDesktopDropdownHover(null)}
               >
                 <button
                   type="button"
-                  className="navbar_link w-nav-link inline-flex items-center gap-1"
+                  className={`navbar_dropdown-toggle navbar_link w-nav-link ${isActive(link) ? "w--current" : ""}`}
                   aria-expanded={openDropdown === link.href}
-                  onClick={() => setOpenDropdown((current) => (current === link.href ? null : link.href))}
+                  aria-current={isActive(link) ? "page" : undefined}
+                  onClick={() => toggleDropdown(link)}
                 >
-                  {link.label}
-                  <ChevronDown aria-hidden="true" size={14} />
+                  <span>{link.label}</span>
+                  <ChevronDown aria-hidden="true" className="navbar_dropdown-chevron" size={14} />
                 </button>
-                <div
-                  className={`z-30 min-w-56 rounded-md border border-black/10 bg-white py-2 shadow-lg md:absolute md:left-0 md:top-full ${
-                    openDropdown === link.href ? "block" : "hidden"
-                  }`}
-                >
+                <div className="navbar_dropdown-list">
                   {link.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block px-4 py-2 text-sm text-ink hover:bg-mist"
+                      className="navbar_dropdown-link"
                       onClick={closeAll}
                     >
                       {child.label}
@@ -59,7 +116,13 @@ export function Header() {
                 </div>
               </div>
             ) : (
-              <Link key={link.href} href={link.href} className="navbar_link w-nav-link" onClick={closeAll}>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`navbar_link w-nav-link ${isActive(link) ? "w--current" : ""}`}
+                aria-current={isActive(link) ? "page" : undefined}
+                onClick={closeAll}
+              >
                 {link.label}
               </Link>
             ),

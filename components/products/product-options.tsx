@@ -6,7 +6,7 @@ import { Phone, ShoppingCart } from "lucide-react";
 import { useCart } from "@/components/cart/cart-provider";
 import { contactDetails } from "@/content/contact";
 import type { ProductDetail } from "@/features/products/queries";
-import { formatCurrency } from "@/lib/format";
+import { productPriceLabel, productPriceNoteLabel } from "./product-price";
 
 function firstPrimaryImage(product: ProductDetail): string | null {
   return (
@@ -57,7 +57,11 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
     return base + materialDelta + optionsDelta;
   }, [activeMaterial?.price_delta_cents, activeVariant?.price_cents, product.base_price_cents, product.order_mode, selectedOptionRows]);
 
-  const canAdd = product.order_mode === "priced" && unitPriceCents != null;
+  const stockLimit = product.track_inventory && !product.allow_backorder ? Math.max(0, product.stock_quantity) : 20;
+  const maxQuantity = Math.min(20, Math.max(1, stockLimit || 1));
+  const outOfStock = product.availability_status === "out_of_stock" || (product.track_inventory && product.stock_quantity <= 0 && !product.allow_backorder);
+  const canAdd = product.order_mode === "priced" && unitPriceCents != null && !outOfStock;
+  const priceNote = productPriceNoteLabel(product.price_note);
 
   function handleAdd() {
     if (!canAdd) return;
@@ -89,12 +93,12 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
           <h1 className="mt-2 text-3xl font-semibold leading-tight text-ink">{product.title}</h1>
         </div>
         <div className="text-right text-xl font-semibold text-ink">
-          {product.order_mode === "inquiry_only" ? "Цена по запросу" : formatCurrency(unitPriceCents, product.currency)}
+          {productPriceLabel(product, unitPriceCents)}
         </div>
       </div>
 
       {product.short_description ? <p className="mt-4 leading-7 text-black/65">{product.short_description}</p> : null}
-      {product.price_note ? <p className="mt-2 text-sm text-black/50">{product.price_note}</p> : null}
+      {priceNote ? <p className="mt-2 text-sm text-black/50">{priceNote}</p> : null}
 
       {product.variants.length > 0 ? (
         <fieldset className="mt-6">
@@ -164,9 +168,9 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
             <input
               type="number"
               min={1}
-              max={20}
+              max={maxQuantity}
               value={quantity}
-              onChange={(event) => setQuantity(Math.max(1, Number(event.target.value)))}
+              onChange={(event) => setQuantity(Math.min(maxQuantity, Math.max(1, Number(event.target.value))))}
               className="rounded border border-black/15 px-3 py-3"
             />
           </label>
@@ -179,6 +183,14 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
             {added ? "Добавлено" : "Добавить в корзину"}
           </button>
         </div>
+      ) : outOfStock ? (
+        <button
+          type="button"
+          disabled
+          className="mt-6 inline-flex w-full cursor-not-allowed items-center justify-center rounded border border-black/10 bg-black/5 px-5 py-3 text-sm font-semibold text-black/45"
+        >
+          Нет в наличии
+        </button>
       ) : (
         <a
           href={`tel:${contactDetails.phone}`}

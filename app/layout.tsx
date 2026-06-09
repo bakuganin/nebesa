@@ -3,6 +3,7 @@ import "./globals.css";
 import "@/styles/legacy/normalize.css";
 import "@/styles/legacy/webflow-base.css";
 import "@/styles/legacy/nebesa-style.css";
+import "./overrides.css";
 
 export const metadata: Metadata = {
   title: "NEBESA",

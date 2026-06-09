@@ -52,4 +52,34 @@ describe("catalog seed", () => {
 
     expect(invalidNotes).toEqual([]);
   });
+
+  test("publishes a safe public catalog subset", () => {
+    const seed = JSON.parse(readFileSync("supabase/seed/catalog.seed.json", "utf8")) as {
+      products: Array<{
+        status: string;
+        visibility: string;
+        needsReview: boolean;
+        orderMode: string;
+        priceNote: string | null;
+        minPriceCents: number | null;
+        slug: string;
+        importWarnings?: Array<{ code?: string }>;
+      }>;
+    };
+    const publicProducts = seed.products.filter(
+      (product) => product.status === "active" && product.visibility === "public" && !product.needsReview,
+    );
+    const unsafePricedProducts = publicProducts
+      .filter(
+        (product) =>
+          product.orderMode === "priced" &&
+          (product.priceNote !== "fixed" ||
+            product.minPriceCents == null ||
+            (product.importWarnings ?? []).some((warning) => warning.code === "multiple_price_blocks")),
+      )
+      .map((product) => `${product.slug}:${product.priceNote}:${product.minPriceCents}`);
+
+    expect(publicProducts.length).toBeGreaterThanOrEqual(3);
+    expect(unsafePricedProducts).toEqual([]);
+  });
 });

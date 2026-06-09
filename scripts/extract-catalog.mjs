@@ -448,27 +448,31 @@ function extractMemorialProducts(html) {
         });
       }
 
+      const importWarnings = collectImportWarnings(images, extraWarnings);
+      const hasPriceWarnings = extraWarnings.length > 0;
+
       return {
         sourcePage: MEMORIALS_PAGE,
         sourceKey,
         sortOrder: index + 1,
         slug: `memorial-${slugify(sourceKey)}`,
         title: `Памятник ${sourceKey}`,
-        status: "draft",
-        visibility: "private",
-        orderMode: "disabled",
+        status: "active",
+        visibility: "public",
+        orderMode: parsedPrice.priceNote === "fixed" && !hasPriceWarnings ? "priced" : "inquiry_only",
         categorySlug: "memorials",
         minPriceCents: parsedPrice.minPriceCents,
         priceNote: parsedPrice.priceNote,
         priceText: parsedPrice.priceText,
         notes: parsedPrice.notes,
+        specs: { technicalSpecs },
         technicalSpecs,
         images,
         variants: [],
         optionGroups: [],
-        importWarnings: collectImportWarnings(images, extraWarnings),
-        importStatus: "review_required",
-        needsReview: true,
+        importWarnings,
+        importStatus: "public_catalog",
+        needsReview: false,
       };
     })
     .filter(Boolean);
@@ -543,14 +547,15 @@ function extractGraveBorders(html) {
       sortOrder: index + 1,
       slug: sourceKey,
       title,
-      status: "draft",
-      visibility: "private",
+      status: "active",
+      visibility: "public",
       orderMode: "inquiry_only",
       categorySlug: "grave-borders",
       minPriceCents: Math.min(...priceMatrix.map((row) => row.productPriceCents).filter(Number.isFinite)),
       priceNote: "Цена зависит от комплектации",
       priceText: null,
       notes: [],
+      specs: { priceMatrix },
       images,
       variants,
       optionGroups: [
@@ -592,8 +597,8 @@ function extractGraveBorders(html) {
       ],
       priceMatrix,
       importWarnings: collectImportWarnings(images, extraWarnings),
-      importStatus: "review_required",
-      needsReview: true,
+      importStatus: "public_catalog",
+      needsReview: false,
     };
   });
 }

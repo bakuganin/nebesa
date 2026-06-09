@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { AdminAccessNotice } from "@/components/admin/access-notice";
 import { DataTable, type DataTableColumn } from "@/components/admin/data-table";
 import { EmptyState } from "@/components/admin/empty-state";
@@ -7,6 +9,7 @@ import { StatusBadge } from "@/components/admin/status-badge";
 import { updateOrderStatusAction } from "@/features/admin/actions";
 import { canAdminWrite } from "@/features/admin/access";
 import { formatDateTime, formatMoney, notificationStatusLabels, orderStatusLabels } from "@/features/admin/format";
+import { generateOrderDocumentAction } from "@/features/documents/actions";
 import {
   getAdminOrderDetailPageData,
   snapshotTitle,
@@ -41,6 +44,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
   const { access, data } = await getAdminOrderDetailPageData(params.id);
   const order = data.order;
   const action = updateOrderStatusAction.bind(null, params.id);
+  const documentAction = generateOrderDocumentAction.bind(null, params.id);
   const canWrite = canAdminWrite(access);
 
   return (
@@ -115,6 +119,50 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                 Обновить статус
               </button>
             </form>
+            <form action={canWrite ? documentAction : undefined} className="grid gap-4 rounded-md border border-[#d8dedc] bg-white p-5">
+              <fieldset disabled={!canWrite || data.documentTemplates.length === 0} className="grid gap-4">
+                <FormField label="Документ" htmlFor="document-template">
+                  <select id="document-template" name="template_id" className={inputClassName} required>
+                    <option value="">Выберите шаблон</option>
+                    {data.documentTemplates.map((template) => (
+                      <option key={template.id} value={template.id}>
+                        {template.title}
+                      </option>
+                    ))}
+                  </select>
+                </FormField>
+              </fieldset>
+              <button
+                type="submit"
+                disabled={!canWrite || data.documentTemplates.length === 0}
+                className="min-h-10 rounded-md bg-[#1f2528] px-4 py-2 text-sm font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-[#59685e]/30 disabled:bg-[#9aa39f]"
+              >
+                Сгенерировать DOCX
+              </button>
+              {data.documentTemplates.length === 0 ? (
+                <p className="text-sm text-[#6b7671]">Сначала создайте активный шаблон в разделе документов.</p>
+              ) : null}
+            </form>
+            <div className="rounded-md border border-[#d8dedc] bg-white p-5">
+              <h2 className="text-base font-semibold text-[#1f2528]">Вложения</h2>
+              {data.generatedDocuments.length > 0 ? (
+                <ul className="mt-4 grid gap-3">
+                  {data.generatedDocuments.map((document) => (
+                    <li key={document.id} className="grid gap-1 rounded-md border border-[#edf1ef] p-3 text-sm">
+                      <Link
+                        href={`/admin/documents/${document.id}/download`}
+                        className="break-all font-medium text-[#1f2528] underline-offset-4 hover:underline"
+                      >
+                        {document.storage_path}
+                      </Link>
+                      <span className="text-xs text-[#6b7671]">{formatDateTime(document.created_at)}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm text-[#6b7671]">Документы для заказа пока не созданы.</p>
+              )}
+            </div>
           </aside>
         </div>
       ) : (

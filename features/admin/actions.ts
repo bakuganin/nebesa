@@ -16,6 +16,11 @@ function optionalString(formData: FormData, key: string): string | null {
   return value.length > 0 ? value : null;
 }
 
+function formInt(formData: FormData, key: string): number {
+  const value = Number.parseInt(formString(formData, key) || "0", 10);
+  return Number.isFinite(value) ? Math.max(0, value) : 0;
+}
+
 function slugFrom(value: string): string {
   return value
     .normalize("NFKD")
@@ -42,6 +47,11 @@ function productPayload(formData: FormData) {
   const slug = formString(formData, "slug") || slugFrom(title);
   const basePriceCents = centsFrom(formString(formData, "base_price_eur"));
   const priceKind = safeChoice(formString(formData, "price_kind"), ["none", "fixed", "from", "request"], "request");
+  const requestedOrderMode = safeChoice(formString(formData, "order_mode"), ["disabled", "priced", "inquiry_only"], "disabled");
+  const orderMode =
+    requestedOrderMode === "priced" && (basePriceCents == null || priceKind !== "fixed")
+      ? "inquiry_only"
+      : requestedOrderMode;
 
   return {
     category_id: optionalString(formData, "category_id"),
@@ -51,7 +61,16 @@ function productPayload(formData: FormData) {
     description: optionalString(formData, "description"),
     status: safeChoice(formString(formData, "status"), ["draft", "active", "inactive", "archived"], "draft"),
     visibility: safeChoice(formString(formData, "visibility"), ["private", "public"], "private"),
-    order_mode: safeChoice(formString(formData, "order_mode"), ["disabled", "priced", "inquiry_only"], "disabled"),
+    order_mode: orderMode,
+    availability_status: safeChoice(
+      formString(formData, "availability_status"),
+      ["available", "out_of_stock", "made_to_order"],
+      "available",
+    ),
+    track_inventory: formData.get("track_inventory") === "on",
+    stock_quantity: formInt(formData, "stock_quantity"),
+    low_stock_threshold: formInt(formData, "low_stock_threshold"),
+    allow_backorder: formData.get("allow_backorder") === "on",
     requires_review: formData.get("requires_review") === "on",
     base_price_cents: basePriceCents,
     price_kind: priceKind,
@@ -79,6 +98,15 @@ export async function createProductDraftAction(formData: FormData): Promise<void
 export async function updateProductDraftAction(productId: string, formData: FormData): Promise<void> {
   const { supabase } = await createAuthorizedAdminClient(adminWriteRoles);
   const payload = productPayload(formData);
+  const { data: previous, error: previousError } = await supabase
+    .from("products")
+    .select("stock_quantity")
+    .eq("id", productId)
+    .maybeSingle();
+
+  if (previousError) {
+    throw previousError;
+  }
 
   const { error } = await supabase.from("products").update(payload).eq("id", productId);
 
@@ -86,8 +114,167 @@ export async function updateProductDraftAction(productId: string, formData: Form
     throw error;
   }
 
+  const previousStock = typeof previous?.stock_quantity === "number" ? previous.stock_quantity : null;
+  if (previousStock !== null && previousStock !== payload.stock_quantity) {
+    const { error: movementError } = await supabase.from("product_stock_movements").insert({
+      product_id: productId,
+      delta: payload.stock_quantity - previousStock,
+      resulting_quantity: payload.stock_quantity,
+      reason: "manual_admin_adjustment",
+      note: optionalString(formData, "stock_note"),
+    });
+
+    if (movementError) {
+      throw movementError;
+    }
+  }
+
   revalidatePath("/admin/products");
   revalidatePath(`/admin/products/${productId}/edit`);
+  revalidatePath("/products");
+  revalidatePath(`/products/${payload.slug}`);
+}
+
+export async function deleteProductAction(productId: string, formData: FormData): Promise<void> {
+  const { supabase, profile } = await createAuthorizedAdminClient(adminWriteRoles);
+  const note = optionalString(formData, "delete_note");
+
+  const { error } = await supabase
+    .from("products")
+    .update({
+      status: "archived",
+      visibility: "private",
+      order_mode: "disabled",
+      deleted_at: new Date().toISOString(),
+      deleted_by: profile.user_id,
+      delete_note: note,
+    })
+    .eq("id", productId);
+
+  if (error) {
+    throw error;
+  }
+
+  revalidatePath("/admin/products");
+  revalidatePath(`/admin/products/${productId}/edit`);
+  revalidatePath("/products");
+}
+
+export type UploadedProductImage = {
+  url: string;
+  storageBucket: string;
+  storagePath: string;
+  alt?: string;
+};
+
+export async function attachProductImagesAction(productId: string, images: UploadedProductImage[]): Promise<void> {
+  const { supabase } = await createAuthorizedAdminClient(adminWriteRoles);
+
+  if (images.length === 0) return;
+
+  const { data: currentImages, error: currentError } = await supabase
+    .from("product_images")
+    .select("id, sort_order, is_primary")
+    .eq("product_id", productId)
+    .order("sort_order", { ascending: false });
+
+  if (currentError) {
+    throw currentError;
+  }
+
+  const current = currentImages ?? [];
+  const nextSortOrder = (current[0]?.sort_order ?? -1) + 1;
+  const hasPrimary = current.some((image) => image.is_primary);
+  const rows = images.map((image, index) => ({
+    product_id: productId,
+    url: image.url,
+    storage_bucket: image.storageBucket,
+    storage_path: image.storagePath,
+    alt: image.alt ?? null,
+    sort_order: nextSortOrder + index,
+    is_primary: !hasPrimary && index === 0,
+  }));
+
+  const { error } = await supabase.from("product_images").insert(rows);
+
+  if (error) {
+    throw error;
+  }
+
+  revalidatePath(`/admin/products/${productId}/edit`);
+  revalidatePath("/admin/products");
+  revalidatePath("/products");
+}
+
+export async function setPrimaryProductImageAction(productId: string, imageId: string): Promise<void> {
+  const { supabase } = await createAuthorizedAdminClient(adminWriteRoles);
+
+  const { error: clearError } = await supabase
+    .from("product_images")
+    .update({ is_primary: false })
+    .eq("product_id", productId);
+
+  if (clearError) {
+    throw clearError;
+  }
+
+  const { error } = await supabase
+    .from("product_images")
+    .update({ is_primary: true })
+    .eq("id", imageId)
+    .eq("product_id", productId);
+
+  if (error) {
+    throw error;
+  }
+
+  revalidatePath(`/admin/products/${productId}/edit`);
+  revalidatePath("/admin/products");
+  revalidatePath("/products");
+}
+
+export async function deleteProductImageAction(productId: string, imageId: string): Promise<void> {
+  const { supabase } = await createAuthorizedAdminClient(adminWriteRoles);
+  const { data: image, error: loadError } = await supabase
+    .from("product_images")
+    .select("id, storage_bucket, storage_path, is_primary")
+    .eq("id", imageId)
+    .eq("product_id", productId)
+    .maybeSingle();
+
+  if (loadError) {
+    throw loadError;
+  }
+
+  if (!image) return;
+
+  const { error } = await supabase.from("product_images").delete().eq("id", imageId).eq("product_id", productId);
+
+  if (error) {
+    throw error;
+  }
+
+  if (image.storage_path) {
+    await supabase.storage.from(image.storage_bucket).remove([image.storage_path]);
+  }
+
+  if (image.is_primary) {
+    const { data: nextImage } = await supabase
+      .from("product_images")
+      .select("id")
+      .eq("product_id", productId)
+      .order("sort_order", { ascending: true })
+      .limit(1)
+      .maybeSingle();
+
+    if (nextImage?.id) {
+      await supabase.from("product_images").update({ is_primary: true }).eq("id", nextImage.id);
+    }
+  }
+
+  revalidatePath(`/admin/products/${productId}/edit`);
+  revalidatePath("/admin/products");
+  revalidatePath("/products");
 }
 
 export async function upsertCategoryAction(formData: FormData): Promise<void> {

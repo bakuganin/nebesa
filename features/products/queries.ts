@@ -34,8 +34,15 @@ export type ProductSummary = {
   price_note: string | null;
   currency: string;
   order_mode: "disabled" | "priced" | "inquiry_only";
+  availability_status: "available" | "out_of_stock" | "made_to_order";
+  track_inventory: boolean;
+  stock_quantity: number;
+  allow_backorder: boolean;
   category: ProductCategory | null;
   images: ProductImage[];
+  variant_rows: Array<{ id: string }>;
+  option_group_rows: Array<{ id: string }>;
+  material_rows: Array<{ material_id: string }>;
 };
 
 export type ProductDetail = ProductSummary & {
@@ -146,8 +153,15 @@ export async function getActiveProducts(
         price_note,
         currency,
         order_mode,
+        availability_status,
+        track_inventory,
+        stock_quantity,
+        allow_backorder,
         category:product_categories(id, slug, title, parent_id, sort_order),
-        images:product_images(id, url, alt, sort_order, is_primary)
+        images:product_images(id, url, alt, sort_order, is_primary),
+        variant_rows:product_variants(id),
+        option_group_rows:product_option_groups(id),
+        material_rows:product_materials(material_id)
       `,
       { count: "exact" },
     )
@@ -198,6 +212,10 @@ export async function getProductBySlug(
         price_note,
         currency,
         order_mode,
+        availability_status,
+        track_inventory,
+        stock_quantity,
+        allow_backorder,
         specs,
         category:product_categories(id, slug, title, parent_id, sort_order),
         images:product_images(id, url, alt, sort_order, is_primary),

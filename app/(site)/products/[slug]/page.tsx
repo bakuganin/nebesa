@@ -6,6 +6,7 @@ import { CartDrawer } from "@/components/cart/cart-drawer";
 import { CartProvider } from "@/components/cart/cart-provider";
 import { ProductGallery } from "@/components/products/product-gallery";
 import { ProductOptions } from "@/components/products/product-options";
+import { ProductSpecs } from "@/components/products/product-specs";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { getProductBySlug, type ProductDetail } from "@/features/products/queries";
@@ -61,6 +62,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_480px]">
               <ProductGallery images={product.images} title={product.title} />
               <ProductOptions product={product} />
+              <ProductSpecs product={product} />
               {product.description ? (
                 <section className="rounded border border-black/10 bg-white p-5 shadow-sm lg:col-span-2">
                   <h2 className="text-xl font-semibold text-ink">Описание</h2>

@@ -9,6 +9,7 @@ import { canAdminWrite } from "@/features/admin/access";
 import {
   formatDateTime,
   formatMoney,
+  availabilityStatusLabels,
   orderModeLabels,
   productStatusLabels,
   productVisibilityLabels,
@@ -26,6 +27,22 @@ function statusTone(product: AdminProductListItem): "neutral" | "success" | "war
 
   if (product.status === "archived") {
     return "danger";
+  }
+
+  return "neutral";
+}
+
+function availabilityTone(product: AdminProductListItem): "neutral" | "success" | "warning" | "danger" {
+  if (product.availability_status === "out_of_stock") {
+    return "danger";
+  }
+
+  if (product.track_inventory && product.stock_quantity <= product.low_stock_threshold) {
+    return "warning";
+  }
+
+  if (product.availability_status === "available") {
+    return "success";
   }
 
   return "neutral";
@@ -75,6 +92,26 @@ const productColumns: DataTableColumn<AdminProductListItem>[] = [
   {
     header: "Заказ",
     cell: (product) => orderModeLabels[product.order_mode] ?? product.order_mode,
+  },
+  {
+    header: "Наличие",
+    cell: (product) => (
+      <div className="grid gap-1">
+        <StatusBadge
+          label={availabilityStatusLabels[product.availability_status] ?? product.availability_status}
+          tone={availabilityTone(product)}
+        />
+        {product.allow_backorder ? <span className="text-xs text-[#6b7671]">Бэкордер разрешен</span> : null}
+      </div>
+    ),
+  },
+  {
+    header: "Остаток",
+    cell: (product) => (
+      <span className={product.track_inventory && product.stock_quantity <= product.low_stock_threshold ? "font-medium text-[#6c4f19]" : ""}>
+        {product.track_inventory ? product.stock_quantity : "Не учитывается"}
+      </span>
+    ),
   },
   {
     header: "Цена",
