@@ -2,6 +2,48 @@
 
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    VANTA?: {
+      CLOUDS?: (options: Record<string, unknown>) => { destroy?: () => void };
+    };
+  }
+}
+
+const remoteScriptPromises = new Map<string, Promise<void>>();
+const threeScriptUrl = "https://uploads-ssl.webflow.com/5d932bf11608325eac058a21/5d932d68160832c7c0059c91_three.r92.min.txt";
+const vantaCloudsScriptUrl = "https://uploads-ssl.webflow.com/5d932bf11608325eac058a21/5d93301de2a4d93ad0b1fe54_vanta.clouds.min.txt";
+
+function loadRemoteScript(src: string) {
+  const existing = remoteScriptPromises.get(src);
+  if (existing) return existing;
+
+  const promise = new Promise<void>((resolve, reject) => {
+    const currentScript = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`);
+    if (currentScript?.dataset.loaded === "true") {
+      resolve();
+      return;
+    }
+
+    const script = currentScript ?? document.createElement("script");
+    script.src = src;
+    script.async = false;
+    script.addEventListener(
+      "load",
+      () => {
+        script.dataset.loaded = "true";
+        resolve();
+      },
+      { once: true },
+    );
+    script.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), { once: true });
+    if (!currentScript) document.head.appendChild(script);
+  });
+
+  remoteScriptPromises.set(src, promise);
+  return promise;
+}
+
 function setOpen(element: HTMLElement, open: boolean) {
   element.classList.toggle("w--open", open);
   element.setAttribute("aria-expanded", String(open));
@@ -11,12 +53,110 @@ export function LegacyInteractions() {
   useEffect(() => {
     const cleanups: Array<() => void> = [];
 
-    document.documentElement.classList.add("w-mod-js");
-    document.querySelectorAll<HTMLElement>('[style*="opacity:0"]').forEach((node) => {
+    document.documentElement.classList.add(
+      "w-mod-js",
+      "w-mod-ix",
+      "wf-active",
+      "wf-opensans-n4-active",
+      "wf-opensans-n6-active",
+      "wf-opensans-n7-active",
+      "wf-montserrat-n4-active",
+      "wf-montserrat-n5-active",
+      "wf-montserrat-n6-active",
+      "wf-montserrat-n7-active",
+      "wf-changaone-n4-active",
+      "wf-oswald-n4-active",
+    );
+
+    const sky = document.querySelector<HTMLElement>("#sky");
+    let skyCancelled = false;
+    let skyEffect: { destroy?: () => void } | undefined;
+    if (sky) {
+      const initSky = async () => {
+        try {
+          await loadRemoteScript(threeScriptUrl);
+          await loadRemoteScript(vantaCloudsScriptUrl);
+          if (skyCancelled || !sky.isConnected || !window.VANTA?.CLOUDS) return;
+          const speed = /Mobi|Android/i.test(navigator.userAgent) ? 1 : 0.33;
+          skyEffect = window.VANTA.CLOUDS({
+            el: "#sky",
+            skyColor: 0x91b8c7,
+            cloudColor: 0xb1c2dc,
+            cloudShadowColor: 0x1b3a57,
+            sunColor: 0xff9c21,
+            sunGlareColor: 0xfa6331,
+            sunlightColor: 0xfa9531,
+            speed,
+          });
+        } catch {
+          sky.style.background = "linear-gradient(180deg, #c4dbe4 0%, #f5eadb 45%, #9fb2bd 100%)";
+        }
+      };
+      void initSky();
+      cleanups.push(() => {
+        skyCancelled = true;
+        skyEffect?.destroy?.();
+      });
+    }
+
+    const revealNode = (node: HTMLElement) => {
       node.style.opacity = "1";
+      if (node.style.transform) {
+        node.style.transform = "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+      }
+    };
+
+    const revealTargets = Array.from(document.querySelectorAll<HTMLElement>('[style*="opacity:0"]')).filter(
+      (node) => !node.classList.contains("phone-screen_img"),
+    );
+    const pendingRevealTargets = new Set(revealTargets);
+    let revealFrame = 0;
+    const revealVisibleTargets = () => {
+      revealFrame = 0;
+      pendingRevealTargets.forEach((node) => {
+        const rect = node.getBoundingClientRect();
+        if (rect.top >= window.innerHeight * 0.92 || rect.bottom <= 0) return;
+        revealNode(node);
+        pendingRevealTargets.delete(node);
+      });
+    };
+    const scheduleReveal = () => {
+      if (revealFrame) return;
+      revealFrame = window.requestAnimationFrame(revealVisibleTargets);
+    };
+    revealVisibleTargets();
+    window.addEventListener("scroll", scheduleReveal, { passive: true });
+    window.addEventListener("resize", scheduleReveal);
+    cleanups.push(() => {
+      window.removeEventListener("scroll", scheduleReveal);
+      window.removeEventListener("resize", scheduleReveal);
+      if (revealFrame) window.cancelAnimationFrame(revealFrame);
     });
-    document.querySelectorAll<HTMLElement>(".phone-screen_img").forEach((node, index) => {
-      node.style.opacity = index === 0 ? "1" : "0";
+
+    const phoneScreens = Array.from(document.querySelectorAll<HTMLElement>(".phone-screen_img"));
+    const updatePhoneScreens = () => {
+      if (!phoneScreens.length) return;
+      const stepOne = document.querySelector<HTMLElement>("#steps1");
+      const stepTwo = document.querySelector<HTMLElement>("#steps2");
+      const stepFour = document.querySelector<HTMLElement>("#steps4");
+      const scrollTop = window.scrollY;
+      const positions = [stepOne, stepTwo, stepFour].map((node) =>
+        node ? node.getBoundingClientRect().top + window.scrollY : Number.POSITIVE_INFINITY,
+      );
+      let activeIndex = -1;
+      if (scrollTop > positions[2] - window.innerHeight * 0.55) activeIndex = 2;
+      else if (scrollTop > positions[1] - window.innerHeight * 0.55) activeIndex = 1;
+      else if (scrollTop > positions[0] - window.innerHeight * 0.55) activeIndex = 0;
+      phoneScreens.forEach((node, index) => {
+        node.style.opacity = index === activeIndex ? "1" : "0";
+      });
+    };
+    updatePhoneScreens();
+    window.addEventListener("scroll", updatePhoneScreens, { passive: true });
+    window.addEventListener("resize", updatePhoneScreens);
+    cleanups.push(() => {
+      window.removeEventListener("scroll", updatePhoneScreens);
+      window.removeEventListener("resize", updatePhoneScreens);
     });
 
     document.querySelectorAll<HTMLElement>(".w-nav").forEach((nav) => {
@@ -167,4 +307,3 @@ export function LegacyInteractions() {
 
   return null;
 }
-

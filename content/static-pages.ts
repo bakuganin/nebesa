@@ -58,8 +58,6 @@ function rewriteLegacyHtml(html: string, route: string): string {
   return html
     .replace(/<script\b[\s\S]*?<\/script>/gi, "")
     .replace(/\sbind="[^"]*"/gi, "")
-    .replace(/\sdata-w-id="[^"]*"/gi, "")
-    .replace(/style="([^"]*)opacity\s*:\s*0([^"]*)"/gi, 'style="$1opacity:1$2"')
     .replace(/\b(?:src|href)="(?:\.\.\/)?images\//gi, (match) => match.replace(/(?:\.\.\/)?images\//i, "/images/"))
     .replace(/\bsrcset="([^"]*)"/gi, (_match, srcset: string) => {
       const rewritten = srcset.replace(/(?:\.\.\/)?images\//g, "/images/");
@@ -85,6 +83,7 @@ export function getStaticPage(slug: StaticPageSlug): StaticPage {
   const filePath = path.join(process.cwd(), source.sourceFile);
   const raw = readFileSync(filePath, "utf8");
   const body = extractMatch(raw, /<body[^>]*>([\s\S]*?)<\/body>/i);
+  const headStyles = [...raw.matchAll(/<style\b[^>]*>[\s\S]*?<\/style>/gi)].map((match) => match[0]).join("\n");
   const title = extractMatch(raw, /<title>([\s\S]*?)<\/title>/i);
   const description = extractMatch(raw, /<meta\s+name="description"\s+content="([^"]*)"/i);
 
@@ -94,11 +93,10 @@ export function getStaticPage(slug: StaticPageSlug): StaticPage {
     route: source.route,
     title,
     description,
-    html: rewriteLegacyHtml(body, source.route)
+    html: `${headStyles}${rewriteLegacyHtml(body, source.route)}`
   };
 }
 
 export function isServicePageSlug(value: string): value is StaticPageSlug {
   return servicePageSlugs.includes(value as StaticPageSlug);
 }
-
