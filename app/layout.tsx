@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SmoothScrollProvider } from "@/components/site/smooth-scroll-provider";
 import "./globals.css";
 import "@/styles/legacy/normalize.css";
 import "@/styles/legacy/webflow-base.css";
@@ -23,7 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }
