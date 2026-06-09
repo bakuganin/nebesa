@@ -104,6 +104,9 @@ export function LegacyInteractions() {
     }
 
     const revealNode = (node: HTMLElement) => {
+      if (!node.style.transition) {
+        node.style.transition = "opacity 700ms ease, transform 700ms ease";
+      }
       node.style.opacity = "1";
       if (node.style.transform) {
         node.style.transform = "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";

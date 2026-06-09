@@ -141,6 +141,7 @@ test.describe("legacy page interaction contract", () => {
   test("keeps memorial page wheel scrolling and turns CTAs into visible actions", async ({ page }) => {
     await page.goto("/services/memorials-caskets", { waitUntil: "domcontentloaded" });
     await page.locator("html[data-nebesa-legacy-interactions='ready']").waitFor();
+    await expect(page.locator("html.lenis")).toBeAttached();
     await page.mouse.wheel(0, 700);
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
 
