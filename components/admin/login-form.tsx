@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
 
 import { createBrowserSupabaseClient } from "@/lib/supabase/browser";
@@ -10,6 +10,7 @@ import { FormField, inputClassName } from "./form-field";
 
 export function LoginForm({ enabled }: { enabled: boolean }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [message, setMessage] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -26,17 +27,25 @@ export function LoginForm({ enabled }: { enabled: boolean }) {
     const formData = new FormData(event.currentTarget);
     const email = String(formData.get("email") ?? "");
     const password = String(formData.get("password") ?? "");
-    const supabase = createBrowserSupabaseClient();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    try {
+      const supabase = createBrowserSupabaseClient();
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-    if (error) {
-      setMessage(error.message);
+      if (error) {
+        setMessage(error.message);
+        setPending(false);
+        return;
+      }
+
+      const next = searchParams.get("next");
+      const target = next?.startsWith("/admin") ? next : "/admin";
+
+      router.push(target);
+      router.refresh();
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Не удалось выполнить вход.");
       setPending(false);
-      return;
     }
-
-    router.push("/admin");
-    router.refresh();
   }
 
   return (

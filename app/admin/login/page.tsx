@@ -1,11 +1,33 @@
+import { redirect } from "next/navigation";
+
 import { AdminAccessNotice } from "@/components/admin/access-notice";
 import { LoginForm } from "@/components/admin/login-form";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { getAdminAccess, getMissingAdminEnv } from "@/features/admin/access";
 
-export default async function AdminLoginPage() {
+function safeAdminRedirect(next: string | string[] | undefined): string {
+  const value = Array.isArray(next) ? next[0] : next;
+
+  if (value?.startsWith("/admin") && !value.startsWith("/admin/login")) {
+    return value;
+  }
+
+  return "/admin";
+}
+
+export default async function AdminLoginPage({
+  searchParams,
+}: {
+  searchParams?: {
+    next?: string | string[];
+  };
+}) {
   const access = await getAdminAccess();
   const enabled = getMissingAdminEnv().length === 0;
+
+  if (access.status === "ready") {
+    redirect(safeAdminRedirect(searchParams?.next));
+  }
 
   return (
     <>
@@ -13,13 +35,9 @@ export default async function AdminLoginPage() {
         title="Вход в админ-панель"
         description="Используйте Supabase email/password аккаунт с активным профилем администратора."
       />
-      {access.status === "ready" ? (
-        <div className="mb-5 rounded-md border border-[#bed5c8] bg-[#edf7f0] p-4 text-sm text-[#295338]">
-          Вы уже вошли. Роль: {access.profile.role}.
-        </div>
-      ) : (
+      {access.status !== "unauthenticated" ? (
         <AdminAccessNotice access={access} />
-      )}
+      ) : null}
       <LoginForm enabled={enabled} />
     </>
   );

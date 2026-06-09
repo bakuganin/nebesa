@@ -28,4 +28,12 @@ describe("public environment isolation", () => {
       expect(publicEnvSource).not.toContain(envName);
     }
   });
+
+  test("client-facing public env helper uses statically inlined Next public env keys", () => {
+    const publicEnvSource = readFileSync("lib/public-env.ts", "utf8");
+
+    expect(publicEnvSource).toContain("process.env.NEXT_PUBLIC_SUPABASE_URL");
+    expect(publicEnvSource).toContain("process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY");
+    expect(publicEnvSource).toContain("process.env.NEXT_PUBLIC_SITE_URL");
+  });
 });
