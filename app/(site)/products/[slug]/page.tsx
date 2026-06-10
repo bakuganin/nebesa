@@ -74,7 +74,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="mt-6 rounded border border-brass/30 bg-white p-6 text-ink">
               <h1 className="text-2xl font-semibold">Карточка товара недоступна</h1>
               <p className="mt-3 text-sm leading-6 text-black/60">
-                Подключите Supabase и опубликуйте товар, чтобы страница была доступна публично.
+                Товар временно скрыт из каталога. Позвоните нам, и оператор уточнит наличие и цену.
               </p>
             </div>
           )}

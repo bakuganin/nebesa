@@ -6,6 +6,7 @@ import {
   createServiceRoleClient,
   type AdminRole,
 } from "../../lib/supabase/admin";
+import type { EmailSendResult } from "../../lib/email";
 import type { OrderWhatsAppSummary, WhatsAppSendResult } from "../../lib/whatsapp";
 
 export type CheckoutOrderInput = {
@@ -19,6 +20,7 @@ export type CheckoutOrderInput = {
   };
   items: Array<{
     productId: string;
+    orderMode: "priced" | "inquiry_only";
     variantId?: string;
     materialId?: string;
     quantity: number;
@@ -39,6 +41,8 @@ export type CheckoutOrderResult = {
   currency: string;
   reused: boolean;
 };
+
+export type CheckoutNotificationStatus = "pending" | "sent" | "failed" | "skipped";
 
 export type AdminOrderListParams = {
   status?: "new" | "confirmed" | "in_progress" | "completed" | "cancelled";
@@ -68,6 +72,7 @@ function toCheckoutRpcPayload(input: CheckoutOrderInput) {
     },
     items: input.items.map((item) => ({
       product_id: item.productId,
+      order_mode: item.orderMode,
       variant_id: item.variantId,
       material_id: item.materialId,
       quantity: item.quantity,
@@ -180,6 +185,10 @@ export async function getCheckoutOrderWhatsAppSummary(orderId: string): Promise<
     items: order.items.map((item) => ({
       name: snapshotString(item.product_snapshot, "title") ?? "Товар",
       quantity: item.quantity,
+      orderMode:
+        snapshotString(item.product_snapshot, "order_mode") === "inquiry_only"
+          ? "inquiry_only"
+          : "priced",
       unitPriceCents: item.unit_price_cents,
       totalPriceCents: item.line_total_cents,
       options: (item.options ?? []).map(optionLabel).filter((label): label is string => Boolean(label)),
@@ -192,6 +201,21 @@ export async function updateCheckoutNotificationFromWhatsAppResult(
   orderId: string,
   result: WhatsAppSendResult,
 ): Promise<void> {
+  await updateCheckoutNotificationResult(orderId, "whatsapp", result);
+}
+
+export async function updateCheckoutNotificationFromEmailResult(
+  orderId: string,
+  result: EmailSendResult,
+): Promise<void> {
+  await updateCheckoutNotificationResult(orderId, "email", result);
+}
+
+async function updateCheckoutNotificationResult(
+  orderId: string,
+  channel: "whatsapp" | "email",
+  result: WhatsAppSendResult | EmailSendResult,
+): Promise<void> {
   const supabase = createServiceRoleClient();
   const now = new Date().toISOString();
   const payload =
@@ -201,7 +225,7 @@ export async function updateCheckoutNotificationFromWhatsAppResult(
           status: result.status,
           reason: result.reason,
           httpStatus: "httpStatus" in result ? result.httpStatus ?? null : null,
-          fallbackUrl: result.fallbackUrl ?? null,
+          fallbackUrl: "fallbackUrl" in result ? result.fallbackUrl ?? null : null,
         };
   const errorMessage =
     result.status === "sent"
@@ -220,17 +244,22 @@ export async function updateCheckoutNotificationFromWhatsAppResult(
       error_message: errorMessage,
     })
     .eq("order_id", orderId)
-    .eq("channel", "whatsapp");
+    .eq("channel", channel);
 
   if (notificationError) {
     throw notificationError;
   }
+}
 
-  const { error: orderError } = await supabase
+export async function updateCheckoutOrderNotificationStatus(
+  orderId: string,
+  status: CheckoutNotificationStatus,
+): Promise<void> {
+  const { error: orderError } = await createServiceRoleClient()
     .from("orders")
     .update({
-      notification_status: result.status,
-      updated_at: now,
+      notification_status: status,
+      updated_at: new Date().toISOString(),
     })
     .eq("id", orderId);
 
@@ -257,7 +286,8 @@ export async function getAdminOrders(params: AdminOrderListParams = {}) {
         total_cents,
         currency,
         created_at,
-        customer:customers(id, full_name, phone, email)
+        customer:customers(id, full_name, phone, email),
+        items:order_items(line_total_cents, product_snapshot)
       `,
       { count: "exact" },
     )

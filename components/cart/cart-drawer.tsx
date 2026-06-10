@@ -3,17 +3,51 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useCart } from "@/components/cart/cart-provider";
+import { cartOpenEventName } from "@/lib/cart/cart-events";
 import { formatCurrency } from "@/lib/format";
 
 export function CartDrawer() {
   const [open, setOpen] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const items = useCart((state) => state.items);
   const totals = useCart((state) => state.totals);
   const updateQuantity = useCart((state) => state.updateQuantity);
   const removeItem = useCart((state) => state.removeItem);
+
+  useEffect(() => {
+    function handleOpenCart() {
+      setOpen(true);
+    }
+
+    window.addEventListener(cartOpenEventName, handleOpenCart);
+    return () => window.removeEventListener(cartOpenEventName, handleOpenCart);
+  }, []);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
 
   return (
     <>
@@ -39,13 +73,21 @@ export function CartDrawer() {
             className="absolute inset-0 bg-black/35"
             onClick={() => setOpen(false)}
           />
-          <aside className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white shadow-2xl">
+          <aside
+            className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col overscroll-contain bg-white shadow-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cart-drawer-title"
+          >
             <div className="flex items-center justify-between border-b border-black/10 px-5 py-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-moss">Заказ</p>
-                <h2 className="text-xl font-semibold text-ink">Корзина</h2>
+                <h2 id="cart-drawer-title" className="text-xl font-semibold text-ink">
+                  Корзина
+                </h2>
               </div>
               <button
+                ref={closeButtonRef}
                 type="button"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-ink hover:bg-mist"
                 aria-label="Закрыть"
@@ -67,7 +109,11 @@ export function CartDrawer() {
                       <div className="relative h-[72px] overflow-hidden rounded bg-mist">
                         {item.imageUrl ? (
                           <Image src={item.imageUrl} alt={item.title} fill className="object-cover" sizes="72px" />
-                        ) : null}
+                        ) : (
+                          <div className="flex h-full items-center justify-center px-2 text-center text-[10px] uppercase tracking-[0.12em] text-moss">
+                            Фото скоро
+                          </div>
+                        )}
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-start justify-between gap-3">
@@ -97,7 +143,8 @@ export function CartDrawer() {
                           <div className="inline-flex items-center rounded border border-black/10">
                             <button
                               type="button"
-                              className="h-8 w-8 text-ink hover:bg-mist"
+                              disabled={item.quantity <= 1}
+                              className="h-8 w-8 text-ink hover:bg-mist disabled:cursor-not-allowed disabled:text-black/25"
                               aria-label="Уменьшить"
                               onClick={() => updateQuantity(item.key, item.quantity - 1)}
                             >
@@ -114,7 +161,10 @@ export function CartDrawer() {
                             </button>
                           </div>
                           <span className="text-sm font-semibold text-ink">
-                            {formatCurrency(item.unitPriceCents, item.currency)}
+                            {formatCurrency(
+                              typeof item.unitPriceCents === "number" ? item.unitPriceCents * item.quantity : null,
+                              item.currency,
+                            )}
                           </span>
                         </div>
                       </div>
@@ -133,16 +183,34 @@ export function CartDrawer() {
               </div>
               {totals.hasInquiryItems ? (
                 <p className="mt-2 text-xs text-brass">
-                  Товары с ценой по запросу оформляются через звонок оператору.
+                  Позиции с ценой по запросу уйдут оператору вместе с заявкой.
                 </p>
               ) : null}
-              <Link
-                href="/checkout"
-                className="mt-4 inline-flex w-full items-center justify-center rounded bg-ink px-4 py-3 text-sm font-semibold text-white transition hover:bg-moss"
-                onClick={() => setOpen(false)}
-              >
-                Перейти к оформлению
-              </Link>
+              {items.length === 0 ? (
+                <Link
+                  href="/products"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded bg-ink px-4 py-3 text-sm font-semibold text-white transition hover:bg-moss focus:outline-none focus:ring-2 focus:ring-moss/30"
+                  onClick={() => setOpen(false)}
+                >
+                  Открыть каталог
+                </Link>
+              ) : totals.canCheckout ? (
+                <Link
+                  href="/checkout"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded bg-ink px-4 py-3 text-sm font-semibold text-white transition hover:bg-moss focus:outline-none focus:ring-2 focus:ring-moss/30"
+                  onClick={() => setOpen(false)}
+                >
+                  Перейти к оформлению
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="mt-4 inline-flex w-full cursor-not-allowed items-center justify-center rounded bg-black/20 px-4 py-3 text-sm font-semibold text-white"
+                >
+                  Перейти к оформлению
+                </button>
+              )}
             </div>
           </aside>
         </div>

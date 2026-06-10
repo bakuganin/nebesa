@@ -272,12 +272,12 @@
       "sortOrder": 1,
       "slug": "wreath-01",
       "title": "Венок 01",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -326,7 +326,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -334,12 +334,12 @@
       "sortOrder": 2,
       "slug": "wreath-02",
       "title": "Венок 02",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -388,7 +388,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -396,12 +396,12 @@
       "sortOrder": 3,
       "slug": "wreath-03",
       "title": "Венок 03",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -464,7 +464,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -472,12 +472,12 @@
       "sortOrder": 4,
       "slug": "wreath-04",
       "title": "Венок 04",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -540,7 +540,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -548,12 +548,12 @@
       "sortOrder": 5,
       "slug": "wreath-05",
       "title": "Венок 05",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -602,7 +602,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -610,12 +610,12 @@
       "sortOrder": 6,
       "slug": "wreath-06",
       "title": "Венок 06",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -678,7 +678,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -686,12 +686,12 @@
       "sortOrder": 7,
       "slug": "wreath-07",
       "title": "Венок 07",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -754,7 +754,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -762,12 +762,12 @@
       "sortOrder": 8,
       "slug": "wreath-08",
       "title": "Венок 08",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -830,7 +830,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -838,12 +838,12 @@
       "sortOrder": 9,
       "slug": "wreath-09",
       "title": "Венок 09",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -892,7 +892,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -900,12 +900,12 @@
       "sortOrder": 10,
       "slug": "wreath-10",
       "title": "Венок 10",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -954,7 +954,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -962,12 +962,12 @@
       "sortOrder": 11,
       "slug": "wreath-11",
       "title": "Венок 11",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1030,7 +1030,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1038,12 +1038,12 @@
       "sortOrder": 12,
       "slug": "wreath-12",
       "title": "Венок 12",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1106,7 +1106,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1114,12 +1114,12 @@
       "sortOrder": 13,
       "slug": "wreath-13",
       "title": "Венок 13",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1168,7 +1168,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1176,12 +1176,12 @@
       "sortOrder": 14,
       "slug": "wreath-14",
       "title": "Венок 14",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1230,7 +1230,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1238,12 +1238,12 @@
       "sortOrder": 15,
       "slug": "wreath-15",
       "title": "Венок 15",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1292,7 +1292,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1300,12 +1300,12 @@
       "sortOrder": 16,
       "slug": "wreath-16",
       "title": "Венок 16",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1354,7 +1354,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1362,12 +1362,12 @@
       "sortOrder": 17,
       "slug": "wreath-17",
       "title": "Венок 17",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1416,7 +1416,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1424,12 +1424,12 @@
       "sortOrder": 18,
       "slug": "wreath-18",
       "title": "Венок 18",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1478,7 +1478,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1486,12 +1486,12 @@
       "sortOrder": 19,
       "slug": "wreath-19",
       "title": "Венок 19",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1540,7 +1540,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1548,12 +1548,12 @@
       "sortOrder": 20,
       "slug": "wreath-20",
       "title": "Венок 20",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1602,7 +1602,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1610,12 +1610,12 @@
       "sortOrder": 21,
       "slug": "wreath-21",
       "title": "Венок 21",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1664,7 +1664,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1672,12 +1672,12 @@
       "sortOrder": 22,
       "slug": "wreath-22",
       "title": "Венок 22",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1726,7 +1726,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1734,12 +1734,12 @@
       "sortOrder": 23,
       "slug": "wreath-23",
       "title": "Венок 23",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1788,7 +1788,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1796,12 +1796,12 @@
       "sortOrder": 24,
       "slug": "wreath-24",
       "title": "Венок 24",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1850,7 +1850,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1858,12 +1858,12 @@
       "sortOrder": 25,
       "slug": "wreath-25",
       "title": "Венок 25",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1912,7 +1912,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1920,12 +1920,12 @@
       "sortOrder": 26,
       "slug": "wreath-26",
       "title": "Венок 26",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -1974,7 +1974,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -1982,12 +1982,12 @@
       "sortOrder": 27,
       "slug": "wreath-27",
       "title": "Венок 27",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2036,7 +2036,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2044,12 +2044,12 @@
       "sortOrder": 28,
       "slug": "wreath-28",
       "title": "Венок 28",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2098,7 +2098,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2106,12 +2106,12 @@
       "sortOrder": 29,
       "slug": "wreath-29",
       "title": "Венок 29",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2160,7 +2160,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2168,12 +2168,12 @@
       "sortOrder": 30,
       "slug": "wreath-30",
       "title": "Венок 30",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2222,7 +2222,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2230,12 +2230,12 @@
       "sortOrder": 31,
       "slug": "wreath-31",
       "title": "Венок 31",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2284,7 +2284,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2292,12 +2292,12 @@
       "sortOrder": 32,
       "slug": "wreath-32",
       "title": "Венок 32",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2346,7 +2346,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2354,12 +2354,12 @@
       "sortOrder": 33,
       "slug": "wreath-33",
       "title": "Венок 33",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2408,7 +2408,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2416,12 +2416,12 @@
       "sortOrder": 34,
       "slug": "wreath-34",
       "title": "Венок 34",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2470,7 +2470,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2478,12 +2478,12 @@
       "sortOrder": 35,
       "slug": "wreath-35",
       "title": "Венок 35",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2532,7 +2532,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2540,12 +2540,12 @@
       "sortOrder": 36,
       "slug": "wreath-36",
       "title": "Венок 36",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2594,7 +2594,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2602,12 +2602,12 @@
       "sortOrder": 37,
       "slug": "wreath-37",
       "title": "Венок 37",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2656,7 +2656,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2664,12 +2664,12 @@
       "sortOrder": 38,
       "slug": "wreath-38",
       "title": "Венок 38",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2718,7 +2718,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2726,12 +2726,12 @@
       "sortOrder": 39,
       "slug": "wreath-39",
       "title": "Венок 39",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2780,7 +2780,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2788,12 +2788,12 @@
       "sortOrder": 40,
       "slug": "wreath-40",
       "title": "Венок 40",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2842,7 +2842,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2850,12 +2850,12 @@
       "sortOrder": 41,
       "slug": "wreath-41",
       "title": "Венок 41",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2904,7 +2904,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2912,12 +2912,12 @@
       "sortOrder": 42,
       "slug": "wreath-42",
       "title": "Венок 42",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -2966,7 +2966,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -2974,12 +2974,12 @@
       "sortOrder": 43,
       "slug": "wreath-43",
       "title": "Венок 43",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3028,7 +3028,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3036,12 +3036,12 @@
       "sortOrder": 44,
       "slug": "wreath-44",
       "title": "Венок 44",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3090,7 +3090,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3098,12 +3098,12 @@
       "sortOrder": 45,
       "slug": "wreath-45",
       "title": "Венок 45",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3152,7 +3152,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3160,12 +3160,12 @@
       "sortOrder": 46,
       "slug": "wreath-46",
       "title": "Венок 46",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3214,7 +3214,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3222,12 +3222,12 @@
       "sortOrder": 47,
       "slug": "wreath-47",
       "title": "Венок 47",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3276,7 +3276,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3284,12 +3284,12 @@
       "sortOrder": 48,
       "slug": "wreath-48",
       "title": "Венок 48",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3338,7 +3338,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3346,12 +3346,12 @@
       "sortOrder": 49,
       "slug": "wreath-49",
       "title": "Венок 49",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3414,7 +3414,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3422,12 +3422,12 @@
       "sortOrder": 50,
       "slug": "wreath-50",
       "title": "Венок 50",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3490,7 +3490,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3498,12 +3498,12 @@
       "sortOrder": 51,
       "slug": "wreath-51",
       "title": "Венок 51",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3566,7 +3566,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3574,12 +3574,12 @@
       "sortOrder": 52,
       "slug": "wreath-52",
       "title": "Венок 52",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3642,7 +3642,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3650,12 +3650,12 @@
       "sortOrder": 53,
       "slug": "wreath-53",
       "title": "Венок 53",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3718,7 +3718,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3726,12 +3726,12 @@
       "sortOrder": 54,
       "slug": "wreath-54",
       "title": "Венок 54",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3794,7 +3794,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3802,12 +3802,12 @@
       "sortOrder": 55,
       "slug": "wreath-55",
       "title": "Венок 55",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3870,7 +3870,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3878,12 +3878,12 @@
       "sortOrder": 56,
       "slug": "wreath-56",
       "title": "Венок 56",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -3946,7 +3946,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -3954,12 +3954,12 @@
       "sortOrder": 57,
       "slug": "wreath-57",
       "title": "Венок 57",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4022,7 +4022,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4030,12 +4030,12 @@
       "sortOrder": 58,
       "slug": "wreath-58",
       "title": "Венок 58",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4098,7 +4098,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4106,12 +4106,12 @@
       "sortOrder": 59,
       "slug": "wreath-59",
       "title": "Венок 59",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4174,7 +4174,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4182,12 +4182,12 @@
       "sortOrder": 60,
       "slug": "wreath-60",
       "title": "Венок 60",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4250,7 +4250,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4258,12 +4258,12 @@
       "sortOrder": 61,
       "slug": "wreath-61",
       "title": "Венок 61",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4326,7 +4326,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4334,12 +4334,12 @@
       "sortOrder": 62,
       "slug": "wreath-62",
       "title": "Венок 62",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "wreaths",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4402,7 +4402,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4410,12 +4410,12 @@
       "sortOrder": 1,
       "slug": "coffin-01",
       "title": "Гроб 01",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4464,7 +4464,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4472,12 +4472,12 @@
       "sortOrder": 2,
       "slug": "coffin-02",
       "title": "Гроб 02",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4526,7 +4526,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4534,12 +4534,12 @@
       "sortOrder": 3,
       "slug": "coffin-03",
       "title": "Гроб 03",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4588,7 +4588,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4596,12 +4596,12 @@
       "sortOrder": 4,
       "slug": "coffin-04",
       "title": "Гроб 04",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4650,7 +4650,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4658,12 +4658,12 @@
       "sortOrder": 5,
       "slug": "coffin-05",
       "title": "Гроб 05",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4712,7 +4712,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4720,12 +4720,12 @@
       "sortOrder": 6,
       "slug": "coffin-06",
       "title": "Гроб 06",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4774,7 +4774,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4782,12 +4782,12 @@
       "sortOrder": 7,
       "slug": "coffin-07",
       "title": "Гроб 07",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4836,7 +4836,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4844,12 +4844,12 @@
       "sortOrder": 8,
       "slug": "coffin-08",
       "title": "Гроб 08",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4898,7 +4898,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4906,12 +4906,12 @@
       "sortOrder": 9,
       "slug": "coffin-09",
       "title": "Гроб 09",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -4960,7 +4960,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -4968,12 +4968,12 @@
       "sortOrder": 10,
       "slug": "coffin-10",
       "title": "Гроб 10",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -5022,7 +5022,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -5030,12 +5030,12 @@
       "sortOrder": 11,
       "slug": "coffin-11",
       "title": "Гроб 11",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -5084,7 +5084,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/ritual-products.html",
@@ -5092,12 +5092,12 @@
       "sortOrder": 12,
       "slug": "coffin-12",
       "title": "Гроб 12",
-      "status": "draft",
-      "visibility": "private",
-      "orderMode": "disabled",
+      "status": "active",
+      "visibility": "public",
+      "orderMode": "inquiry_only",
       "categorySlug": "coffins",
       "minPriceCents": null,
-      "priceNote": null,
+      "priceNote": "Цена зависит от комплектации",
       "priceText": null,
       "notes": [],
       "images": [
@@ -5146,7 +5146,7 @@
         }
       ],
       "importStatus": "review_required",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "sourcePage": "services/memorials-caskets.html",

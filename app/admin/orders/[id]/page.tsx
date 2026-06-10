@@ -16,6 +16,34 @@ import {
   type AdminOrderItem,
 } from "@/features/admin/orders";
 
+function snapshotValue(snapshot: Record<string, unknown> | null | undefined, key: string): string | null {
+  const value = snapshot?.[key];
+  return typeof value === "string" && value.trim().length > 0 ? value : null;
+}
+
+function isRequestItem(item: AdminOrderItem): boolean {
+  return snapshotValue(item.product_snapshot, "order_mode") === "inquiry_only" && item.line_total_cents === 0;
+}
+
+function formatOrderItemMoney(item: AdminOrderItem, cents: number): string {
+  return isRequestItem(item) ? "По запросу" : formatMoney(cents, item.currency);
+}
+
+function formatOrderTotal(order: { total_cents: number; currency: string; items: AdminOrderItem[] }): string {
+  return order.total_cents === 0 && order.items.some(isRequestItem)
+    ? "По запросу"
+    : formatMoney(order.total_cents, order.currency);
+}
+
+function optionText(option: NonNullable<AdminOrderItem["options"]>[number]): string {
+  return [snapshotTitle(option.option_group_snapshot), snapshotTitle(option.option_value_snapshot)].join(": ");
+}
+
+function notificationFallbackUrl(payload: Record<string, unknown> | null): string | null {
+  const value = payload?.fallbackUrl;
+  return typeof value === "string" && value.length > 0 ? value : null;
+}
+
 const itemColumns: DataTableColumn<AdminOrderItem>[] = [
   {
     header: "Позиция",
@@ -23,6 +51,16 @@ const itemColumns: DataTableColumn<AdminOrderItem>[] = [
       <div>
         <div className="font-medium">{snapshotTitle(item.product_snapshot)}</div>
         {item.variant_snapshot ? <div className="mt-1 text-xs text-[#6b7671]">{snapshotTitle(item.variant_snapshot)}</div> : null}
+        {item.material_snapshot ? <div className="mt-1 text-xs text-[#6b7671]">Материал: {snapshotTitle(item.material_snapshot)}</div> : null}
+        {item.options?.length ? (
+          <ul className="mt-2 grid gap-1 text-xs text-[#6b7671]">
+            {item.options.map((option) => (
+              <li key={`${snapshotTitle(option.option_group_snapshot)}-${snapshotTitle(option.option_value_snapshot)}`}>
+                {optionText(option)}
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     ),
   },
@@ -32,11 +70,11 @@ const itemColumns: DataTableColumn<AdminOrderItem>[] = [
   },
   {
     header: "Цена",
-    cell: (item) => formatMoney(item.unit_price_cents, item.currency),
+    cell: (item) => formatOrderItemMoney(item, item.unit_price_cents),
   },
   {
     header: "Итого",
-    cell: (item) => formatMoney(item.line_total_cents, item.currency),
+    cell: (item) => formatOrderItemMoney(item, item.line_total_cents),
   },
 ];
 
@@ -75,6 +113,10 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                   <dd className="mt-1 font-medium">{order.customer?.email ?? "Не указан"}</dd>
                 </div>
                 <div>
+                  <dt className="text-[#59685e]">Адрес или место церемонии</dt>
+                  <dd className="mt-1 font-medium">{order.customer?.address ?? "Не указан"}</dd>
+                </div>
+                <div>
                   <dt className="text-[#59685e]">Создан</dt>
                   <dd className="mt-1 font-medium">{formatDateTime(order.created_at)}</dd>
                 </div>
@@ -90,11 +132,68 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
               getRowKey={(item) => item.id}
               emptyTitle="В заказе нет позиций"
             />
+            <div className="rounded-md border border-[#d8dedc] bg-white p-5">
+              <h2 className="text-base font-semibold text-[#1f2528]">Уведомления</h2>
+              {order.notifications.length > 0 ? (
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  {order.notifications.map((notification) => {
+                    const fallbackUrl = notificationFallbackUrl(notification.payload);
+
+                    return (
+                      <div key={notification.id} className="rounded-md border border-[#edf1ef] p-4 text-sm">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="font-medium uppercase tracking-[0.12em] text-[#1f2528]">
+                            {notification.channel}
+                          </span>
+                          <StatusBadge
+                            label={notificationStatusLabels[notification.status] ?? notification.status}
+                            tone={notification.status === "failed" ? "warning" : "neutral"}
+                          />
+                        </div>
+                        <dl className="mt-3 grid gap-2 text-xs text-[#6b7671]">
+                          <div className="flex justify-between gap-3">
+                            <dt>Попыток</dt>
+                            <dd className="font-medium text-[#1f2528]">{notification.attempt_count}</dd>
+                          </div>
+                          <div className="flex justify-between gap-3">
+                            <dt>Отправлено</dt>
+                            <dd className="font-medium text-[#1f2528]">
+                              {notification.sent_at ? formatDateTime(notification.sent_at) : "Нет"}
+                            </dd>
+                          </div>
+                          <div className="flex justify-between gap-3">
+                            <dt>Обновлено</dt>
+                            <dd className="font-medium text-[#1f2528]">{formatDateTime(notification.updated_at)}</dd>
+                          </div>
+                        </dl>
+                        {notification.error_message ? (
+                          <p className="mt-3 rounded-md bg-[#f6efe3] p-2 text-xs text-[#705326]">
+                            {notification.error_message}
+                          </p>
+                        ) : null}
+                        {fallbackUrl ? (
+                          <a
+                            href={fallbackUrl}
+                            className="mt-3 inline-flex text-xs font-semibold text-[#59685e] underline-offset-4 hover:underline"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Открыть fallback WhatsApp
+                          </a>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="mt-2 text-sm text-[#6b7671]">Уведомления по заказу пока не записаны.</p>
+              )}
+            </div>
           </div>
           <aside className="grid h-fit gap-5">
             <div className="rounded-md border border-[#d8dedc] bg-white p-5">
               <div className="text-sm text-[#59685e]">Сумма заказа</div>
-              <div className="mt-2 text-2xl font-semibold">{formatMoney(order.total_cents, order.currency)}</div>
+              <div className="mt-2 text-2xl font-semibold">{formatOrderTotal(order)}</div>
             </div>
             <form action={canWrite ? action : undefined} className="grid gap-4 rounded-md border border-[#d8dedc] bg-white p-5">
               <fieldset disabled={!canWrite} className="grid gap-4">

@@ -20,6 +20,10 @@ export type AdminOrderListItem = {
     phone: string;
     email: string | null;
   } | null;
+  items?: Array<{
+    line_total_cents: number;
+    product_snapshot: Record<string, unknown>;
+  }>;
 };
 
 export type AdminOrderItem = {
@@ -68,8 +72,11 @@ export type AdminOrderDetail = {
     channel: string;
     status: string;
     attempt_count: number;
+    payload: Record<string, unknown> | null;
     error_message: string | null;
+    sent_at: string | null;
     created_at: string;
+    updated_at: string;
   }>;
 };
 
@@ -90,6 +97,8 @@ export type AdminOrderGeneratedDocument = {
 export type AdminOrdersPageData = {
   orders: AdminOrderListItem[];
   count: number;
+  page: number;
+  limit: number;
 };
 
 export type AdminOrderDetailPageData = {
@@ -101,6 +110,8 @@ export type AdminOrderDetailPageData = {
 const emptyOrdersPageData: AdminOrdersPageData = {
   orders: [],
   count: 0,
+  page: 1,
+  limit: 50,
 };
 
 const emptyOrderDetailPageData: AdminOrderDetailPageData = {
@@ -111,13 +122,17 @@ const emptyOrderDetailPageData: AdminOrderDetailPageData = {
 
 export async function getAdminOrdersPageData(
   status?: AdminOrderStatus,
+  page = 1,
 ): Promise<AdminQueryResult<AdminOrdersPageData>> {
   return runAdminQuery(emptyOrdersPageData, async () => {
-    const { orders, count } = await getAdminOrders({ status, limit: 50 });
+    const limit = 50;
+    const { orders, count } = await getAdminOrders({ status, page, limit });
 
     return {
       orders: orders as unknown as AdminOrderListItem[],
       count,
+      page,
+      limit,
     };
   }, adminReadRoles);
 }

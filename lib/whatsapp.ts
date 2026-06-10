@@ -7,6 +7,7 @@ type EnvMap = Record<string, string | undefined>;
 export type OrderWhatsAppItem = {
   name: string;
   quantity: number;
+  orderMode?: "priced" | "inquiry_only";
   unitPriceCents: number;
   totalPriceCents?: number;
   options?: string[];
@@ -140,7 +141,8 @@ export function formatOrderWhatsAppMessage(order: OrderWhatsAppSummary) {
 
   for (const item of order.items) {
     const total = item.totalPriceCents ?? item.unitPriceCents * item.quantity;
-    lines.push(`- ${item.quantity} x ${item.name}: ${formatMoney(total, order.currency)}`);
+    const price = item.orderMode === "inquiry_only" ? "цена по запросу" : formatMoney(total, order.currency);
+    lines.push(`- ${item.quantity} x ${item.name}: ${price}`);
 
     if (item.options?.length) {
       lines.push(`  ${item.options.join(", ")}`);

@@ -16,6 +16,9 @@ Server-only values:
 - `DATABASE_URL` - строка подключения к Postgres для миграций или CI, если используется напрямую.
 - `SUPABASE_DB_PASSWORD` - пароль базы Supabase, если нужен выбранному deployment flow.
 - `SUPABASE_SERVICE_ROLE_KEY` - service-role key только для route handlers/server actions.
+- `RESEND_API_KEY` - optional API key Resend для email-уведомлений о новых заявках.
+- `ORDER_EMAIL_FROM` - optional verified sender в Resend, например `NEBESA <orders@example.com>`.
+- `ORDER_EMAIL_TO` - optional email получателей заявок, несколько адресов через запятую.
 - `WA_PHONE_NUMBER_ID` - WhatsApp Cloud API phone number id.
 - `WA_BUSINESS_ACCOUNT_ID` - WhatsApp Business Account id для операторских проверок.
 - `WA_ACCESS_TOKEN` - WhatsApp Cloud API access token.
@@ -34,17 +37,32 @@ rg "SUPABASE_SERVICE_ROLE_KEY|WA_ACCESS_TOKEN|WA_APP_SECRET" .next/static
 
 ## Supabase migration and seed
 
-1. Создать Supabase project и включить Postgres extensions, используемые миграцией.
-2. Применить SQL из `supabase/migrations/001_initial_schema.sql`.
+1. Создать Supabase project и включить Postgres extensions, используемые миграциями.
+2. Применить все SQL-файлы из `supabase/migrations/` по порядку имени. Для существующей базы важно применить и поздние миграции, включая checkout inventory и request-only checkout:
+
+```bash
+for file in supabase/migrations/*.sql; do
+  psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$file"
+done
+```
+
+Если используется Supabase CLI, эквивалентный вариант - `supabase db push` после link проекта.
 3. Запустить импорт каталога:
 
 ```bash
 npm run extract:catalog
 ```
 
-4. Загрузить `supabase/seed/catalog.seed.json` через выбранный seed/import workflow.
-5. После импорта оставить review-required товары закрытыми до ручной проверки названий, цен, изображений и категорий.
-6. Создать первого владельца через admin bootstrap flow, затем проверить, что last-owner protection работает.
+4. Загрузить базовые категории/товары выбранным seed/import workflow.
+5. Опубликовать актуальные статусы, цены, варианты и опции каталога из seed:
+
+```bash
+npm run publish:catalog
+```
+
+6. Проверить, что `publish:catalog` завершился без `failures`, а `publicCount` соответствует ожидаемому опубликованному каталогу.
+7. После импорта оставить review-required товары закрытыми до ручной проверки названий, цен, изображений и категорий.
+8. Создать первого владельца через admin bootstrap flow, затем проверить, что last-owner protection работает.
 
 ## WhatsApp setup and token rotation
 
@@ -88,6 +106,7 @@ Browser QA before release:
 - `/api/whatsapp/webhook` GET challenge succeeds only with the configured verify token.
 - Signed WhatsApp POST returns `202`; missing or tampered signatures return `401`.
 - Checkout order creation still succeeds when WhatsApp env is missing or token is expired.
+- Checkout order creation still succeeds when email env is missing; email channel records `skipped`.
 
 ## Legal copy note
 

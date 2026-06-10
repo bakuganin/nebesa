@@ -18,6 +18,7 @@ const validCheckout = {
   items: [
     {
       productId: "11111111-1111-4111-8111-111111111111",
+      orderMode: "priced",
       quantity: 2,
       options: [
         {
@@ -38,6 +39,7 @@ describe("checkout validation", () => {
     if (parsed.success) {
       expect(toCheckoutOrderInput(parsed.data).items[0]).toEqual({
         productId: "11111111-1111-4111-8111-111111111111",
+        orderMode: "priced",
         variantId: undefined,
         materialId: undefined,
         quantity: 2,
@@ -58,6 +60,29 @@ describe("checkout validation", () => {
     });
 
     expect(parsed.success).toBe(false);
+  });
+
+  it("accepts request-only checkout items", () => {
+    const parsed = checkoutRequestSchema.safeParse({
+      ...validCheckout,
+      items: [
+        {
+          productId: "11111111-1111-4111-8111-111111111111",
+          orderMode: "inquiry_only",
+          quantity: 1,
+        },
+      ],
+    });
+
+    expect(parsed.success).toBe(true);
+
+    if (parsed.success) {
+      expect(toCheckoutOrderInput(parsed.data).items[0]).toMatchObject({
+        productId: "11111111-1111-4111-8111-111111111111",
+        orderMode: "inquiry_only",
+        quantity: 1,
+      });
+    }
   });
 
   it("limits repeated checkout attempts per key", () => {

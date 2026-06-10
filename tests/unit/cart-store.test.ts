@@ -49,7 +49,7 @@ describe("cart store", () => {
     expect(store.getState().totals.subtotalCents).toBe(24_000);
   });
 
-  it("marks inquiry items as non-checkoutable", () => {
+  it("allows inquiry items to be submitted as request-only checkout lines", () => {
     const totals = calculateCartTotals([
       {
         ...baseItem,
@@ -59,8 +59,23 @@ describe("cart store", () => {
       },
     ]);
 
-    expect(totals.canCheckout).toBe(false);
+    expect(totals.canCheckout).toBe(true);
     expect(totals.hasInquiryItems).toBe(true);
+    expect(totals.subtotalCents).toBe(0);
+  });
+
+  it("blocks priced checkout lines without a usable browser price", () => {
+    const totals = calculateCartTotals([
+      {
+        ...baseItem,
+        key: "line",
+        orderMode: "priced",
+        unitPriceCents: null,
+      },
+    ]);
+
+    expect(totals.canCheckout).toBe(false);
+    expect(totals.hasUnpricedPricedItems).toBe(true);
   });
 
   it("creates server checkout payload without browser pricing", () => {
@@ -81,10 +96,11 @@ describe("cart store", () => {
     });
 
     expect(toCheckoutCartItems(store.getState().items)).toEqual([
-      {
-        productId: baseItem.productId,
-        variantId: "22222222-2222-4222-8222-222222222222",
-        materialId: "33333333-3333-4333-8333-333333333333",
+        {
+          productId: baseItem.productId,
+          orderMode: "priced",
+          variantId: "22222222-2222-4222-8222-222222222222",
+          materialId: "33333333-3333-4333-8333-333333333333",
         quantity: 1,
         options: [
           {
@@ -92,6 +108,26 @@ describe("cart store", () => {
             valueId: "55555555-5555-4555-8555-555555555555",
           },
         ],
+      },
+    ]);
+  });
+
+  it("includes request-only order mode in server checkout payload", () => {
+    const store = createCartStore();
+    store.getState().addItem({
+      ...baseItem,
+      orderMode: "inquiry_only",
+      unitPriceCents: null,
+    });
+
+    expect(toCheckoutCartItems(store.getState().items)).toEqual([
+      {
+        productId: baseItem.productId,
+        orderMode: "inquiry_only",
+        variantId: undefined,
+        materialId: undefined,
+        quantity: 1,
+        options: [],
       },
     ]);
   });

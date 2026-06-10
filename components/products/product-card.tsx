@@ -19,7 +19,14 @@ export function ProductCard({ product }: { product: ProductSummary }) {
             className="object-cover transition duration-300 group-hover:scale-[1.03]"
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           />
-        ) : null}
+        ) : (
+          <div className="flex h-full items-center justify-center px-6 text-center">
+            <div>
+              <div className="text-xs uppercase tracking-[0.18em] text-moss">{product.category?.title ?? "Каталог"}</div>
+              <div className="mt-2 text-sm font-semibold text-ink">Фото скоро</div>
+            </div>
+          </div>
+        )}
       </Link>
       <div className="grid gap-3 p-4">
         <div>

@@ -48,7 +48,8 @@ export function createCartLine(input: CartItemInput): CartLine {
 export function calculateCartTotals(items: CartLine[]): CartTotals {
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
   const currency = items[0]?.currency ?? "EUR";
-  const hasInquiryItems = items.some((item) => item.orderMode !== "priced" || item.unitPriceCents == null);
+  const hasInquiryItems = items.some((item) => item.orderMode === "inquiry_only");
+  const hasUnpricedPricedItems = items.some((item) => item.orderMode === "priced" && item.unitPriceCents == null);
   const subtotalCents = items.reduce((sum, item) => {
     if (item.orderMode !== "priced" || item.unitPriceCents == null) {
       return sum;
@@ -61,14 +62,16 @@ export function calculateCartTotals(items: CartLine[]): CartTotals {
     itemCount,
     subtotalCents,
     currency,
-    canCheckout: items.length > 0 && !hasInquiryItems,
+    canCheckout: items.length > 0 && !hasUnpricedPricedItems,
     hasInquiryItems,
+    hasUnpricedPricedItems,
   };
 }
 
 export function toCheckoutCartItems(items: CartLine[]): CheckoutCartItem[] {
   return items.map((item) => ({
     productId: item.productId,
+    orderMode: item.orderMode,
     variantId: item.variantId ?? undefined,
     materialId: item.materialId ?? undefined,
     quantity: item.quantity,

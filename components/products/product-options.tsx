@@ -6,6 +6,7 @@ import { Phone, ShoppingCart } from "lucide-react";
 import { useCart } from "@/components/cart/cart-provider";
 import { contactDetails } from "@/content/contact";
 import type { ProductDetail } from "@/features/products/queries";
+import { requestCartOpen } from "@/lib/cart/cart-events";
 import { productPriceLabel, productPriceNoteLabel } from "./product-price";
 
 function firstPrimaryImage(product: ProductDetail): string | null {
@@ -16,13 +17,29 @@ function firstPrimaryImage(product: ProductDetail): string | null {
 
 export function ProductOptions({ product }: { product: ProductDetail }) {
   const addItem = useCart((state) => state.addItem);
-  const [variantId, setVariantId] = useState(product.variants[0]?.id ?? "");
+  const requestOnly = product.order_mode === "inquiry_only";
+  const priced = product.order_mode === "priced";
+  const sortedVariants = useMemo(
+    () => [...product.variants].sort((a, b) => a.sort_order - b.sort_order || a.title.localeCompare(b.title)),
+    [product.variants],
+  );
+  const sortedOptionGroups = useMemo(
+    () =>
+      [...product.option_groups]
+        .sort((a, b) => a.sort_order - b.sort_order || a.title.localeCompare(b.title))
+        .map((group) => ({
+          ...group,
+          values: [...group.values].sort((a, b) => a.sort_order - b.sort_order || a.title.localeCompare(b.title)),
+        })),
+    [product.option_groups],
+  );
+  const [variantId, setVariantId] = useState(sortedVariants[0]?.id ?? "");
   const [materialId, setMaterialId] = useState(
     product.materials.find((material) => material.is_default)?.id ?? product.materials[0]?.id ?? "",
   );
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>(() =>
     Object.fromEntries(
-      product.option_groups
+      sortedOptionGroups
         .filter((group) => group.selection_required && group.values[0])
         .map((group) => [group.id, group.values[0].id]),
     ),
@@ -30,9 +47,9 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
-  const activeVariant = product.variants.find((variant) => variant.id === variantId);
+  const activeVariant = sortedVariants.find((variant) => variant.id === variantId);
   const activeMaterial = product.materials.find((material) => material.id === materialId);
-  const selectedOptionRows = product.option_groups.flatMap((group) => {
+  const selectedOptionRows = sortedOptionGroups.flatMap((group) => {
     const valueId = selectedOptions[group.id];
     const value = group.values.find((entry) => entry.id === valueId);
     if (!value) return [];
@@ -60,7 +77,7 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
   const stockLimit = product.track_inventory && !product.allow_backorder ? Math.max(0, product.stock_quantity) : 20;
   const maxQuantity = Math.min(20, Math.max(1, stockLimit || 1));
   const outOfStock = product.availability_status === "out_of_stock" || (product.track_inventory && product.stock_quantity <= 0 && !product.allow_backorder);
-  const canAdd = product.order_mode === "priced" && unitPriceCents != null && !outOfStock;
+  const canAdd = ((priced && unitPriceCents != null) || requestOnly) && !outOfStock;
   const priceNote = productPriceNoteLabel(product.price_note);
 
   function handleAdd() {
@@ -71,28 +88,29 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
       slug: product.slug,
       title: product.title,
       imageUrl: firstPrimaryImage(product),
-      variantId: activeVariant?.id ?? null,
-      variantTitle: activeVariant?.title ?? null,
+      variantId: priced ? activeVariant?.id ?? null : null,
+      variantTitle: priced ? activeVariant?.title ?? null : null,
       materialId: activeMaterial?.id ?? null,
       materialTitle: activeMaterial?.title ?? null,
       quantity,
-      unitPriceCents,
+      unitPriceCents: priced ? unitPriceCents : null,
       currency: product.currency,
-      orderMode: "priced",
+      orderMode: requestOnly ? "inquiry_only" : "priced",
       options: selectedOptionRows,
     });
     setAdded(true);
+    requestCartOpen();
     window.setTimeout(() => setAdded(false), 1800);
   }
 
   return (
     <div className="rounded border border-black/10 bg-white p-5 shadow-sm">
-      <div className="flex items-start justify-between gap-4">
+      <div className="grid gap-3 sm:flex sm:items-start sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.18em] text-moss">{product.category?.title ?? "Каталог"}</p>
           <h1 className="mt-2 text-3xl font-semibold leading-tight text-ink">{product.title}</h1>
         </div>
-        <div className="text-right text-xl font-semibold text-ink">
+        <div className="text-left text-xl font-semibold text-ink sm:text-right">
           {productPriceLabel(product, unitPriceCents)}
         </div>
       </div>
@@ -100,11 +118,11 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
       {product.short_description ? <p className="mt-4 leading-7 text-black/65">{product.short_description}</p> : null}
       {priceNote ? <p className="mt-2 text-sm text-black/50">{priceNote}</p> : null}
 
-      {product.variants.length > 0 ? (
+      {priced && sortedVariants.length > 0 ? (
         <fieldset className="mt-6">
           <legend className="text-sm font-semibold text-ink">Комплектация</legend>
           <div className="mt-3 grid gap-2">
-            {product.variants.map((variant) => (
+            {sortedVariants.map((variant) => (
               <label key={variant.id} className="flex cursor-pointer items-center justify-between rounded border border-black/10 p-3 text-sm hover:border-moss">
                 <span>{variant.title}</span>
                 <input
@@ -142,7 +160,7 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
         </fieldset>
       ) : null}
 
-      {product.option_groups.map((group) => (
+      {sortedOptionGroups.map((group) => (
         <fieldset key={group.id} className="mt-6">
           <legend className="text-sm font-semibold text-ink">{group.title}</legend>
           <div className="mt-3 grid gap-2">
@@ -180,7 +198,7 @@ export function ProductOptions({ product }: { product: ProductDetail }) {
             className="inline-flex flex-1 items-center justify-center gap-2 rounded bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-moss"
           >
             <ShoppingCart size={18} />
-            {added ? "Добавлено" : "Добавить в корзину"}
+            {requestOnly ? (added ? "Заявка добавлена" : "Добавить в заявку") : added ? "Добавлено" : "Добавить в корзину"}
           </button>
         </div>
       ) : outOfStock ? (

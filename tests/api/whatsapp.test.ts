@@ -71,6 +71,13 @@ describe("WhatsApp order messages", () => {
           quantity: 1,
           unitPriceCents: 2950,
         },
+        {
+          name: "Памятник",
+          quantity: 1,
+          orderMode: "inquiry_only",
+          unitPriceCents: 0,
+          totalPriceCents: 0,
+        },
       ],
       notes: "Позвонить до доставки",
     });
@@ -81,6 +88,7 @@ describe("WhatsApp order messages", () => {
     expect(message).toContain("+372 5555 0000");
     expect(message).toContain("2 x Венок классический");
     expect(message).toContain("129,50 EUR");
+    expect(message).toContain("Памятник: цена по запросу");
     expect(message).toContain("Позвонить до доставки");
   });
 

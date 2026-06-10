@@ -24,6 +24,7 @@ export const checkoutRequestSchema = z.object({
     .array(
       z.object({
         productId: uuidSchema,
+        orderMode: z.enum(["priced", "inquiry_only"]).default("priced"),
         variantId: uuidSchema.optional(),
         materialId: uuidSchema.optional(),
         quantity: z.coerce.number().int().min(1).max(checkoutLimits.maxQuantity),
@@ -94,6 +95,7 @@ export function toCheckoutOrderInput(
     },
     items: request.items.map((item) => ({
       productId: item.productId,
+      orderMode: item.orderMode,
       variantId: item.variantId,
       materialId: item.materialId,
       quantity: item.quantity,

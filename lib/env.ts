@@ -6,6 +6,9 @@ export type ServerEnv = PublicEnv & {
   DATABASE_URL?: string;
   SUPABASE_DB_PASSWORD?: string;
   SUPABASE_SERVICE_ROLE_KEY: string;
+  RESEND_API_KEY?: string;
+  ORDER_EMAIL_FROM?: string;
+  ORDER_EMAIL_TO?: string;
   WA_PHONE_NUMBER_ID?: string;
   WA_BUSINESS_ACCOUNT_ID?: string;
   WA_ACCESS_TOKEN?: string;
@@ -59,6 +62,9 @@ export function getServerEnv(env: EnvMap = readEnv()): ServerEnv {
     DATABASE_URL: valueFor(env, "DATABASE_URL"),
     SUPABASE_DB_PASSWORD: valueFor(env, "SUPABASE_DB_PASSWORD"),
     SUPABASE_SERVICE_ROLE_KEY: requireValue(env, "SUPABASE_SERVICE_ROLE_KEY"),
+    RESEND_API_KEY: valueFor(env, "RESEND_API_KEY"),
+    ORDER_EMAIL_FROM: valueFor(env, "ORDER_EMAIL_FROM"),
+    ORDER_EMAIL_TO: valueFor(env, "ORDER_EMAIL_TO"),
     WA_PHONE_NUMBER_ID: valueFor(env, "WA_PHONE_NUMBER_ID"),
     WA_BUSINESS_ACCOUNT_ID: valueFor(env, "WA_BUSINESS_ACCOUNT_ID"),
     WA_ACCESS_TOKEN: valueFor(env, "WA_ACCESS_TOKEN"),

@@ -69,7 +69,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               <p className="text-xs uppercase tracking-[0.18em] text-moss">Каталог</p>
               <h1 className="mt-2 text-4xl font-semibold text-ink">Ритуальные товары</h1>
               <p className="mt-3 max-w-2xl leading-7 text-black/65">
-                Здесь отображаются только проверенные и опубликованные позиции. Черновики из старого каталога остаются закрытыми до ручной проверки.
+                Выберите венки, гробы, памятники или опалубки. Позиции без фиксированной цены уйдут оператору как заявка.
               </p>
             </div>
             <Link href="/services/ritual-products" className="text-sm font-semibold text-moss hover:text-ink">
@@ -79,7 +79,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
           {error ? (
             <div className="mt-6 rounded border border-brass/30 bg-white p-4 text-sm text-ink">
-              Каталог ожидает подключение Supabase. После настройки окружения и публикации товаров список появится здесь.
+              Каталог временно недоступен. Позвоните нам, и оператор уточнит наличие и цену.
             </div>
           ) : null}
 

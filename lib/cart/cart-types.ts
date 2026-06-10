@@ -35,10 +35,12 @@ export type CartTotals = {
   currency: string;
   canCheckout: boolean;
   hasInquiryItems: boolean;
+  hasUnpricedPricedItems: boolean;
 };
 
 export type CheckoutCartItem = {
   productId: string;
+  orderMode: CartOrderMode;
   variantId?: string;
   materialId?: string;
   quantity: number;
