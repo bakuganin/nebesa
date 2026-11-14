@@ -91,3 +91,8 @@ a {
 .footer_credit-link:hover {
   color: #475467;
 }
+
+/* Keep the copyright + credit line centered when it wraps on small screens */
+.footer_bottom-wrapper > .text-size-small {
+  text-align: center;
+}
