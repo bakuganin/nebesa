@@ -190,3 +190,15 @@
     color: #111111 !important;
   }
 }
+
+/* Footer developer credit ("Code & Design by Tarkva.ee") */
+.footer_credit-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.3s;
+}
+
+.footer_credit-link:hover {
+  color: #475467;
+}

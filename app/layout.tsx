@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SmoothScrollProvider } from "@/components/site/smooth-scroll-provider";
+import { siteCredits } from "@/content/credits";
 import "./globals.css";
 import "@/styles/legacy/normalize.css";
 import "@/styles/legacy/webflow-base.css";
@@ -8,7 +9,8 @@ import "./overrides.css";
 
 export const metadata: Metadata = {
   title: "NEBESA",
-  description: "Ритуальные услуги NEBESA в Нарве"
+  description: "Ритуальные услуги NEBESA в Нарве",
+  authors: [{ name: siteCredits.developer.name, url: siteCredits.developer.url }]
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
