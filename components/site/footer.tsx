@@ -10,13 +10,7 @@ export function Footer() {
           <div className="footer_bottom-wrapper">
             <div className="text-size-small text-color-gray500">
               © 2024 {contactDetails.company} · {siteCredits.developer.label}{" "}
-              <a
-                href={siteCredits.developer.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer_credit-link"
-                title={`Разработка и дизайн: ${siteCredits.developer.name}`}
-              >
+              <a href={siteCredits.developer.url} target="_blank" rel="noopener" className="footer_legal-link">
                 {siteCredits.developer.name}
               </a>
             </div>

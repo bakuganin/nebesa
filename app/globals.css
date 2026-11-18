@@ -80,18 +80,6 @@ a {
   overflow: hidden;
 }
 
-/* Footer developer credit ("Code & Design by Tarkva.ee") */
-.footer_credit-link {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.3s;
-}
-
-.footer_credit-link:hover {
-  color: #475467;
-}
-
 /* Keep the copyright + credit line centered when it wraps on small screens */
 .footer_bottom-wrapper > .text-size-small {
   text-align: center;
